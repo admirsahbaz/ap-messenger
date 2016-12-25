@@ -1,0 +1,530 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		546C94DF1E107AFD00571006 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C94DE1E107AFD00571006 /* main.m */; };
+		546C94E21E107AFD00571006 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C94E11E107AFD00571006 /* AppDelegate.m */; };
+		546C94E51E107AFD00571006 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C94E41E107AFD00571006 /* ViewController.m */; };
+		546C94E81E107AFD00571006 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546C94E61E107AFD00571006 /* Main.storyboard */; };
+		546C94EA1E107AFD00571006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 546C94E91E107AFD00571006 /* Assets.xcassets */; };
+		546C94ED1E107AFD00571006 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546C94EB1E107AFD00571006 /* LaunchScreen.storyboard */; };
+		546C94F81E107AFD00571006 /* APMessengerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C94F71E107AFD00571006 /* APMessengerTests.m */; };
+		546C95031E107AFD00571006 /* APMessengerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C95021E107AFD00571006 /* APMessengerUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		546C94F41E107AFD00571006 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 546C94D21E107AFD00571006 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 546C94D91E107AFD00571006;
+			remoteInfo = APMessenger;
+		};
+		546C94FF1E107AFD00571006 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 546C94D21E107AFD00571006 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 546C94D91E107AFD00571006;
+			remoteInfo = APMessenger;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		546C94DA1E107AFD00571006 /* APMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		546C94DE1E107AFD00571006 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		546C94E01E107AFD00571006 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		546C94E11E107AFD00571006 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		546C94E31E107AFD00571006 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		546C94E41E107AFD00571006 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		546C94E71E107AFD00571006 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		546C94E91E107AFD00571006 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		546C94EC1E107AFD00571006 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		546C94EE1E107AFD00571006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		546C94F31E107AFD00571006 /* APMessengerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APMessengerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		546C94F71E107AFD00571006 /* APMessengerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APMessengerTests.m; sourceTree = "<group>"; };
+		546C94F91E107AFD00571006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		546C94FE1E107AFD00571006 /* APMessengerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APMessengerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		546C95021E107AFD00571006 /* APMessengerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APMessengerUITests.m; sourceTree = "<group>"; };
+		546C95041E107AFD00571006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		546C94D71E107AFD00571006 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		546C94F01E107AFD00571006 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		546C94FB1E107AFD00571006 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		546C94D11E107AFD00571006 = {
+			isa = PBXGroup;
+			children = (
+				546C94DC1E107AFD00571006 /* APMessenger */,
+				546C94F61E107AFD00571006 /* APMessengerTests */,
+				546C95011E107AFD00571006 /* APMessengerUITests */,
+				546C94DB1E107AFD00571006 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		546C94DB1E107AFD00571006 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				546C94DA1E107AFD00571006 /* APMessenger.app */,
+				546C94F31E107AFD00571006 /* APMessengerTests.xctest */,
+				546C94FE1E107AFD00571006 /* APMessengerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		546C94DC1E107AFD00571006 /* APMessenger */ = {
+			isa = PBXGroup;
+			children = (
+				546C94E01E107AFD00571006 /* AppDelegate.h */,
+				546C94E11E107AFD00571006 /* AppDelegate.m */,
+				546C94E31E107AFD00571006 /* ViewController.h */,
+				546C94E41E107AFD00571006 /* ViewController.m */,
+				546C94E61E107AFD00571006 /* Main.storyboard */,
+				546C94E91E107AFD00571006 /* Assets.xcassets */,
+				546C94EB1E107AFD00571006 /* LaunchScreen.storyboard */,
+				546C94EE1E107AFD00571006 /* Info.plist */,
+				546C94DD1E107AFD00571006 /* Supporting Files */,
+			);
+			path = APMessenger;
+			sourceTree = "<group>";
+		};
+		546C94DD1E107AFD00571006 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				546C94DE1E107AFD00571006 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		546C94F61E107AFD00571006 /* APMessengerTests */ = {
+			isa = PBXGroup;
+			children = (
+				546C94F71E107AFD00571006 /* APMessengerTests.m */,
+				546C94F91E107AFD00571006 /* Info.plist */,
+			);
+			path = APMessengerTests;
+			sourceTree = "<group>";
+		};
+		546C95011E107AFD00571006 /* APMessengerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				546C95021E107AFD00571006 /* APMessengerUITests.m */,
+				546C95041E107AFD00571006 /* Info.plist */,
+			);
+			path = APMessengerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		546C94D91E107AFD00571006 /* APMessenger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 546C95071E107AFD00571006 /* Build configuration list for PBXNativeTarget "APMessenger" */;
+			buildPhases = (
+				546C94D61E107AFD00571006 /* Sources */,
+				546C94D71E107AFD00571006 /* Frameworks */,
+				546C94D81E107AFD00571006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = APMessenger;
+			productName = APMessenger;
+			productReference = 546C94DA1E107AFD00571006 /* APMessenger.app */;
+			productType = "com.apple.product-type.application";
+		};
+		546C94F21E107AFD00571006 /* APMessengerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 546C950A1E107AFD00571006 /* Build configuration list for PBXNativeTarget "APMessengerTests" */;
+			buildPhases = (
+				546C94EF1E107AFD00571006 /* Sources */,
+				546C94F01E107AFD00571006 /* Frameworks */,
+				546C94F11E107AFD00571006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				546C94F51E107AFD00571006 /* PBXTargetDependency */,
+			);
+			name = APMessengerTests;
+			productName = APMessengerTests;
+			productReference = 546C94F31E107AFD00571006 /* APMessengerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		546C94FD1E107AFD00571006 /* APMessengerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 546C950D1E107AFD00571006 /* Build configuration list for PBXNativeTarget "APMessengerUITests" */;
+			buildPhases = (
+				546C94FA1E107AFD00571006 /* Sources */,
+				546C94FB1E107AFD00571006 /* Frameworks */,
+				546C94FC1E107AFD00571006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				546C95001E107AFD00571006 /* PBXTargetDependency */,
+			);
+			name = APMessengerUITests;
+			productName = APMessengerUITests;
+			productReference = 546C94FE1E107AFD00571006 /* APMessengerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		546C94D21E107AFD00571006 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Authority Partners";
+				TargetAttributes = {
+					546C94D91E107AFD00571006 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					546C94F21E107AFD00571006 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 546C94D91E107AFD00571006;
+					};
+					546C94FD1E107AFD00571006 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 546C94D91E107AFD00571006;
+					};
+				};
+			};
+			buildConfigurationList = 546C94D51E107AFD00571006 /* Build configuration list for PBXProject "APMessenger" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 546C94D11E107AFD00571006;
+			productRefGroup = 546C94DB1E107AFD00571006 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				546C94D91E107AFD00571006 /* APMessenger */,
+				546C94F21E107AFD00571006 /* APMessengerTests */,
+				546C94FD1E107AFD00571006 /* APMessengerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		546C94D81E107AFD00571006 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				546C94ED1E107AFD00571006 /* LaunchScreen.storyboard in Resources */,
+				546C94EA1E107AFD00571006 /* Assets.xcassets in Resources */,
+				546C94E81E107AFD00571006 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		546C94F11E107AFD00571006 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		546C94FC1E107AFD00571006 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		546C94D61E107AFD00571006 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				546C94E51E107AFD00571006 /* ViewController.m in Sources */,
+				546C94E21E107AFD00571006 /* AppDelegate.m in Sources */,
+				546C94DF1E107AFD00571006 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		546C94EF1E107AFD00571006 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				546C94F81E107AFD00571006 /* APMessengerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		546C94FA1E107AFD00571006 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				546C95031E107AFD00571006 /* APMessengerUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		546C94F51E107AFD00571006 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 546C94D91E107AFD00571006 /* APMessenger */;
+			targetProxy = 546C94F41E107AFD00571006 /* PBXContainerItemProxy */;
+		};
+		546C95001E107AFD00571006 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 546C94D91E107AFD00571006 /* APMessenger */;
+			targetProxy = 546C94FF1E107AFD00571006 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		546C94E61E107AFD00571006 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				546C94E71E107AFD00571006 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		546C94EB1E107AFD00571006 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				546C94EC1E107AFD00571006 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		546C95051E107AFD00571006 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		546C95061E107AFD00571006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		546C95081E107AFD00571006 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = APMessenger/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = api.APMessenger;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		546C95091E107AFD00571006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = APMessenger/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = api.APMessenger;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		546C950B1E107AFD00571006 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = APMessengerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = api.APMessengerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/APMessenger.app/APMessenger";
+			};
+			name = Debug;
+		};
+		546C950C1E107AFD00571006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = APMessengerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = api.APMessengerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/APMessenger.app/APMessenger";
+			};
+			name = Release;
+		};
+		546C950E1E107AFD00571006 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = APMessengerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = api.APMessengerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = APMessenger;
+			};
+			name = Debug;
+		};
+		546C950F1E107AFD00571006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = APMessengerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = api.APMessengerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = APMessenger;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		546C94D51E107AFD00571006 /* Build configuration list for PBXProject "APMessenger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				546C95051E107AFD00571006 /* Debug */,
+				546C95061E107AFD00571006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		546C95071E107AFD00571006 /* Build configuration list for PBXNativeTarget "APMessenger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				546C95081E107AFD00571006 /* Debug */,
+				546C95091E107AFD00571006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		546C950A1E107AFD00571006 /* Build configuration list for PBXNativeTarget "APMessengerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				546C950B1E107AFD00571006 /* Debug */,
+				546C950C1E107AFD00571006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		546C950D1E107AFD00571006 /* Build configuration list for PBXNativeTarget "APMessengerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				546C950E1E107AFD00571006 /* Debug */,
+				546C950F1E107AFD00571006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 546C94D21E107AFD00571006 /* Project object */;
+}

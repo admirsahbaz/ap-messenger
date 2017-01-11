@@ -15,6 +15,10 @@
 		546C94ED1E107AFD00571006 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546C94EB1E107AFD00571006 /* LaunchScreen.storyboard */; };
 		546C94F81E107AFD00571006 /* APMessengerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C94F71E107AFD00571006 /* APMessengerTests.m */; };
 		546C95031E107AFD00571006 /* APMessengerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C95021E107AFD00571006 /* APMessengerUITests.m */; };
+		BF02D7D11E25A501003A2066 /* RecentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF02D7D01E25A501003A2066 /* RecentTableViewController.m */; };
+		BF44D9571E26B530004F083A /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44D9561E26B530004F083A /* ContactsViewController.m */; };
+		BF76C9301E26C0C800D3CC49 /* ContactProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF76C92F1E26C0C800D3CC49 /* ContactProfileViewController.m */; };
+		BF76C9331E26C26400D3CC49 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF76C9321E26C26400D3CC49 /* ChatViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,14 @@
 		546C94FE1E107AFD00571006 /* APMessengerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APMessengerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		546C95021E107AFD00571006 /* APMessengerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APMessengerUITests.m; sourceTree = "<group>"; };
 		546C95041E107AFD00571006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF02D7CF1E25A501003A2066 /* RecentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentTableViewController.h; sourceTree = "<group>"; };
+		BF02D7D01E25A501003A2066 /* RecentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentTableViewController.m; sourceTree = "<group>"; };
+		BF44D9551E26B530004F083A /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
+		BF44D9561E26B530004F083A /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		BF76C92E1E26C0C800D3CC49 /* ContactProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactProfileViewController.h; sourceTree = "<group>"; };
+		BF76C92F1E26C0C800D3CC49 /* ContactProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactProfileViewController.m; sourceTree = "<group>"; };
+		BF76C9311E26C26400D3CC49 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		BF76C9321E26C26400D3CC49 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +122,14 @@
 				546C94EB1E107AFD00571006 /* LaunchScreen.storyboard */,
 				546C94EE1E107AFD00571006 /* Info.plist */,
 				546C94DD1E107AFD00571006 /* Supporting Files */,
+				BF02D7CF1E25A501003A2066 /* RecentTableViewController.h */,
+				BF02D7D01E25A501003A2066 /* RecentTableViewController.m */,
+				BF44D9551E26B530004F083A /* ContactsViewController.h */,
+				BF44D9561E26B530004F083A /* ContactsViewController.m */,
+				BF76C92E1E26C0C800D3CC49 /* ContactProfileViewController.h */,
+				BF76C92F1E26C0C800D3CC49 /* ContactProfileViewController.m */,
+				BF76C9311E26C26400D3CC49 /* ChatViewController.h */,
+				BF76C9321E26C26400D3CC49 /* ChatViewController.m */,
 			);
 			path = APMessenger;
 			sourceTree = "<group>";
@@ -274,7 +294,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				546C94E51E107AFD00571006 /* ViewController.m in Sources */,
+				BF76C9301E26C0C800D3CC49 /* ContactProfileViewController.m in Sources */,
+				BF44D9571E26B530004F083A /* ContactsViewController.m in Sources */,
+				BF02D7D11E25A501003A2066 /* RecentTableViewController.m in Sources */,
 				546C94E21E107AFD00571006 /* AppDelegate.m in Sources */,
+				BF76C9331E26C26400D3CC49 /* ChatViewController.m in Sources */,
 				546C94DF1E107AFD00571006 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,6 +531,7 @@
 				546C95091E107AFD00571006 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		546C950A1E107AFD00571006 /* Build configuration list for PBXNativeTarget "APMessengerTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +540,7 @@
 				546C950C1E107AFD00571006 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		546C950D1E107AFD00571006 /* Build configuration list for PBXNativeTarget "APMessengerUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +549,7 @@
 				546C950F1E107AFD00571006 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

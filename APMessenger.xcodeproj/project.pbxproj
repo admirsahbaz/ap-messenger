@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03D2FAD4179D86421F276A7A /* libPods-APMessenger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2686E2DBA7AB0D692214CF4F /* libPods-APMessenger.a */; };
 		546C94DF1E107AFD00571006 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C94DE1E107AFD00571006 /* main.m */; };
 		546C94E21E107AFD00571006 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C94E11E107AFD00571006 /* AppDelegate.m */; };
 		546C94E51E107AFD00571006 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C94E41E107AFD00571006 /* ViewController.m */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2686E2DBA7AB0D692214CF4F /* libPods-APMessenger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-APMessenger.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		546C94DA1E107AFD00571006 /* APMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		546C94DE1E107AFD00571006 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		546C94E01E107AFD00571006 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -55,6 +57,8 @@
 		546C94FE1E107AFD00571006 /* APMessengerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APMessengerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		546C95021E107AFD00571006 /* APMessengerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APMessengerUITests.m; sourceTree = "<group>"; };
 		546C95041E107AFD00571006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DF23F6704F6D34C2CD7271B /* Pods-APMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APMessenger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-APMessenger/Pods-APMessenger.debug.xcconfig"; sourceTree = "<group>"; };
+		BD4809E229DF0814B75AEAF5 /* Pods-APMessenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APMessenger.release.xcconfig"; path = "Pods/Target Support Files/Pods-APMessenger/Pods-APMessenger.release.xcconfig"; sourceTree = "<group>"; };
 		BF02D7CF1E25A501003A2066 /* RecentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentTableViewController.h; sourceTree = "<group>"; };
 		BF02D7D01E25A501003A2066 /* RecentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentTableViewController.m; sourceTree = "<group>"; };
 		BF44D9551E26B530004F083A /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03D2FAD4179D86421F276A7A /* libPods-APMessenger.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4FF0D0A48A470650BE8D523E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9DF23F6704F6D34C2CD7271B /* Pods-APMessenger.debug.xcconfig */,
+				BD4809E229DF0814B75AEAF5 /* Pods-APMessenger.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		546C94D11E107AFD00571006 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +111,8 @@
 				546C94F61E107AFD00571006 /* APMessengerTests */,
 				546C95011E107AFD00571006 /* APMessengerUITests */,
 				546C94DB1E107AFD00571006 /* Products */,
+				4FF0D0A48A470650BE8D523E /* Pods */,
+				E5E06F15FC07BF451B238615 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,11 +133,6 @@
 				546C94E11E107AFD00571006 /* AppDelegate.m */,
 				546C94E31E107AFD00571006 /* ViewController.h */,
 				546C94E41E107AFD00571006 /* ViewController.m */,
-				546C94E61E107AFD00571006 /* Main.storyboard */,
-				546C94E91E107AFD00571006 /* Assets.xcassets */,
-				546C94EB1E107AFD00571006 /* LaunchScreen.storyboard */,
-				546C94EE1E107AFD00571006 /* Info.plist */,
-				546C94DD1E107AFD00571006 /* Supporting Files */,
 				BF02D7CF1E25A501003A2066 /* RecentTableViewController.h */,
 				BF02D7D01E25A501003A2066 /* RecentTableViewController.m */,
 				BF44D9551E26B530004F083A /* ContactsViewController.h */,
@@ -130,6 +141,11 @@
 				BF76C92F1E26C0C800D3CC49 /* ContactProfileViewController.m */,
 				BF76C9311E26C26400D3CC49 /* ChatViewController.h */,
 				BF76C9321E26C26400D3CC49 /* ChatViewController.m */,
+				546C94E61E107AFD00571006 /* Main.storyboard */,
+				546C94E91E107AFD00571006 /* Assets.xcassets */,
+				546C94EB1E107AFD00571006 /* LaunchScreen.storyboard */,
+				546C94EE1E107AFD00571006 /* Info.plist */,
+				546C94DD1E107AFD00571006 /* Supporting Files */,
 			);
 			path = APMessenger;
 			sourceTree = "<group>";
@@ -160,6 +176,14 @@
 			path = APMessengerUITests;
 			sourceTree = "<group>";
 		};
+		E5E06F15FC07BF451B238615 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2686E2DBA7AB0D692214CF4F /* libPods-APMessenger.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,9 +191,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 546C95071E107AFD00571006 /* Build configuration list for PBXNativeTarget "APMessenger" */;
 			buildPhases = (
+				21E238FB6067A0E4AB5680C9 /* [CP] Check Pods Manifest.lock */,
 				546C94D61E107AFD00571006 /* Sources */,
 				546C94D71E107AFD00571006 /* Frameworks */,
 				546C94D81E107AFD00571006 /* Resources */,
+				C06025E2B8CD26EE30F161FB /* [CP] Embed Pods Frameworks */,
+				12BB5F592F72A06EC9F4F234 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -222,7 +249,7 @@
 		546C94D21E107AFD00571006 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Authority Partners";
 				TargetAttributes = {
 					546C94D91E107AFD00571006 = {
@@ -287,6 +314,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		12BB5F592F72A06EC9F4F234 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-APMessenger/Pods-APMessenger-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		21E238FB6067A0E4AB5680C9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C06025E2B8CD26EE30F161FB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-APMessenger/Pods-APMessenger-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		546C94D61E107AFD00571006 /* Sources */ = {
@@ -372,6 +447,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -420,6 +496,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -446,6 +523,7 @@
 		};
 		546C95081E107AFD00571006 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9DF23F6704F6D34C2CD7271B /* Pods-APMessenger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = APMessenger/Info.plist;
@@ -457,6 +535,7 @@
 		};
 		546C95091E107AFD00571006 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD4809E229DF0814B75AEAF5 /* Pods-APMessenger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = APMessenger/Info.plist;

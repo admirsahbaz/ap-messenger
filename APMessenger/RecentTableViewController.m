@@ -15,6 +15,7 @@
 @implementation RecentTableViewController
 
 @synthesize reuseIdentifier = _reuseIdentifier;
+@synthesize recents = _recents;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,6 +25,31 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    CGRect rect = self.navigationController.navigationBar.frame;
+    
+    float y = rect.size.height + rect.origin.y;
+    
+    [[self tableView] setContentInset:UIEdgeInsetsMake(y, 0, 0, 0)];
+    
+    _recents = [[NSMutableDictionary alloc] init];
+    
+    NSString *json = @"[{\"Name\": \"Hampton, Jillian P.\",\"Address\": \"Ap #272-3319 Mauris St.\",\"Zip\": \"3515\",\"City\": \"Ripabottoni\",\"Country\": \"Honduras\"},{\"Name\": \"Guthrie, Madison L.\",\"Address\": \"127-3041 Ac Rd.\",\"Zip\": \"9841\",\"City\": \"Devizes\",\"Country\": \"El Salvador\"},{\"Name\": \"Knight, Hasad K.\",\"Address\": \"P.O. Box 548, 7082 Vulputate Av.\",\"Zip\": \"6975LI\",\"City\": \"Pirmasens\",\"Country\": \"Trinidad and Tobago\"},{\"Name\": \"Mays, Paul A.\",\"Address\": \"262-3049 Interdum St.\",\"Zip\": \"048348\",\"City\": \"Neuruppin\",\"Country\": \"Qatar\"},{\"Name\": \"Keller, Naida Y.\",\"Address\": \"783-6178 Lectus St.\",\"Zip\": \"207801\",\"City\": \"Hildesheim\",\"Country\": \"Macedonia\"},{\"Name\": \"Stein, Holmes W.\",\"Address\": \"Ap #867-6568 Est. Rd.\",\"Zip\": \"16245\",\"City\": \"Pickering\",\"Country\": \"Congo, the Democratic Republic of the\"},{\"Name\": \"Herman, Jordan P.\",\"Address\": \"Ap #188-6459 Odio Street\",\"Zip\": \"79290\",\"City\": \"Gold Coast\",\"Country\": \"Moldova\"}]";
+    
+    NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    
+    _recents = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&err];
+    
+    if (err == nil)
+    {
+        NSLog(@"Success");
+    }
+    else
+    {
+        NSLog(@"Error");
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

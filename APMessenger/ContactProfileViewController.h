@@ -10,4 +10,9 @@
 
 @interface ContactProfileViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *lblUserPhone;
+@property (weak, nonatomic) IBOutlet UILabel *lblUserEmail;
+@property (weak, nonatomic) IBOutlet UILabel *lblUserAddress;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblUserName;
 @end

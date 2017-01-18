@@ -13,10 +13,17 @@
 @end
 
 @implementation ContactProfileViewController
-
+@synthesize lblUserEmail;
+@synthesize lblUserPhone;
+@synthesize lblUserAddress;
+@synthesize lblUserName;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [lblUserName setText:@"John Doe"];
+    [lblUserAddress setText:@"Test Address, 90001, CA"];
+    [lblUserPhone setText:@"123-456-789"];
+    [lblUserEmail setText:@"testemail@api.com"];
 }
 
 - (void)didReceiveMemoryWarning {

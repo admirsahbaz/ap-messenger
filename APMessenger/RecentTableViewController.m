@@ -19,13 +19,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"Recent";
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
+    self.tableView.backgroundColor = [UIColor colorWithRed:71.0f/255 green:146.0f/255 blue:162.0f/255 alpha:1];
     CGRect rect = self.navigationController.navigationBar.frame;
     
     float y = rect.size.height + rect.origin.y;
@@ -34,7 +34,7 @@
     
     _recents = [[NSMutableDictionary alloc] init];
     
-    NSString *json = @"[{\"Name\": \"Hampton, Jillian P.\",\"Address\": \"Ap #272-3319 Mauris St.\",\"Zip\": \"3515\",\"City\": \"Ripabottoni\",\"Country\": \"Honduras\"},{\"Name\": \"Guthrie, Madison L.\",\"Address\": \"127-3041 Ac Rd.\",\"Zip\": \"9841\",\"City\": \"Devizes\",\"Country\": \"El Salvador\"},{\"Name\": \"Knight, Hasad K.\",\"Address\": \"P.O. Box 548, 7082 Vulputate Av.\",\"Zip\": \"6975LI\",\"City\": \"Pirmasens\",\"Country\": \"Trinidad and Tobago\"},{\"Name\": \"Mays, Paul A.\",\"Address\": \"262-3049 Interdum St.\",\"Zip\": \"048348\",\"City\": \"Neuruppin\",\"Country\": \"Qatar\"},{\"Name\": \"Keller, Naida Y.\",\"Address\": \"783-6178 Lectus St.\",\"Zip\": \"207801\",\"City\": \"Hildesheim\",\"Country\": \"Macedonia\"},{\"Name\": \"Stein, Holmes W.\",\"Address\": \"Ap #867-6568 Est. Rd.\",\"Zip\": \"16245\",\"City\": \"Pickering\",\"Country\": \"Congo, the Democratic Republic of the\"},{\"Name\": \"Herman, Jordan P.\",\"Address\": \"Ap #188-6459 Odio Street\",\"Zip\": \"79290\",\"City\": \"Gold Coast\",\"Country\": \"Moldova\"}]";
+    NSString *json = @"[{\"Name\": \"Hampton, Jillian P.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Guthrie, Madison L.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Knight, Hasad K.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Mays, Paul A.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Keller, Naida Y.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Stein, Holmes W.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Herman, Jordan P.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"}]";
     
     NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
     NSError *err;
@@ -64,7 +64,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return _recents.count;
 }
 
 
@@ -78,6 +78,49 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_reuseIdentifier];
     }
     
+    
+    NSString *sName;
+    NSString *sLastMessage;
+    
+    int i = 0;
+    
+    for (id row in _recents){
+        
+        if (i == indexPath.row)
+        {
+            for (id key in row) {
+                if ([key isEqualToString:@"Name"])
+                {
+                    sName = [row objectForKey:key];
+                }
+                if ([key isEqualToString:@"LastMessage"])
+                {
+                    sLastMessage = [row objectForKey:key];
+                }
+                
+            }
+            
+        }
+        i++;
+    }
+    
+    UILabel *lblName = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 4.0f, 200.0f, 20.0f)];
+    
+    [lblName setText:sName];
+    [lblName setFont:[UIFont systemFontOfSize: 13.0f weight: 600.0f]];
+    [lblName setTextColor:[UIColor whiteColor]];
+    lblName.layer.borderWidth = 0.0f;
+    [cell addSubview:lblName];
+    
+    UILabel *lblLastMessage = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 24.0f, 200.0f, 20.0f)];
+    
+    [lblLastMessage setText:[[NSString alloc] initWithFormat:@"%@", sLastMessage]];
+    [lblLastMessage setFont:[UIFont systemFontOfSize: 10.0f]];
+    [lblLastMessage setTextColor:[UIColor whiteColor]];
+    lblLastMessage.layer.borderWidth = 0.0f;
+    [cell addSubview:lblLastMessage];
+    cell.backgroundColor = [UIColor colorWithRed:71.0f/255 green:146.0f/255 blue:162.0f/255 alpha:1];
+
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;

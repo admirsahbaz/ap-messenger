@@ -10,4 +10,6 @@
 
 @interface RestHelper : NSObject
 
+-(BOOL)checkLogin:(NSString*)username withPassword:(NSString*)password;
+
 @end

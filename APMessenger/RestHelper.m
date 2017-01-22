@@ -10,4 +10,7 @@
 
 @implementation RestHelper
 
+-(BOOL)checkLogin:(NSString*)username withPassword:(NSString*)password{
+    return ([username isEqualToString: @"test@authoritypartners.com"] && [password isEqualToString:@"test"]);
+}
 @end

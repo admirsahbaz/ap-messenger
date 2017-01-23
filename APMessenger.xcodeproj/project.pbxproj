@@ -22,6 +22,7 @@
 		BF44D9571E26B530004F083A /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44D9561E26B530004F083A /* ContactsViewController.m */; };
 		BF76C9301E26C0C800D3CC49 /* ContactProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF76C92F1E26C0C800D3CC49 /* ContactProfileViewController.m */; };
 		BF76C9331E26C26400D3CC49 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF76C9321E26C26400D3CC49 /* ChatViewController.m */; };
+		BF800DF51E36C27200438589 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF800DF41E36C27200438589 /* SettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,8 @@
 		BF76C92F1E26C0C800D3CC49 /* ContactProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactProfileViewController.m; sourceTree = "<group>"; };
 		BF76C9311E26C26400D3CC49 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		BF76C9321E26C26400D3CC49 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		BF800DF31E36C27200438589 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		BF800DF41E36C27200438589 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +159,8 @@
 				546C94EB1E107AFD00571006 /* LaunchScreen.storyboard */,
 				546C94EE1E107AFD00571006 /* Info.plist */,
 				546C94DD1E107AFD00571006 /* Supporting Files */,
+				BF800DF31E36C27200438589 /* SettingsViewController.h */,
+				BF800DF41E36C27200438589 /* SettingsViewController.m */,
 			);
 			path = APMessenger;
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 				BF02D7D11E25A501003A2066 /* RecentTableViewController.m in Sources */,
 				546C94E21E107AFD00571006 /* AppDelegate.m in Sources */,
 				0FF656141E35499C00C5D5D0 /* RestHelper.m in Sources */,
+				BF800DF51E36C27200438589 /* SettingsViewController.m in Sources */,
 				BF76C9331E26C26400D3CC49 /* ChatViewController.m in Sources */,
 				546C94DF1E107AFD00571006 /* main.m in Sources */,
 			);

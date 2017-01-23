@@ -31,11 +31,12 @@
     // Dispose of any resources that can be recreated.
 }
 
--(BOOL) textFieldShouldReturn: (UITextField *) textField{
-    
-    [textField resignFirstResponder];
-    return YES;
+
+-(void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.userNameTxt resignFirstResponder];
+    [self.passwordTxt resignFirstResponder];
 }
+
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
     if([identifier isEqualToString:@"LoginSegue"])
         return NO;

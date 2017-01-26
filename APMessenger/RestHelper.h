@@ -10,6 +10,10 @@
 
 @interface RestHelper : NSObject
 
+typedef void(^RequestCompletionHandler)(NSData*, NSError*);
+
+-(void)requestPath:(NSString *)path withData:(NSDictionary*)params andHttpMethod:(NSString*)method onCompletion:(RequestCompletionHandler)complete;
+
 -(BOOL)checkLogin:(NSString*)username withPassword:(NSString*)password;
 
 @end

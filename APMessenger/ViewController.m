@@ -43,12 +43,28 @@
     return YES;
 }
 
+- (void)testFn:(NSData*)data withError:(NSError*)error{
+    NSString *str = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+    if(error)
+        NSLog(@"ERROR: %@", error);
+    [invalidLoginMessage setHidden:NO];
+    [invalidLoginMessage setText:str];
+    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
+}
+
 - (IBAction)logInButtonClicked:(id)sender {
     [invalidLoginMessage setHidden:YES];
     NSString *un = self.userNameTxt.text;
     NSString *pass = self.passwordTxt.text;
     RestHelper *rest = [[RestHelper alloc]init];
     bool login = [rest checkLogin:un withPassword:pass];
+    login = NO;
+    [rest requestPath:@"" withData:NULL andHttpMethod:@"GET" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self testFn:data withError:error];
+        });
+        
+    }];
     if(login)
     {
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
@@ -58,7 +74,7 @@
         //[self presentViewController:vc animated:YES completion:nil];
     }
     else{
-        [invalidLoginMessage setHidden:NO];
+        //[invalidLoginMessage setHidden:NO];
     }
 }
 

@@ -17,9 +17,12 @@
 @synthesize userNameTxt;
 @synthesize passwordTxt;
 @synthesize invalidLoginMessage;
+@synthesize loadingSpinner;
+@synthesize loginBtn;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [loadingSpinner setHidden:YES];
     //self.userNameTxt.delegate = self;
     //self.passwordTxt.delegate = self;
     // Do any additional setup after loading the view, typically from a nib.
@@ -43,39 +46,39 @@
     return YES;
 }
 
-- (void)testFn:(NSData*)data withError:(NSError*)error{
+- (void)authenticate:(NSData*)data withError:(NSError*)error{
+    loginBtn.enabled = true;
+    [loadingSpinner stopAnimating];
+    [loadingSpinner setHidden:YES];
     NSString *str = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
     if(error)
+    {
         NSLog(@"ERROR: %@", error);
-    [invalidLoginMessage setHidden:NO];
-    [invalidLoginMessage setText:str];
-    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
+    }
+    else if([str isEqualToString:@"null"])
+    {
+        [invalidLoginMessage setHidden:NO];
+    }
+    else{
+        [self performSegueWithIdentifier:@"LoginSegue" sender:self];
+    }
 }
 
 - (IBAction)logInButtonClicked:(id)sender {
+    loginBtn.enabled = false;
+    [loadingSpinner setHidden:NO];
+    [loadingSpinner startAnimating];
     [invalidLoginMessage setHidden:YES];
     NSString *un = self.userNameTxt.text;
     NSString *pass = self.passwordTxt.text;
     RestHelper *rest = [[RestHelper alloc]init];
-    bool login = [rest checkLogin:un withPassword:pass];
-    login = NO;
-    [rest requestPath:@"" withData:NULL andHttpMethod:@"GET" onCompletion:^(NSData *data, NSError *error) {
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:un, @"Email", pass, @"Password", nil];
+    
+    [rest requestPath:@"/login" withData:dict andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self testFn:data withError:error];
+            [self authenticate:data withError:error];
         });
-        
     }];
-    if(login)
-    {
-        [self performSegueWithIdentifier:@"LoginSegue" sender:self];
-        //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-        
-        //UIViewController * vc = [[self storyboard] instantiateViewControllerWithIdentifier:@"FBOut"];
-        //[self presentViewController:vc animated:YES completion:nil];
-    }
-    else{
-        //[invalidLoginMessage setHidden:NO];
-    }
 }
 
 

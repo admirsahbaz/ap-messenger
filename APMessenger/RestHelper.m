@@ -30,15 +30,18 @@
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                        timeoutInterval:10];
     //[request setValue:self.misfitAccessToken forHTTPHeaderField:@"access_token"];
-    [request addValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:@"text/html" forHTTPHeaderField:@"Accept"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    NSError *err;
     if(params)
-        [request setHTTPBody:[self httpBodyForParameters:params]];
+        [request setHTTPBody:[NSJSONSerialization dataWithJSONObject:params options:0 error:&err]];
     
     [request setHTTPMethod:method];
     
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request
                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
+                                                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                        
                                                         if(complete)
                                                             complete(data, error);
                                                     }];

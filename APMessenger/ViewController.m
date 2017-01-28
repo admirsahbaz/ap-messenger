@@ -71,7 +71,7 @@
     [invalidLoginMessage setHidden:YES];
     NSString *un = self.userNameTxt.text;
     NSString *pass = self.passwordTxt.text;
-    RestHelper *rest = [[RestHelper alloc]init];
+    RestHelper *rest =  [RestHelper SharedInstance];
     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:un, @"Email", pass, @"Password", nil];
     
     [rest requestPath:@"/login" withData:dict andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {

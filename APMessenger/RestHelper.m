@@ -70,4 +70,14 @@
 -(BOOL)checkLogin:(NSString*)username withPassword:(NSString*)password{
     return ([username isEqualToString: @"test@authoritypartners.com"] && [password isEqualToString:@"test"]);
 }
++(RestHelper *) SharedInstance{
+    static RestHelper *sharedInstance;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once (&onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    
+    return sharedInstance;
+}
 @end

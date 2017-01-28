@@ -16,4 +16,6 @@ typedef void(^RequestCompletionHandler)(NSData*, NSError*);
 
 -(BOOL)checkLogin:(NSString*)username withPassword:(NSString*)password;
 
++ (RestHelper *) SharedInstance;
+
 @end

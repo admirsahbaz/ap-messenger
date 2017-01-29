@@ -45,7 +45,7 @@ ThemeManager *_themeManager;
     [lblUsername setText:@"John Doe"];
     [lblUserEmail setText:@"testemail@authoritypartners.com"];
     
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,400, self.view.bounds.size.width, 1 )];
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,500, self.view.bounds.size.width, 1 )];
     lineView.backgroundColor = _themeManager.textColor;
     
     [self.view addSubview:lineView];
@@ -54,7 +54,10 @@ ThemeManager *_themeManager;
     bottomLine.backgroundColor = _themeManager.textColor;
     [self.view addSubview:bottomLine];
 
-    [self.view addSubview:lineView];    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem: self.btnAddToContacts attribute: NSLayoutAttributeBottom relatedBy: NSLayoutRelationEqual toItem:self.view attribute: NSLayoutAttributeBottom multiplier:1.0f constant: 0.f];
+    [self.view addSubview:lineView];
+    
+    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem: self.btnAddToContacts attribute: NSLayoutAttributeBottom relatedBy: NSLayoutRelationEqual toItem:self.view attribute: NSLayoutAttributeBottom multiplier:2.0f constant: 400.f];
+    
     [self.view addConstraint: bottom];
 }
 

@@ -16,14 +16,14 @@
 
 @synthesize identifier = _identifier;
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    CGRect rect = self.navigationController.navigationBar.frame;
+    float y = rect.size.height + rect.origin.y;
+    [[self tableView] setContentInset:UIEdgeInsetsMake(y, 0, 0, 0)];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,17 +51,54 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_identifier];
     }
     
+    if(indexPath.row == 0)
+    {
+        UILabel *lblTheme = [[UILabel alloc] initWithFrame:CGRectMake(25.0f, 4.0f, 200.0f, 20.0f)];
+        
+        [lblTheme setText:@"default"];
+        [lblTheme setFont:[UIFont systemFontOfSize: 13.0f weight: 600.0f]];
+        lblTheme.layer.borderWidth = 0.0f;
+        lblTheme.tag = 1;
+        [cell addSubview:lblTheme];
+       
+    }
+    
+    if(indexPath.row == 1)
+    {
+        UILabel *lblTheme = [[UILabel alloc] initWithFrame:CGRectMake(25.0f, 4.0f, 200.0f, 20.0f)];
+        
+        [lblTheme setText:@"gray"];
+        [lblTheme setFont:[UIFont systemFontOfSize: 13.0f weight: 600.0f]];
+        lblTheme.layer.borderWidth = 0.0f;
+        lblTheme.tag = 1;
+        [cell addSubview:lblTheme];
+        
+    }
+    
     return cell;
 }
 
 
-/*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = (UITableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+    UILabel *customLabel = (UILabel *)[cell viewWithTag:1];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:customLabel.text forKey:@"theme"];
+    
+    NSString *themeName = [defaults objectForKey:@"theme"] ?: @"default";
+    
+    NSLog(@"Label text: %@   Theme name: %@",customLabel.text, themeName);
+ 
+}
+
 
 /*
 // Override to support editing the table view.

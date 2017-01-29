@@ -2,17 +2,17 @@
 //  ChatViewController.h
 //  APMessenger
 //
-//  Created by Elma Arslanagic on 1/11/17.
+//  Created by Inela Avdic Hukic on 1/28/17.
 //  Copyright © 2017 Authority Partners. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "JSQMessages.h"
+#import <QuartzCore/QuartzCore.h>
 
-@interface ChatViewController : JSQMessagesViewController
+#import "Message.h"
+#import "LeftChatTableViewCell.h"
+#import "RightChatTableViewCell.h"
 
-@property (nonatomic, strong) JSQMessagesBubbleImage *incomingMessageBubble;
-@property (nonatomic, strong) JSQMessagesBubbleImage *outgoingMessageBubble;
-@property (nonatomic, strong) NSMutableArray *messages;
+@interface ChatViewController : UIViewController <UITextFieldDelegate>
 
 @end

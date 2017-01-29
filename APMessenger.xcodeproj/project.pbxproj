@@ -23,6 +23,9 @@
 		54CAB3D31E3D55C7004C76EA /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CAB3D21E3D55C7004C76EA /* ThemeManager.m */; };
 		54CAB3D51E3D59E9004C76EA /* default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54CAB3D41E3D59E9004C76EA /* default.plist */; };
 		54CAB3DB1E3D63CE004C76EA /* UIColor+FromHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CAB3DA1E3D63CE004C76EA /* UIColor+FromHex.m */; };
+		A037E4A01E3EAE380092E1A4 /* LeftChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A037E49D1E3EAE380092E1A4 /* LeftChatTableViewCell.m */; };
+		A037E4A11E3EAE380092E1A4 /* RightChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A037E49F1E3EAE380092E1A4 /* RightChatTableViewCell.m */; };
+		A037E4A41E3EAE750092E1A4 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = A037E4A31E3EAE750092E1A4 /* Message.m */; };
 		BF02D7D11E25A501003A2066 /* RecentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF02D7D01E25A501003A2066 /* RecentTableViewController.m */; };
 		BF44D9571E26B530004F083A /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44D9561E26B530004F083A /* ContactsViewController.m */; };
 		BF6F8AD51E3E65F800782A15 /* PasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6F8AD41E3E65F800782A15 /* PasswordViewController.m */; };
@@ -79,6 +82,12 @@
 		54CAB3D91E3D63CE004C76EA /* UIColor+FromHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FromHex.h"; sourceTree = "<group>"; };
 		54CAB3DA1E3D63CE004C76EA /* UIColor+FromHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FromHex.m"; sourceTree = "<group>"; };
 		9DF23F6704F6D34C2CD7271B /* Pods-APMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APMessenger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-APMessenger/Pods-APMessenger.debug.xcconfig"; sourceTree = "<group>"; };
+		A037E49C1E3EAE380092E1A4 /* LeftChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftChatTableViewCell.h; sourceTree = "<group>"; };
+		A037E49D1E3EAE380092E1A4 /* LeftChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftChatTableViewCell.m; sourceTree = "<group>"; };
+		A037E49E1E3EAE380092E1A4 /* RightChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightChatTableViewCell.h; sourceTree = "<group>"; };
+		A037E49F1E3EAE380092E1A4 /* RightChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightChatTableViewCell.m; sourceTree = "<group>"; };
+		A037E4A21E3EAE750092E1A4 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		A037E4A31E3EAE750092E1A4 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		BD4809E229DF0814B75AEAF5 /* Pods-APMessenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APMessenger.release.xcconfig"; path = "Pods/Target Support Files/Pods-APMessenger/Pods-APMessenger.release.xcconfig"; sourceTree = "<group>"; };
 		BF02D7CF1E25A501003A2066 /* RecentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentTableViewController.h; sourceTree = "<group>"; };
 		BF02D7D01E25A501003A2066 /* RecentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentTableViewController.m; sourceTree = "<group>"; };
@@ -156,40 +165,17 @@
 		546C94DC1E107AFD00571006 /* APMessenger */ = {
 			isa = PBXGroup;
 			children = (
-				54BC59C11E3E37DB009ED5BF /* contactimg.jpg */,
-				0FF656101E35499C00C5D5D0 /* RestHelper.h */,
-				0FF656111E35499C00C5D5D0 /* RestHelper.m */,
-				0FF656121E35499C00C5D5D0 /* TabViewController.h */,
-				0FF656131E35499C00C5D5D0 /* TabViewController.m */,
 				546C94E01E107AFD00571006 /* AppDelegate.h */,
 				546C94E11E107AFD00571006 /* AppDelegate.m */,
-				546C94E31E107AFD00571006 /* ViewController.h */,
-				546C94E41E107AFD00571006 /* ViewController.m */,
-				BF02D7CF1E25A501003A2066 /* RecentTableViewController.h */,
-				BF02D7D01E25A501003A2066 /* RecentTableViewController.m */,
-				BF44D9551E26B530004F083A /* ContactsViewController.h */,
-				BF44D9561E26B530004F083A /* ContactsViewController.m */,
-				BF76C92E1E26C0C800D3CC49 /* ContactProfileViewController.h */,
-				BF76C92F1E26C0C800D3CC49 /* ContactProfileViewController.m */,
-				BF76C9311E26C26400D3CC49 /* ChatViewController.h */,
-				BF76C9321E26C26400D3CC49 /* ChatViewController.m */,
+				A037E4A51E3EAECA0092E1A4 /* Controllers */,
+				A037E4A61E3EAEE80092E1A4 /* Views */,
+				A037E4A71E3EAF020092E1A4 /* Models */,
+				A037E4A81E3EAF190092E1A4 /* Helper classes */,
+				A037E4A91E3EAF410092E1A4 /* Categories */,
+				A037E4AA1E3EAF840092E1A4 /* Other files */,
 				546C94E61E107AFD00571006 /* Main.storyboard */,
-				546C94E91E107AFD00571006 /* Assets.xcassets */,
-				546C94EB1E107AFD00571006 /* LaunchScreen.storyboard */,
-				546C94EE1E107AFD00571006 /* Info.plist */,
+				54BC59C11E3E37DB009ED5BF /* contactimg.jpg */,
 				546C94DD1E107AFD00571006 /* Supporting Files */,
-				BF800DF31E36C27200438589 /* SettingsViewController.h */,
-				BF800DF41E36C27200438589 /* SettingsViewController.m */,
-				54CAB3D11E3D55C7004C76EA /* ThemeManager.h */,
-				54CAB3D21E3D55C7004C76EA /* ThemeManager.m */,
-				54CAB3D41E3D59E9004C76EA /* default.plist */,
-				54BC59C31E3E582A009ED5BF /* gray.plist */,
-				54CAB3D91E3D63CE004C76EA /* UIColor+FromHex.h */,
-				54CAB3DA1E3D63CE004C76EA /* UIColor+FromHex.m */,
-				BF6F8AD31E3E65F800782A15 /* PasswordViewController.h */,
-				BF6F8AD41E3E65F800782A15 /* PasswordViewController.m */,
-				BF6F8AD91E3E6A0B00782A15 /* ThemeTableViewController.h */,
-				BF6F8ADA1E3E6A0B00782A15 /* ThemeTableViewController.m */,
 			);
 			path = APMessenger;
 			sourceTree = "<group>";
@@ -218,6 +204,83 @@
 				546C95041E107AFD00571006 /* Info.plist */,
 			);
 			path = APMessengerUITests;
+			sourceTree = "<group>";
+		};
+		A037E4A51E3EAECA0092E1A4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0FF656121E35499C00C5D5D0 /* TabViewController.h */,
+				0FF656131E35499C00C5D5D0 /* TabViewController.m */,
+				546C94E31E107AFD00571006 /* ViewController.h */,
+				546C94E41E107AFD00571006 /* ViewController.m */,
+				BF02D7CF1E25A501003A2066 /* RecentTableViewController.h */,
+				BF02D7D01E25A501003A2066 /* RecentTableViewController.m */,
+				BF44D9551E26B530004F083A /* ContactsViewController.h */,
+				BF44D9561E26B530004F083A /* ContactsViewController.m */,
+				BF76C92E1E26C0C800D3CC49 /* ContactProfileViewController.h */,
+				BF76C92F1E26C0C800D3CC49 /* ContactProfileViewController.m */,
+				BF76C9311E26C26400D3CC49 /* ChatViewController.h */,
+				BF76C9321E26C26400D3CC49 /* ChatViewController.m */,
+				BF800DF31E36C27200438589 /* SettingsViewController.h */,
+				BF800DF41E36C27200438589 /* SettingsViewController.m */,
+				BF6F8AD31E3E65F800782A15 /* PasswordViewController.h */,
+				BF6F8AD41E3E65F800782A15 /* PasswordViewController.m */,
+				BF6F8AD91E3E6A0B00782A15 /* ThemeTableViewController.h */,
+				BF6F8ADA1E3E6A0B00782A15 /* ThemeTableViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		A037E4A61E3EAEE80092E1A4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A037E49C1E3EAE380092E1A4 /* LeftChatTableViewCell.h */,
+				A037E49D1E3EAE380092E1A4 /* LeftChatTableViewCell.m */,
+				A037E49E1E3EAE380092E1A4 /* RightChatTableViewCell.h */,
+				A037E49F1E3EAE380092E1A4 /* RightChatTableViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		A037E4A71E3EAF020092E1A4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A037E4A21E3EAE750092E1A4 /* Message.h */,
+				A037E4A31E3EAE750092E1A4 /* Message.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		A037E4A81E3EAF190092E1A4 /* Helper classes */ = {
+			isa = PBXGroup;
+			children = (
+				0FF656101E35499C00C5D5D0 /* RestHelper.h */,
+				0FF656111E35499C00C5D5D0 /* RestHelper.m */,
+				54CAB3D11E3D55C7004C76EA /* ThemeManager.h */,
+				54CAB3D21E3D55C7004C76EA /* ThemeManager.m */,
+			);
+			name = "Helper classes";
+			sourceTree = "<group>";
+		};
+		A037E4A91E3EAF410092E1A4 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				54CAB3D91E3D63CE004C76EA /* UIColor+FromHex.h */,
+				54CAB3DA1E3D63CE004C76EA /* UIColor+FromHex.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		A037E4AA1E3EAF840092E1A4 /* Other files */ = {
+			isa = PBXGroup;
+			children = (
+				546C94E91E107AFD00571006 /* Assets.xcassets */,
+				546C94EB1E107AFD00571006 /* LaunchScreen.storyboard */,
+				546C94EE1E107AFD00571006 /* Info.plist */,
+				54CAB3D41E3D59E9004C76EA /* default.plist */,
+				54BC59C31E3E582A009ED5BF /* gray.plist */,
+			);
+			name = "Other files";
 			sourceTree = "<group>";
 		};
 		E5E06F15FC07BF451B238615 /* Frameworks */ = {
@@ -419,6 +482,7 @@
 				BF76C9301E26C0C800D3CC49 /* ContactProfileViewController.m in Sources */,
 				BF44D9571E26B530004F083A /* ContactsViewController.m in Sources */,
 				0FF656151E35499C00C5D5D0 /* TabViewController.m in Sources */,
+				A037E4A11E3EAE380092E1A4 /* RightChatTableViewCell.m in Sources */,
 				BF02D7D11E25A501003A2066 /* RecentTableViewController.m in Sources */,
 				546C94E21E107AFD00571006 /* AppDelegate.m in Sources */,
 				0FF656141E35499C00C5D5D0 /* RestHelper.m in Sources */,
@@ -426,6 +490,8 @@
 				BF76C9331E26C26400D3CC49 /* ChatViewController.m in Sources */,
 				54CAB3DB1E3D63CE004C76EA /* UIColor+FromHex.m in Sources */,
 				54CAB3D31E3D55C7004C76EA /* ThemeManager.m in Sources */,
+				A037E4A01E3EAE380092E1A4 /* LeftChatTableViewCell.m in Sources */,
+				A037E4A41E3EAE750092E1A4 /* Message.m in Sources */,
 				546C94DF1E107AFD00571006 /* main.m in Sources */,
 				BF6F8AD51E3E65F800782A15 /* PasswordViewController.m in Sources */,
 				BF6F8ADB1E3E6A0B00782A15 /* ThemeTableViewController.m in Sources */,

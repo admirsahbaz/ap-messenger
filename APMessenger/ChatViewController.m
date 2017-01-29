@@ -2,137 +2,167 @@
 //  ChatViewController.m
 //  APMessenger
 //
-//  Created by Elma Arslanagic on 1/11/17.
+//  Created by Inela Avdic Hukic on 1/28/17.
 //  Copyright © 2017 Authority Partners. All rights reserved.
 //
 
 #import "ChatViewController.h"
 
-static NSString * const senderId = @"random-sender-id";
-static NSString * const senderName = @"Test Sender";
-static NSString * const myId = @"my-id";
-static NSString * const myName = @"Test Receiver";
+@interface ChatViewController ()<UITableViewDataSource, UITableViewDelegate> {
+    NSMutableArray *chatArray;
+}
 
-@interface ChatViewController ()
+@property (weak, nonatomic) NSString *chatPerson;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITextField *typedMessageTextField;
 
 @end
 
 @implementation ChatViewController
 
+#pragma mark - View controller lifecycle methods
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = senderName;
+    // Read chat person from performed segue
+    self.chatPerson = @"Bill Gates";
+    self.navigationItem.title = self.chatPerson;
+    [self initializeChatArray];
+
+    [self setTableViewBackgroundGradientWithTopColor:[UIColor colorWithRed:73.0/255 green:151.0/255 blue:165.0/255 alpha:1] bottomColor:[UIColor colorWithRed:48.0/255 green:74.0/255 blue:91.0/255 alpha:1]];
     
-    self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeMake(30.0, 30.0);
-    self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeMake(30.0, 30.0);
+    self.typedMessageTextField.layer.cornerRadius = 5;
+    self.typedMessageTextField.layer.masksToBounds = YES;
+    self.typedMessageTextField.backgroundColor = [UIColor colorWithRed:48.0/255 green:74.0/255 blue:91.0/255 alpha:1];
+    self.typedMessageTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Write your message..." attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    self.typedMessageTextField.delegate = self;
     
-    JSQMessagesBubbleImageFactory *bubbleFactory = [[JSQMessagesBubbleImageFactory alloc] init];
-    self.outgoingMessageBubble = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
-    self.incomingMessageBubble = [bubbleFactory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleGreenColor]];
-    
-    self.messages = [[NSMutableArray alloc] initWithObjects:
-                         [[JSQMessage alloc] initWithSenderId:senderId senderDisplayName:senderName date:[NSDate distantPast] text:@"I am testing api messenger"],
-                         [[JSQMessage alloc] initWithSenderId:myId senderDisplayName:myName date:[NSDate distantPast] text:@"Works great... haha!"],
-                         nil];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 70;
+    [self.tableView reloadData];
     
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:gestureRecognizer];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-#pragma mark - JSQMessagesViewController method overrides
-
-- (void)didPressSendButton:(UIButton *)button
-           withMessageText:(NSString *)text
-                  senderId:(NSString *)senderId
-         senderDisplayName:(NSString *)senderDisplayName
-                      date:(NSDate *)date
-{
-    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:senderId
-                                             senderDisplayName:senderDisplayName
-                                                          date:date
-                                                          text:text];
     
-    [self.messages addObject:message];
-    [self finishSendingMessageAnimated:YES];
+    // Code for navigation bar - common for whole app
+    UIImage *backButtonImage = [UIImage imageNamed:@"BackIcon"];
+    backButtonImage = [backButtonImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
+                                    initWithImage:backButtonImage
+                                    style:UIBarButtonItemStylePlain
+                                    target:self.navigationController
+                                    action:@selector(popViewControllerAnimated:)];
+    [backButton setTintColor:[UIColor whiteColor]];
+    self.navigationItem.leftBarButtonItem = backButton;
+    [self.navigationController.navigationBar setBarTintColor: [UIColor colorWithRed:93.0/255 green:168.0/255 blue:180.0/255 alpha:1]];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+
 }
 
-- (void)didPressAccessoryButton:(UIButton *)sender
-{
-    // implement accessory button handling
-}
-
-
-#pragma mark - JSQMessages CollectionView DataSource
-
-- (NSString *)senderId {
-    return senderId;
-}
-
-- (NSString *)senderDisplayName {
-    return senderName;
-}
-
-- (id<JSQMessageBubbleImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView messageBubbleImageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
-    JSQMessage *message = [self.messages objectAtIndex:indexPath.row];
-    if ([message.senderId isEqualToString:self.senderId]) {
-        return self.outgoingMessageBubble;
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (chatArray.count > 0) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:chatArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
-    return self.incomingMessageBubble;
 }
 
-- (id<JSQMessageData>)collectionView:(JSQMessagesCollectionView *)collectionView messageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return [self.messages objectAtIndex:indexPath.item];
+#pragma mark - Helper methods
+
+- (void)setTableViewBackgroundGradientWithTopColor:(UIColor *)topColor bottomColor:(UIColor *)bottomColor {
+    CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
+    gradientLayer.colors = [NSArray arrayWithObjects: (id)topColor.CGColor, (id)bottomColor.CGColor, nil];
+    gradientLayer.locations = @[@0.0,@1.0];
+    gradientLayer.frame = self.tableView.bounds;
+    UIView *newView = [[UIView alloc] initWithFrame:self.tableView.bounds];
+    [newView.layer insertSublayer:gradientLayer atIndex:0];
+    self.tableView.backgroundView = newView;
 }
 
-- (id<JSQMessageAvatarImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView avatarImageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
-    JSQMessage *message = [self.messages objectAtIndex:indexPath.item];
+- (void)initializeChatArray {
     
-    if ([message.senderId isEqualToString:self.senderId]) {
-        // return avatar of sender
-        UIImage *avatarImage = [UIImage imageNamed:@"DefaultUserIcon"];
-        return [[JSQMessagesAvatarImage alloc] initWithAvatarImage:avatarImage highlightedImage:avatarImage placeholderImage:avatarImage];
-    }
-    else {
-        // return my avatar
-        UIImage *avatarImage = [UIImage imageNamed:@"DefaultUserIcon"];
-        return [[JSQMessagesAvatarImage alloc] initWithAvatarImage:avatarImage highlightedImage:avatarImage placeholderImage:avatarImage];
-    }
-}
-
-#pragma mark - UICollectionView DataSource
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self.messages count];
-}
-
-- (UICollectionViewCell *)collectionView:(JSQMessagesCollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    JSQMessagesCollectionViewCell *cell = (JSQMessagesCollectionViewCell *)[super collectionView:collectionView cellForItemAtIndexPath:indexPath];
-    JSQMessage *msg = [self.messages objectAtIndex:indexPath.row];
-    if (!msg.isMediaMessage) {
-        
-        if ([msg.senderId isEqualToString:self.senderId]) {
-            cell.textView.textColor = [UIColor blackColor];
-        }
-        else {
-            cell.textView.textColor = [UIColor whiteColor];
-        }
-        
-        cell.textView.linkTextAttributes = @{ NSForegroundColorAttributeName : cell.textView.textColor,
-                                              NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternSolid) };
-    }
+    Message *message1 = [[Message alloc] initWithText:@"Hi Bill!" sender:@"test@authoritypartners.com" receiver:@"billgates@authoritypartners.com" time:[NSDate distantPast]];
+    Message *message2 = [[Message alloc] initWithText:@"What's up?!" sender:@"billgates@authoritypartners.com" receiver:@"test@authoritypartners.com" time:[NSDate distantPast]];
+    Message *message3 = [[Message alloc] initWithText:@"Lorem ipsum dolor sit amet, consectetur adipiscing elit" sender:@"test@authoritypartners.com" receiver:@"billgates@authoritypartners.com" time:[NSDate distantPast]];
+    Message *message4 = [[Message alloc] initWithText:@"Lorem ipsum dolor sit amet, consectetur adipiscing elit" sender:@"billgates@authoritypartners.com" receiver:@"test@authoritypartners.com" time:[NSDate distantPast]];
+    Message *message5 = [[Message alloc] initWithText:@"Lorem ipsum dolor sit amet, consectetur adipiscing elit" sender:@"test@authoritypartners.com" receiver:@"billgates@authoritypartners.com" time:[NSDate distantPast]];
     
-    return cell;
+    chatArray = [NSMutableArray arrayWithArray:@[message1, message2, message3, message4, message5]];
+}
+
+#pragma mark - UITableView DataSource Methods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return chatArray.count;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    Message *message = [chatArray objectAtIndex:indexPath.row];
+
+    if([message.sender isEqualToString: @"test@authoritypartners.com"]) {
+        RightChatTableViewCell *cell = (RightChatTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"RightChatCell"];
+        cell.chatTextLabel.text = message.text;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.bubbleView.layer.cornerRadius = 8;
+        cell.bubbleView.layer.masksToBounds = YES;
+        [cell layoutSubviews];
+        return cell;
+    } else {
+        LeftChatTableViewCell *cell = (LeftChatTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"LeftChatCell"];
+        cell.chatTextLabel.text = message.text;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.bubbleView.layer.cornerRadius = 8;
+        cell.bubbleView.layer.masksToBounds = YES;
+        [cell layoutSubviews];
+        return cell;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.backgroundColor = [UIColor clearColor];
 }
 
 #pragma mark - Action methods
 
+- (IBAction)sendMessage:(id)sender {
+    if (![self.typedMessageTextField.text isEqualToString:@""]) {
+        NSDate *now = [NSDate date];
+        Message *newMessage = [[Message alloc] initWithText:self.typedMessageTextField.text sender:@"test@authoritypartners.com" receiver:@"billgates@authoritypartners.com" time:now];
+        [chatArray addObject:newMessage];
+        self.typedMessageTextField.text = @"";
+        [self.tableView reloadData];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:chatArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        [self.tableView reloadData];
+    }
+}
+
 - (void)dismissKeyboard {
-    [self.view endEditing:YES];
+    [self.typedMessageTextField resignFirstResponder];
+}
+
+
+#pragma mark - UITextFieldDelegate methods
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self animateTextField:textField up:YES];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self animateTextField:textField up:NO];
+}
+
+-(void)animateTextField:(UITextField*)textField up:(BOOL)up {
+    const int movementDistance = -210;
+    const float movementDuration = 0.3f;
+    
+    int movement = (up ? movementDistance : -movementDistance);
+    
+    [UIView beginAnimations: @"animateTextField" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
 }
 
 @end

@@ -1,5 +1,5 @@
 //
-//  ThemeViewController.h
+//  ThemeTableViewController.h
 //  APMessenger
 //
 //  Created by Elma Arslanagic on 1/29/17.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ThemeViewController : UIViewController
+@interface ThemeTableViewController : UITableViewController
+
+@property (strong, nonatomic) NSString *identifier;
 
 @end

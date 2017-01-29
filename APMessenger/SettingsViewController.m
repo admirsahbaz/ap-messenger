@@ -56,6 +56,16 @@
         [cell addSubview:lblPassword];
     }
     
+    if(indexPath.row == 1)
+    {
+        UILabel *lblTheme = [[UILabel alloc] initWithFrame:CGRectMake(25.0f, 4.0f, 200.0f, 20.0f)];
+        
+        [lblTheme setText:@"Change theme"];
+        [lblTheme setFont:[UIFont systemFontOfSize: 13.0f weight: 600.0f]];
+        lblTheme.layer.borderWidth = 0.0f;
+        [cell addSubview:lblTheme];
+    }
+    
     return cell;
 }
 
@@ -69,6 +79,11 @@
     if(indexPath.row == 0)
     {
         [self performSegueWithIdentifier:@"SegueSettingsPassword" sender:tableView];
+    }
+    
+    if(indexPath.row == 1)
+    {
+        [self performSegueWithIdentifier:@"SegueSettingsTheme" sender:tableView];
     }
 }
 

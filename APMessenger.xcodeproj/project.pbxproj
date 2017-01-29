@@ -13,7 +13,6 @@
 		546C94DF1E107AFD00571006 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C94DE1E107AFD00571006 /* main.m */; };
 		546C94E21E107AFD00571006 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C94E11E107AFD00571006 /* AppDelegate.m */; };
 		546C94E51E107AFD00571006 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C94E41E107AFD00571006 /* ViewController.m */; };
-		546C94E81E107AFD00571006 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546C94E61E107AFD00571006 /* Main.storyboard */; };
 		546C94EA1E107AFD00571006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 546C94E91E107AFD00571006 /* Assets.xcassets */; };
 		546C94ED1E107AFD00571006 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546C94EB1E107AFD00571006 /* LaunchScreen.storyboard */; };
 		546C94F81E107AFD00571006 /* APMessengerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C94F71E107AFD00571006 /* APMessengerTests.m */; };
@@ -26,6 +25,7 @@
 		A037E4A01E3EAE380092E1A4 /* LeftChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A037E49D1E3EAE380092E1A4 /* LeftChatTableViewCell.m */; };
 		A037E4A11E3EAE380092E1A4 /* RightChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A037E49F1E3EAE380092E1A4 /* RightChatTableViewCell.m */; };
 		A037E4A41E3EAE750092E1A4 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = A037E4A31E3EAE750092E1A4 /* Message.m */; };
+		A037E4AD1E3EB3050092E1A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A037E4AB1E3EB3050092E1A4 /* Main.storyboard */; };
 		BF02D7D11E25A501003A2066 /* RecentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF02D7D01E25A501003A2066 /* RecentTableViewController.m */; };
 		BF44D9571E26B530004F083A /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44D9561E26B530004F083A /* ContactsViewController.m */; };
 		BF6F8AD51E3E65F800782A15 /* PasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6F8AD41E3E65F800782A15 /* PasswordViewController.m */; };
@@ -64,7 +64,6 @@
 		546C94E11E107AFD00571006 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		546C94E31E107AFD00571006 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		546C94E41E107AFD00571006 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		546C94E71E107AFD00571006 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		546C94E91E107AFD00571006 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		546C94EC1E107AFD00571006 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		546C94EE1E107AFD00571006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -88,6 +87,7 @@
 		A037E49F1E3EAE380092E1A4 /* RightChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightChatTableViewCell.m; sourceTree = "<group>"; };
 		A037E4A21E3EAE750092E1A4 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		A037E4A31E3EAE750092E1A4 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		A037E4AC1E3EB3050092E1A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BD4809E229DF0814B75AEAF5 /* Pods-APMessenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APMessenger.release.xcconfig"; path = "Pods/Target Support Files/Pods-APMessenger/Pods-APMessenger.release.xcconfig"; sourceTree = "<group>"; };
 		BF02D7CF1E25A501003A2066 /* RecentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentTableViewController.h; sourceTree = "<group>"; };
 		BF02D7D01E25A501003A2066 /* RecentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentTableViewController.m; sourceTree = "<group>"; };
@@ -170,10 +170,10 @@
 				A037E4A51E3EAECA0092E1A4 /* Controllers */,
 				A037E4A61E3EAEE80092E1A4 /* Views */,
 				A037E4A71E3EAF020092E1A4 /* Models */,
+				A037E4AE1E3EB32D0092E1A4 /* UI */,
 				A037E4A81E3EAF190092E1A4 /* Helper classes */,
 				A037E4A91E3EAF410092E1A4 /* Categories */,
 				A037E4AA1E3EAF840092E1A4 /* Other files */,
-				546C94E61E107AFD00571006 /* Main.storyboard */,
 				54BC59C11E3E37DB009ED5BF /* contactimg.jpg */,
 				546C94DD1E107AFD00571006 /* Supporting Files */,
 			);
@@ -281,6 +281,14 @@
 				54BC59C31E3E582A009ED5BF /* gray.plist */,
 			);
 			name = "Other files";
+			sourceTree = "<group>";
+		};
+		A037E4AE1E3EB32D0092E1A4 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A037E4AB1E3EB3050092E1A4 /* Main.storyboard */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		E5E06F15FC07BF451B238615 /* Frameworks */ = {
@@ -403,8 +411,8 @@
 				54CAB3D51E3D59E9004C76EA /* default.plist in Resources */,
 				54BC59C41E3E582A009ED5BF /* gray.plist in Resources */,
 				546C94ED1E107AFD00571006 /* LaunchScreen.storyboard in Resources */,
+				A037E4AD1E3EB3050092E1A4 /* Main.storyboard in Resources */,
 				546C94EA1E107AFD00571006 /* Assets.xcassets in Resources */,
-				546C94E81E107AFD00571006 /* Main.storyboard in Resources */,
 				54BC59C21E3E37DB009ED5BF /* contactimg.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,20 +538,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		546C94E61E107AFD00571006 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				546C94E71E107AFD00571006 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		546C94EB1E107AFD00571006 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				546C94EC1E107AFD00571006 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A037E4AB1E3EB3050092E1A4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A037E4AC1E3EB3050092E1A4 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ThemeManager.h"
 
 @interface ContactProfileViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *lblUsername;

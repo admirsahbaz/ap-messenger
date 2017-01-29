@@ -128,7 +128,7 @@ ThemeManager *themeManager;
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"SegueContactsChat" sender:tableView];
+    [self performSegueWithIdentifier:@"SegueContactsContact" sender:tableView];
 }
 
 /*

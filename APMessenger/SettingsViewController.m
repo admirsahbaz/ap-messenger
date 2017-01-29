@@ -18,12 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    CGRect rect = self.navigationController.navigationBar.frame;
-    
-    float y = rect.size.height + rect.origin.y;
-    
-    [[self tableView] setContentInset:UIEdgeInsetsMake(y, 0, 0, 0)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,7 +26,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 1;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -53,12 +47,22 @@
     
     if(indexPath.row == 0)
     {
-        UILabel *lblProfile = [[UILabel alloc] initWithFrame:CGRectMake(25.0f, 4.0f, 200.0f, 20.0f)];
+        UILabel *lblPassword = [[UILabel alloc] initWithFrame:CGRectMake(25.0f, 4.0f, 200.0f, 20.0f)];
         
-        [lblProfile setText:@"Profile"];
-        [lblProfile setFont:[UIFont systemFontOfSize: 13.0f weight: 600.0f]];
-        lblProfile.layer.borderWidth = 0.0f;
-        [cell addSubview:lblProfile];
+        [lblPassword setText:@"Change password"];
+        [lblPassword setFont:[UIFont systemFontOfSize: 13.0f weight: 600.0f]];
+        lblPassword.layer.borderWidth = 0.0f;
+        [cell addSubview:lblPassword];
+    }
+    
+    if(indexPath.row == 1)
+    {
+        UILabel *lblTheme = [[UILabel alloc] initWithFrame:CGRectMake(25.0f, 4.0f, 200.0f, 20.0f)];
+        
+        [lblTheme setText:@"Change theme"];
+        [lblTheme setFont:[UIFont systemFontOfSize: 13.0f weight: 600.0f]];
+        lblTheme.layer.borderWidth = 0.0f;
+        [cell addSubview:lblTheme];
     }
     
     return cell;
@@ -73,7 +77,12 @@
 {
     if(indexPath.row == 0)
     {
-        [self performSegueWithIdentifier:@"SegueSettingsProfile" sender:tableView];
+        [self performSegueWithIdentifier:@"SegueSettingsPassword" sender:tableView];
+    }
+    
+    if(indexPath.row == 1)
+    {
+        [self performSegueWithIdentifier:@"SegueSettingsTheme" sender:tableView];
     }
 }
 

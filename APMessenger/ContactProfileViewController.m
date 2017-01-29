@@ -26,7 +26,7 @@ ThemeManager *_themeManager;
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
-    _themeManager = [[ThemeManager alloc] init];
+    _themeManager = [ThemeManager SharedInstance];
     
     //backgorund color
     CAGradientLayer *backroundGradient = [CAGradientLayer layer];

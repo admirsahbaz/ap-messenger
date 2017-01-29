@@ -271,30 +271,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mdz-mL-oca">
-                                <frame key="frameInset" minX="16" minY="148" width="343" height="421"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mdz-mL-oca">
+                                <frame key="frameInset" minY="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="G4m-7t-WTA" id="ctZ-Tg-ujR"/>
                                     <outlet property="delegate" destination="G4m-7t-WTA" id="H1g-qH-Aes"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrM-jW-6RI">
-                                <frame key="frameInset" minX="224" minY="94" width="104" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="New Contact"/>
-                                <connections>
-                                    <segue destination="jfa-lG-okl" kind="show" identifier="SegueContactsContact" id="t80-t1-gdc"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Mdz-mL-oca" firstAttribute="height" secondItem="5HD-qw-e39" secondAttribute="height" id="TPs-MQ-kLW"/>
+                            <constraint firstItem="Mdz-mL-oca" firstAttribute="width" secondItem="5HD-qw-e39" secondAttribute="width" id="fap-vI-FDH"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Contacts" id="nN7-2S-jRE"/>
                     <connections>
                         <outlet property="view" destination="Mdz-mL-oca" id="VhB-25-9ck"/>
                         <segue destination="Mca-tl-b0v" kind="show" identifier="SegueContactsChat" id="lUq-sC-Sm0"/>
+                        <segue destination="jfa-lG-okl" kind="show" identifier="SegueContactsContact" id="Iq9-Fz-YXc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ceA-eL-Mco" userLabel="First Responder" sceneMemberID="firstResponder"/>

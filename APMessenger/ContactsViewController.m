@@ -23,7 +23,7 @@ ThemeManager *themeManager;
 - (void)viewDidLoad {
     [super viewDidLoad];    
     
-    themeManager = [[ThemeManager alloc] init];
+    themeManager = [ThemeManager SharedInstance];
 
     CAGradientLayer *backroundGradient = [CAGradientLayer layer];
     backroundGradient.frame = self.view.bounds;

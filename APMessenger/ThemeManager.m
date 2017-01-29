@@ -12,14 +12,17 @@
 
 @implementation ThemeManager
 
-+ (ThemeManager *)themeManager
-{
-    static ThemeManager *themeManager = nil;
-    if (themeManager == nil)
-    {
-        themeManager = [[ThemeManager alloc] init];
-    }
-    return themeManager;
+
+
++(ThemeManager *) SharedInstance{
+    static ThemeManager *sharedInstance = nil;
+    static dispatch_once_t onceToken = 0;
+    
+    dispatch_once (&onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    
+    return sharedInstance;
 }
 
 - (id)init
@@ -40,7 +43,7 @@
         NSString *backroundBottomColorHexString = [theme objectForKey:@"backgroundBottomColor"];
         self.backgroundBottomColor = [UIColor colorwithHexString:backroundBottomColorHexString alpha:1];
 
-        // Primary Color
+        // Text Color
         NSString *textColorHexString = [theme objectForKey:@"textColor"];
         self.textColor = [UIColor colorwithHexString:textColorHexString alpha:0.7];
     }

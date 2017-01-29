@@ -24,6 +24,8 @@
 		54CAB3DB1E3D63CE004C76EA /* UIColor+FromHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CAB3DA1E3D63CE004C76EA /* UIColor+FromHex.m */; };
 		BF02D7D11E25A501003A2066 /* RecentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF02D7D01E25A501003A2066 /* RecentTableViewController.m */; };
 		BF44D9571E26B530004F083A /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44D9561E26B530004F083A /* ContactsViewController.m */; };
+		BF6F8AD51E3E65F800782A15 /* PasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6F8AD41E3E65F800782A15 /* PasswordViewController.m */; };
+		BF6F8AD81E3E660D00782A15 /* ThemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6F8AD71E3E660D00782A15 /* ThemeViewController.m */; };
 		BF76C9301E26C0C800D3CC49 /* ContactProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF76C92F1E26C0C800D3CC49 /* ContactProfileViewController.m */; };
 		BF76C9331E26C26400D3CC49 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF76C9321E26C26400D3CC49 /* ChatViewController.m */; };
 		BF800DF51E36C27200438589 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF800DF41E36C27200438589 /* SettingsViewController.m */; };
@@ -80,6 +82,10 @@
 		BF02D7D01E25A501003A2066 /* RecentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentTableViewController.m; sourceTree = "<group>"; };
 		BF44D9551E26B530004F083A /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
 		BF44D9561E26B530004F083A /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		BF6F8AD31E3E65F800782A15 /* PasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordViewController.h; sourceTree = "<group>"; };
+		BF6F8AD41E3E65F800782A15 /* PasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordViewController.m; sourceTree = "<group>"; };
+		BF6F8AD61E3E660C00782A15 /* ThemeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeViewController.h; sourceTree = "<group>"; };
+		BF6F8AD71E3E660D00782A15 /* ThemeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeViewController.m; sourceTree = "<group>"; };
 		BF76C92E1E26C0C800D3CC49 /* ContactProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactProfileViewController.h; sourceTree = "<group>"; };
 		BF76C92F1E26C0C800D3CC49 /* ContactProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactProfileViewController.m; sourceTree = "<group>"; };
 		BF76C9311E26C26400D3CC49 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
@@ -177,6 +183,10 @@
 				54CAB3D41E3D59E9004C76EA /* default.plist */,
 				54CAB3D91E3D63CE004C76EA /* UIColor+FromHex.h */,
 				54CAB3DA1E3D63CE004C76EA /* UIColor+FromHex.m */,
+				BF6F8AD31E3E65F800782A15 /* PasswordViewController.h */,
+				BF6F8AD41E3E65F800782A15 /* PasswordViewController.m */,
+				BF6F8AD61E3E660C00782A15 /* ThemeViewController.h */,
+				BF6F8AD71E3E660D00782A15 /* ThemeViewController.m */,
 			);
 			path = APMessenger;
 			sourceTree = "<group>";
@@ -401,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF6F8AD81E3E660D00782A15 /* ThemeViewController.m in Sources */,
 				546C94E51E107AFD00571006 /* ViewController.m in Sources */,
 				BF76C9301E26C0C800D3CC49 /* ContactProfileViewController.m in Sources */,
 				BF44D9571E26B530004F083A /* ContactsViewController.m in Sources */,
@@ -413,6 +424,7 @@
 				54CAB3DB1E3D63CE004C76EA /* UIColor+FromHex.m in Sources */,
 				54CAB3D31E3D55C7004C76EA /* ThemeManager.m in Sources */,
 				546C94DF1E107AFD00571006 /* main.m in Sources */,
+				BF6F8AD51E3E65F800782A15 /* PasswordViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

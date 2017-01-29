@@ -19,6 +19,7 @@
 		546C94F81E107AFD00571006 /* APMessengerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C94F71E107AFD00571006 /* APMessengerTests.m */; };
 		546C95031E107AFD00571006 /* APMessengerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C95021E107AFD00571006 /* APMessengerUITests.m */; };
 		54BC59C21E3E37DB009ED5BF /* contactimg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54BC59C11E3E37DB009ED5BF /* contactimg.jpg */; };
+		54BC59C41E3E582A009ED5BF /* gray.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54BC59C31E3E582A009ED5BF /* gray.plist */; };
 		54CAB3D31E3D55C7004C76EA /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CAB3D21E3D55C7004C76EA /* ThemeManager.m */; };
 		54CAB3D51E3D59E9004C76EA /* default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54CAB3D41E3D59E9004C76EA /* default.plist */; };
 		54CAB3DB1E3D63CE004C76EA /* UIColor+FromHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CAB3DA1E3D63CE004C76EA /* UIColor+FromHex.m */; };
@@ -69,6 +70,7 @@
 		546C95021E107AFD00571006 /* APMessengerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APMessengerUITests.m; sourceTree = "<group>"; };
 		546C95041E107AFD00571006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54BC59C11E3E37DB009ED5BF /* contactimg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = contactimg.jpg; sourceTree = "<group>"; };
+		54BC59C31E3E582A009ED5BF /* gray.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = gray.plist; sourceTree = "<group>"; };
 		54CAB3D11E3D55C7004C76EA /* ThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeManager.h; sourceTree = "<group>"; };
 		54CAB3D21E3D55C7004C76EA /* ThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeManager.m; sourceTree = "<group>"; };
 		54CAB3D41E3D59E9004C76EA /* default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = default.plist; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				54CAB3D11E3D55C7004C76EA /* ThemeManager.h */,
 				54CAB3D21E3D55C7004C76EA /* ThemeManager.m */,
 				54CAB3D41E3D59E9004C76EA /* default.plist */,
+				54BC59C31E3E582A009ED5BF /* gray.plist */,
 				54CAB3D91E3D63CE004C76EA /* UIColor+FromHex.h */,
 				54CAB3DA1E3D63CE004C76EA /* UIColor+FromHex.m */,
 			);
@@ -325,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54CAB3D51E3D59E9004C76EA /* default.plist in Resources */,
+				54BC59C41E3E582A009ED5BF /* gray.plist in Resources */,
 				546C94ED1E107AFD00571006 /* LaunchScreen.storyboard in Resources */,
 				546C94EA1E107AFD00571006 /* Assets.xcassets in Resources */,
 				546C94E81E107AFD00571006 /* Main.storyboard in Resources */,

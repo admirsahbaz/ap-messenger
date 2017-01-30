@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "RestHelper.h"
+#import "ThemeManager.h"
 
 @interface ViewController ()
 
@@ -19,10 +20,39 @@
 @synthesize invalidLoginMessage;
 @synthesize loadingSpinner;
 @synthesize loginBtn;
+@synthesize btnCreateAccount;
+@synthesize lblEmail;
+@synthesize lblPassword;
+
+ThemeManager *theme;
 
 - (void)viewDidLoad {
+    theme = [ThemeManager SharedInstance];
+    
     [super viewDidLoad];
     [loadingSpinner setHidden:YES];
+    self.userNameTxt.placeholder = @"Enter your e-mail";
+    self.passwordTxt.placeholder = @"Enter password";
+    
+    self.passwordTxt.borderStyle = UITextBorderStyleNone;
+    self.userNameTxt.borderStyle = UITextBorderStyleNone;
+    
+    self.passwordTxt.textColor = theme.textColor;
+    self.userNameTxt.textColor = theme.textColor;
+    self.lblPassword.textColor = theme.textColor;
+    self.lblEmail.textColor = theme.textColor;
+    
+    //backgorund color
+    CAGradientLayer *backroundGradient = [CAGradientLayer layer];
+    backroundGradient.frame = self.view.bounds;
+    backroundGradient.colors = [NSArray arrayWithObjects:(id)[theme.backgroundTopColor CGColor], (id)[theme.backgroundBottomColor CGColor], nil];
+    [self.view.layer insertSublayer:backroundGradient atIndex:0];
+    
+    [self.loginBtn setBackgroundColor:  [UIColor colorWithRed:17.0f/255 green:173.0f/255 blue:210.0f/255 alpha:1]];
+
+    self.loginBtn.tintColor = theme.textColor;
+    self.btnCreateAccount.tintColor = theme.textColor;
+    
     //self.userNameTxt.delegate = self;
     //self.passwordTxt.delegate = self;
     // Do any additional setup after loading the view, typically from a nib.

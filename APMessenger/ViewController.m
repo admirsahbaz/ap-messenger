@@ -42,6 +42,24 @@ ThemeManager *theme;
     self.lblPassword.textColor = theme.textColor;
     self.lblEmail.textColor = theme.textColor;
     
+    CALayer *border = [CALayer layer];
+    CGFloat borderWidth = 2;
+    border.borderColor = [[UIColor lightGrayColor] CGColor];   border.borderWidth = borderWidth;
+    border.frame = CGRectMake(0, self.passwordTxt.frame.size.height- borderWidth, self.passwordTxt.frame.size.width, self.passwordTxt.frame.size.height);
+    
+    [self.passwordTxt.layer addSublayer:border];
+    self.passwordTxt.layer.masksToBounds = YES;
+    
+    CALayer *borderPass = [CALayer layer];
+    CGFloat width = 2;
+    borderPass.borderColor = [[UIColor lightGrayColor]CGColor];
+    borderPass.borderWidth = width;
+    borderPass.frame = CGRectMake(0, self.passwordTxt.frame.size.height- width, self.passwordTxt.frame.size.width, self.passwordTxt.frame.size.height);
+    
+    [self.userNameTxt.layer addSublayer:borderPass];
+    self.userNameTxt.layer.masksToBounds = YES;
+    
+    
     //backgorund color
     CAGradientLayer *backroundGradient = [CAGradientLayer layer];
     backroundGradient.frame = self.view.bounds;

@@ -17,6 +17,8 @@
 
 @synthesize lblUsername;
 @synthesize lblUserEmail;
+@synthesize profilePicture;
+@synthesize picture;
 
 ThemeManager *_themeManager;
 
@@ -27,6 +29,14 @@ ThemeManager *_themeManager;
     
     // Do any additional setup after loading the view.
     _themeManager = [ThemeManager SharedInstance];
+    [self.profilePicture setImage:[UIImage imageNamed:@"contactimg.jpg"]];
+    
+    [self.picture setImage:[UIImage imageNamed:@"contactimg.jpg"]];
+    self.picture.layer.cornerRadius = 50;
+    self.picture.layer.borderWidth = 2.0;
+    self.picture.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.picture.layer.masksToBounds = YES;
+    
     
     //backgorund color
     CAGradientLayer *backroundGradient = [CAGradientLayer layer];
@@ -44,18 +54,7 @@ ThemeManager *_themeManager;
     //mock data
     [lblUsername setText:@"John Doe"];
     [lblUserEmail setText:@"testemail@authoritypartners.com"];
-    
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,500, self.view.bounds.size.width, 1 )];
-    lineView.backgroundColor = _themeManager.textColor;
-    
-    [self.view addSubview:lineView];
-    
-    UIView *bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0,600, self.view.bounds.size.width, 1 )];
-    bottomLine.backgroundColor = _themeManager.textColor;
-    [self.view addSubview:bottomLine];
-
-    [self.view addSubview:lineView];
-    
+       
     NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem: self.btnAddToContacts attribute: NSLayoutAttributeBottom relatedBy: NSLayoutRelationEqual toItem:self.view attribute: NSLayoutAttributeBottom multiplier:2.0f constant: 400.f];
     
     [self.view addConstraint: bottom];

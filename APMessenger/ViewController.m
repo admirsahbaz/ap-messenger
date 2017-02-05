@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "RestHelper.h"
 #import "ThemeManager.h"
+#import "CurrentUser.h"
 
 @interface ViewController ()
 
@@ -108,6 +109,8 @@ ThemeManager *theme;
         [invalidLoginMessage setHidden:NO];
     }
     else{
+        CurrentUser *user = [CurrentUser Current];
+        [user LogInUser: str];
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
     }
 }

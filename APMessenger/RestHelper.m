@@ -41,6 +41,7 @@
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request
                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
                                                         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                        NSLog(@"%ld", (long)httpResponse.statusCode);
                                                         
                                                         if(complete)
                                                             complete(data, error);
@@ -49,27 +50,6 @@
     [postDataTask resume];
 }
 
--(NSData *)httpBodyForParameters:(NSDictionary *)parameters{
-    NSMutableArray *parametersArray = [NSMutableArray array];
-    
-    [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL * stop) {
-        NSString *param = [NSString stringWithFormat:@"%@=%@", [self percentEscapeString:key], [self percentEscapeString:obj]];
-        [parametersArray addObject:param];
-    }];
-    
-    NSString *string = [parametersArray componentsJoinedByString:@"&"];
-    
-    return [string dataUsingEncoding:NSUTF8StringEncoding];
-}
-
--(NSString *)percentEscapeString:(NSString *)string{
-    NSCharacterSet *allowed = [NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-._~"];
-    return [string stringByAddingPercentEncodingWithAllowedCharacters:allowed];
-}
-
--(BOOL)checkLogin:(NSString*)username withPassword:(NSString*)password{
-    return ([username isEqualToString: @"test@authoritypartners.com"] && [password isEqualToString:@"test"]);
-}
 +(RestHelper *) SharedInstance{
     static RestHelper *sharedInstance;
     static dispatch_once_t onceToken;

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		03D2FAD4179D86421F276A7A /* libPods-APMessenger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2686E2DBA7AB0D692214CF4F /* libPods-APMessenger.a */; };
+		0F827D9F1E474F6D00F799A6 /* RegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F827D9E1E474F6D00F799A6 /* RegistrationController.m */; };
+		0F827DA21E4765F400F799A6 /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F827DA11E4765F400F799A6 /* CurrentUser.m */; };
 		0FF656141E35499C00C5D5D0 /* RestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF656111E35499C00C5D5D0 /* RestHelper.m */; };
 		0FF656151E35499C00C5D5D0 /* TabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF656131E35499C00C5D5D0 /* TabViewController.m */; };
 		546C94DF1E107AFD00571006 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C94DE1E107AFD00571006 /* main.m */; };
@@ -53,6 +55,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F827D9D1E474F6D00F799A6 /* RegistrationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationController.h; sourceTree = "<group>"; };
+		0F827D9E1E474F6D00F799A6 /* RegistrationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationController.m; sourceTree = "<group>"; };
+		0F827DA01E4765F400F799A6 /* CurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUser.h; sourceTree = "<group>"; };
+		0F827DA11E4765F400F799A6 /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUser.m; sourceTree = "<group>"; };
 		0FF656101E35499C00C5D5D0 /* RestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestHelper.h; sourceTree = "<group>"; };
 		0FF656111E35499C00C5D5D0 /* RestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestHelper.m; sourceTree = "<group>"; };
 		0FF656121E35499C00C5D5D0 /* TabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabViewController.h; sourceTree = "<group>"; };
@@ -227,6 +233,8 @@
 				BF6F8AD41E3E65F800782A15 /* PasswordViewController.m */,
 				BF6F8AD91E3E6A0B00782A15 /* ThemeTableViewController.h */,
 				BF6F8ADA1E3E6A0B00782A15 /* ThemeTableViewController.m */,
+				0F827D9D1E474F6D00F799A6 /* RegistrationController.h */,
+				0F827D9E1E474F6D00F799A6 /* RegistrationController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -258,6 +266,8 @@
 				0FF656111E35499C00C5D5D0 /* RestHelper.m */,
 				54CAB3D11E3D55C7004C76EA /* ThemeManager.h */,
 				54CAB3D21E3D55C7004C76EA /* ThemeManager.m */,
+				0F827DA01E4765F400F799A6 /* CurrentUser.h */,
+				0F827DA11E4765F400F799A6 /* CurrentUser.m */,
 			);
 			name = "Helper classes";
 			sourceTree = "<group>";
@@ -493,6 +503,7 @@
 				A037E4A11E3EAE380092E1A4 /* RightChatTableViewCell.m in Sources */,
 				BF02D7D11E25A501003A2066 /* RecentTableViewController.m in Sources */,
 				546C94E21E107AFD00571006 /* AppDelegate.m in Sources */,
+				0F827DA21E4765F400F799A6 /* CurrentUser.m in Sources */,
 				0FF656141E35499C00C5D5D0 /* RestHelper.m in Sources */,
 				BF800DF51E36C27200438589 /* SettingsViewController.m in Sources */,
 				BF76C9331E26C26400D3CC49 /* ChatViewController.m in Sources */,
@@ -502,6 +513,7 @@
 				A037E4A41E3EAE750092E1A4 /* Message.m in Sources */,
 				546C94DF1E107AFD00571006 /* main.m in Sources */,
 				BF6F8AD51E3E65F800782A15 /* PasswordViewController.m in Sources */,
+				0F827D9F1E474F6D00F799A6 /* RegistrationController.m in Sources */,
 				BF6F8ADB1E3E6A0B00782A15 /* ThemeTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

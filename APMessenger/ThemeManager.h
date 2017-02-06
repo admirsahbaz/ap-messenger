@@ -15,5 +15,8 @@
 @property (strong, nonatomic) UIColor *textColor;
 @property (strong, nonatomic) UIColor *backgroundTopColor;
 @property (strong, nonatomic) UIColor *backgroundBottomColor;
+@property (strong, nonatomic) UIColor *contactImageBorderColor;
+@property (strong, nonatomic) UIColor *tableViewSeparatorColor;
+@property (strong, nonatomic) UIColor *navigationBarBackgroundColor;
 
 @end

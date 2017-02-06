@@ -42,7 +42,19 @@
         // Backround Bottom Color
         NSString *backroundBottomColorHexString = [theme objectForKey:@"backgroundBottomColor"];
         self.backgroundBottomColor = [UIColor colorwithHexString:backroundBottomColorHexString alpha:1];
-
+        
+        // Contact Image Border Color
+        NSString *contactImageBorderColorString = [theme objectForKey:@"contactImageBorderColor"];
+        self.contactImageBorderColor = [UIColor colorwithHexString:contactImageBorderColorString alpha:0.7];
+        
+        // TableView Separator Color
+        NSString *tableViewSeparatorColorString = [theme objectForKey:@"tableViewSeparatorColor"];
+        self.tableViewSeparatorColor = [UIColor colorwithHexString:tableViewSeparatorColorString alpha:0.1];
+        
+        // Navigation Bar Background Color
+        NSString *navigationBarBackgroundColorString = [theme objectForKey:@"navigationBarBackgroundColor"];
+        self.navigationBarBackgroundColor = [UIColor colorwithHexString:navigationBarBackgroundColorString alpha:0.1];
+        
         // Text Color
         NSString *textColorHexString = [theme objectForKey:@"textColor"];
         self.textColor = [UIColor colorwithHexString:textColorHexString alpha:0.7];

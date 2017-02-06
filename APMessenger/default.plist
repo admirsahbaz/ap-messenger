@@ -8,5 +8,11 @@
 	<string>2C3E50</string>
 	<key>textColor</key>
 	<string>FFFFFF</string>
+	<key>contactImageBorderColor</key>
+	<string>FFFFFF</string>
+	<key>tableViewSeparatorColor</key>
+	<string>FFFFFF</string>
+	<key>navigationBarBackgroundColor</key>
+	<string>FFFFFF</string>
 </dict>
 </plist>

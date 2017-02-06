@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "UIImage+FromColor.h"
+#import "ThemeManager.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    ThemeManager *themeManager = [ThemeManager SharedInstance];
+    
+    UIImage *navigationBarBackgroundImage = [UIImage imageFromColor:themeManager.navigationBarBackgroundColor];
+    
+    [[UINavigationBar appearance] setBackgroundImage:navigationBarBackgroundImage forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundImage:navigationBarBackgroundImage forBarMetrics:UIBarMetricsCompact];
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleDefault];
+    
     return YES;
 }
 

@@ -19,7 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Recent";
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -50,6 +49,10 @@
         NSLog(@"Error");
     }
     
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    self.tabBarController.title = @"Recent";
 }
 
 - (void)didReceiveMemoryWarning {

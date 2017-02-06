@@ -19,6 +19,8 @@
 		546C94ED1E107AFD00571006 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546C94EB1E107AFD00571006 /* LaunchScreen.storyboard */; };
 		546C94F81E107AFD00571006 /* APMessengerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C94F71E107AFD00571006 /* APMessengerTests.m */; };
 		546C95031E107AFD00571006 /* APMessengerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C95021E107AFD00571006 /* APMessengerUITests.m */; };
+		5488858A1E47D1B3006D275A /* ContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 548885891E47D1B3006D275A /* ContactTableViewCell.m */; };
+		548885901E480D0D006D275A /* UIImage+FromColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5488858F1E480D0D006D275A /* UIImage+FromColor.m */; };
 		54BC59C21E3E37DB009ED5BF /* contactimg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54BC59C11E3E37DB009ED5BF /* contactimg.jpg */; };
 		54BC59C41E3E582A009ED5BF /* gray.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54BC59C31E3E582A009ED5BF /* gray.plist */; };
 		54CAB3D31E3D55C7004C76EA /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CAB3D21E3D55C7004C76EA /* ThemeManager.m */; };
@@ -79,6 +81,10 @@
 		546C94FE1E107AFD00571006 /* APMessengerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APMessengerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		546C95021E107AFD00571006 /* APMessengerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APMessengerUITests.m; sourceTree = "<group>"; };
 		546C95041E107AFD00571006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		548885881E47D1B3006D275A /* ContactTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactTableViewCell.h; sourceTree = "<group>"; };
+		548885891E47D1B3006D275A /* ContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTableViewCell.m; sourceTree = "<group>"; };
+		5488858E1E480D0D006D275A /* UIImage+FromColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FromColor.h"; sourceTree = "<group>"; };
+		5488858F1E480D0D006D275A /* UIImage+FromColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FromColor.m"; sourceTree = "<group>"; };
 		54BC59C11E3E37DB009ED5BF /* contactimg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = contactimg.jpg; sourceTree = "<group>"; };
 		54BC59C31E3E582A009ED5BF /* gray.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = gray.plist; sourceTree = "<group>"; };
 		54CAB3D11E3D55C7004C76EA /* ThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeManager.h; sourceTree = "<group>"; };
@@ -235,6 +241,8 @@
 				BF6F8ADA1E3E6A0B00782A15 /* ThemeTableViewController.m */,
 				0F827D9D1E474F6D00F799A6 /* RegistrationController.h */,
 				0F827D9E1E474F6D00F799A6 /* RegistrationController.m */,
+				548885881E47D1B3006D275A /* ContactTableViewCell.h */,
+				548885891E47D1B3006D275A /* ContactTableViewCell.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -277,6 +285,8 @@
 			children = (
 				54CAB3D91E3D63CE004C76EA /* UIColor+FromHex.h */,
 				54CAB3DA1E3D63CE004C76EA /* UIColor+FromHex.m */,
+				5488858E1E480D0D006D275A /* UIImage+FromColor.h */,
+				5488858F1E480D0D006D275A /* UIImage+FromColor.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -506,8 +516,10 @@
 				0F827DA21E4765F400F799A6 /* CurrentUser.m in Sources */,
 				0FF656141E35499C00C5D5D0 /* RestHelper.m in Sources */,
 				BF800DF51E36C27200438589 /* SettingsViewController.m in Sources */,
+				548885901E480D0D006D275A /* UIImage+FromColor.m in Sources */,
 				BF76C9331E26C26400D3CC49 /* ChatViewController.m in Sources */,
 				54CAB3DB1E3D63CE004C76EA /* UIColor+FromHex.m in Sources */,
+				5488858A1E47D1B3006D275A /* ContactTableViewCell.m in Sources */,
 				54CAB3D31E3D55C7004C76EA /* ThemeManager.m in Sources */,
 				A037E4A01E3EAE380092E1A4 /* LeftChatTableViewCell.m in Sources */,
 				A037E4A41E3EAE750092E1A4 /* Message.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "RestHelper.h"
+#import "CurrentUser.h"
 
 @implementation RestHelper
 
@@ -29,7 +30,9 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlPath
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                        timeoutInterval:10];
-    //[request setValue:self.misfitAccessToken forHTTPHeaderField:@"access_token"];
+    NSString *accessToken = [CurrentUser Current].userToken;
+    if(![accessToken isEqualToString:@""])
+        [request setValue:accessToken forHTTPHeaderField:@"Authorization"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     NSError *err;

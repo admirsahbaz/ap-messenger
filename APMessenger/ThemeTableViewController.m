@@ -7,6 +7,7 @@
 //
 
 #import "ThemeTableViewController.h"
+#import "ThemeManager.h"
 
 @interface ThemeTableViewController ()
 
@@ -16,6 +17,7 @@
 
 @synthesize identifier = _identifier;
 
+ThemeManager *themeThemeManager;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,6 +25,13 @@
     CGRect rect = self.navigationController.navigationBar.frame;
     float y = rect.size.height + rect.origin.y;
     [[self tableView] setContentInset:UIEdgeInsetsMake(y, 0, 0, 0)];
+    
+    themeThemeManager = [ThemeManager SharedInstance];
+    
+    CAGradientLayer *backroundGradient = [CAGradientLayer layer];
+    backroundGradient.frame = self.view.bounds;
+    backroundGradient.colors = [NSArray arrayWithObjects:(id)[themeThemeManager.backgroundTopColor CGColor], (id)[themeThemeManager.backgroundBottomColor CGColor], nil];
+    [self.view.layer insertSublayer:backroundGradient atIndex:0];
 
 }
 
@@ -34,11 +43,12 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    tableView.separatorColor = themeThemeManager.tableViewSeparatorColor;
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return 6;
 }
 
 
@@ -51,29 +61,26 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_identifier];
     }
     
+    UILabel *lblTheme = [[UILabel alloc] initWithFrame:CGRectMake(25.0f, 10.0f, 200.0f, 20.0f)];
+    [lblTheme setFont:[UIFont systemFontOfSize: 15.0f weight: 600.0f]];
+    lblTheme.layer.borderWidth = 0.0f;
+    lblTheme.tag = 1;
+    lblTheme.textColor = themeThemeManager.textColor;
+    
     if(indexPath.row == 0)
     {
-        UILabel *lblTheme = [[UILabel alloc] initWithFrame:CGRectMake(25.0f, 4.0f, 200.0f, 20.0f)];
-        
-        [lblTheme setText:@"default"];
-        [lblTheme setFont:[UIFont systemFontOfSize: 13.0f weight: 600.0f]];
-        lblTheme.layer.borderWidth = 0.0f;
-        lblTheme.tag = 1;
-        [cell addSubview:lblTheme];
-       
+        [lblTheme setText:@"Default"];
     }
     
     if(indexPath.row == 1)
     {
-        UILabel *lblTheme = [[UILabel alloc] initWithFrame:CGRectMake(25.0f, 4.0f, 200.0f, 20.0f)];
-        
-        [lblTheme setText:@"gray"];
-        [lblTheme setFont:[UIFont systemFontOfSize: 13.0f weight: 600.0f]];
-        lblTheme.layer.borderWidth = 0.0f;
-        lblTheme.tag = 1;
-        [cell addSubview:lblTheme];
-        
+        [lblTheme setText:@"Gray"];
+       
     }
+    
+     cell.backgroundColor = [UIColor clearColor];
+    [cell addSubview:lblTheme];
+    
     
     return cell;
 }
@@ -91,12 +98,7 @@
     UILabel *customLabel = (UILabel *)[cell viewWithTag:1];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:customLabel.text forKey:@"theme"];
-    
-    NSString *themeName = [defaults objectForKey:@"theme"] ?: @"default";
-    
-    NSLog(@"Label text: %@   Theme name: %@",customLabel.text, themeName);
- 
+    [defaults setObject:[customLabel.text lowercaseString] forKey:@"theme"];
 }
 
 

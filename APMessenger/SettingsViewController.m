@@ -41,7 +41,7 @@ ThemeManager *settingsThemeManager;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     tableView.separatorColor = settingsThemeManager.tableViewSeparatorColor;
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

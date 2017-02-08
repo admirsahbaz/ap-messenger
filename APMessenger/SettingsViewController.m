@@ -59,6 +59,7 @@ ThemeManager *settingsThemeManager;
     }
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if(indexPath.section == 0 && indexPath.row == 0)
     {
@@ -82,6 +83,19 @@ ThemeManager *settingsThemeManager;
         lblTheme.textColor = settingsThemeManager.textColor;
         
         [cell addSubview:lblTheme];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *selectedTheme = [defaults objectForKey:@"theme"];
+        
+        UILabel *lblSelectedTheme = [[UILabel alloc] initWithFrame:CGRectMake(140.0f, 10.0f, 200.0f, 20.0f)];
+        
+        [lblSelectedTheme setText:[selectedTheme uppercaseString]];
+        [lblSelectedTheme setFont:[UIFont systemFontOfSize: 14.0f weight: normal]];
+        lblSelectedTheme.layer.borderWidth = 0.0f;
+        lblSelectedTheme.textColor = settingsThemeManager.textColor;
+        [lblSelectedTheme setTextAlignment:NSTextAlignmentRight];
+        
+        [cell addSubview:lblSelectedTheme];
     }
     
     tableView.backgroundColor = [UIColor clearColor];
@@ -100,6 +114,8 @@ ThemeManager *settingsThemeManager;
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     if(indexPath.section == 0 && indexPath.row == 0)
     {
         [self performSegueWithIdentifier:@"SegueSettingsPassword" sender:tableView];

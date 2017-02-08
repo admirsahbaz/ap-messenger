@@ -62,19 +62,19 @@ ThemeManager *themeThemeManager;
     }
     
     UILabel *lblTheme = [[UILabel alloc] initWithFrame:CGRectMake(25.0f, 10.0f, 200.0f, 20.0f)];
-    [lblTheme setFont:[UIFont systemFontOfSize: 15.0f weight: 600.0f]];
+    [lblTheme setFont:[UIFont systemFontOfSize: 15.0f weight: normal]];
     lblTheme.layer.borderWidth = 0.0f;
     lblTheme.tag = 1;
     lblTheme.textColor = themeThemeManager.textColor;
     
     if(indexPath.row == 0)
     {
-        [lblTheme setText:@"Default"];
+        [lblTheme setText:@"DEFAULT"];
     }
     
     if(indexPath.row == 1)
     {
-        [lblTheme setText:@"Gray"];
+        [lblTheme setText:@"GRAY"];
        
     }
     

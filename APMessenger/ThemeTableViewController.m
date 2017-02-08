@@ -25,9 +25,9 @@ ThemeManager *themeThemeManager;
     CGRect rect = self.navigationController.navigationBar.frame;
     float y = rect.size.height + rect.origin.y;
     [[self tableView] setContentInset:UIEdgeInsetsMake(y, 0, 0, 0)];
-    
     themeThemeManager = [ThemeManager SharedInstance];
-    
+    self.tableView.backgroundColor = (id)themeThemeManager.backgroundTopColor;
+
     CAGradientLayer *backroundGradient = [CAGradientLayer layer];
     backroundGradient.frame = self.view.bounds;
     backroundGradient.colors = [NSArray arrayWithObjects:(id)[themeThemeManager.backgroundTopColor CGColor], (id)[themeThemeManager.backgroundBottomColor CGColor], nil];

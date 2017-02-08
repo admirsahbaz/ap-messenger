@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "ThemeManager.h"
 
 @interface SettingsViewController ()
 
@@ -16,8 +17,18 @@
 
 @synthesize identifier = _identifier;
 
+ThemeManager *settingsThemeManager;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    settingsThemeManager = [ThemeManager SharedInstance];
+    
+    CAGradientLayer *backroundGradient = [CAGradientLayer layer];
+    backroundGradient.frame = self.view.bounds;
+    backroundGradient.colors = [NSArray arrayWithObjects:(id)[settingsThemeManager.backgroundTopColor CGColor], (id)[settingsThemeManager.backgroundBottomColor CGColor], nil];
+    [self.view.layer insertSublayer:backroundGradient atIndex:0];
+   
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -29,7 +40,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
+    tableView.separatorColor = settingsThemeManager.tableViewSeparatorColor;
     return 3;
 }
 
@@ -51,23 +62,33 @@
     
     if(indexPath.section == 0 && indexPath.row == 0)
     {
-        UILabel *lblPassword = [[UILabel alloc] initWithFrame:CGRectMake(25.0f, 4.0f, 200.0f, 20.0f)];
+        UILabel *lblPassword = [[UILabel alloc] initWithFrame:CGRectMake(25.0f, 10.0f, 200.0f, 20.0f)];
         
         [lblPassword setText:@"Password"];
         [lblPassword setFont:[UIFont systemFontOfSize: 13.0f weight: 600.0f]];
         lblPassword.layer.borderWidth = 0.0f;
+        lblPassword.textColor = settingsThemeManager.textColor;
+        
         [cell addSubview:lblPassword];
     }
     
     if(indexPath.section == 1 && indexPath.row == 0)
     {
-        UILabel *lblTheme = [[UILabel alloc] initWithFrame:CGRectMake(25.0f, 4.0f, 200.0f, 20.0f)];
+        UILabel *lblTheme = [[UILabel alloc] initWithFrame:CGRectMake(25.0f, 10.0f, 200.0f, 20.0f)];
         
         [lblTheme setText:@"Theme"];
         [lblTheme setFont:[UIFont systemFontOfSize: 13.0f weight: 600.0f]];
         lblTheme.layer.borderWidth = 0.0f;
+        lblTheme.textColor = settingsThemeManager.textColor;
+        
         [cell addSubview:lblTheme];
     }
+    
+    tableView.backgroundColor = [UIColor clearColor];
+    tableView.backgroundView = nil;
+    
+    cell.backgroundColor = [UIColor clearColor];
+    cell.contentView.backgroundColor = [UIColor clearColor];
     
     return cell;
 }
@@ -90,7 +111,8 @@
     }
 }
 
--(NSString *)tableView:(UITableView*)tableView titleForHeaderInSection:(NSInteger)section
+
+-(UIView*)tableView:(UITableView*)tableView viewForHeaderInSection:(NSInteger)section
 {
     NSString *sectionName;
     switch (section)
@@ -104,9 +126,26 @@
         default:
             sectionName = @"";
             break;
-            
     }
-    return sectionName;
+    UIView *viewHeader = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, tableView.frame.size.width, 40.0f)];
+    UILabel *lblSection = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 0.0f, 320.0f, 40.0f)];
+    
+    [lblSection setText:sectionName];
+    [lblSection setFont:[UIFont systemFontOfSize: 13.0f weight: 600.0f]];
+    [lblSection setTextAlignment:NSTextAlignmentLeft];
+    lblSection.layer.borderWidth = 0.0f;
+    lblSection.textColor = settingsThemeManager.textColor;
+    
+    [viewHeader addSubview:lblSection];
+    
+    viewHeader.backgroundColor = [UIColor colorWithWhite:0.8f alpha:0.2f];
+    
+    return viewHeader;
+}
+
+-(CGFloat)tableView:(UITableView*)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 40.0f;
 }
 
 /*

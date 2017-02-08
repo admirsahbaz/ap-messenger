@@ -35,7 +35,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 10;
+    return 2;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -49,21 +49,21 @@
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    if(indexPath.row == 0)
+    if(indexPath.section == 0 && indexPath.row == 0)
     {
         UILabel *lblPassword = [[UILabel alloc] initWithFrame:CGRectMake(25.0f, 4.0f, 200.0f, 20.0f)];
         
-        [lblPassword setText:@"Change password"];
+        [lblPassword setText:@"Password"];
         [lblPassword setFont:[UIFont systemFontOfSize: 13.0f weight: 600.0f]];
         lblPassword.layer.borderWidth = 0.0f;
         [cell addSubview:lblPassword];
     }
     
-    if(indexPath.row == 1)
+    if(indexPath.section == 1 && indexPath.row == 0)
     {
         UILabel *lblTheme = [[UILabel alloc] initWithFrame:CGRectMake(25.0f, 4.0f, 200.0f, 20.0f)];
         
-        [lblTheme setText:@"Change theme"];
+        [lblTheme setText:@"Theme"];
         [lblTheme setFont:[UIFont systemFontOfSize: 13.0f weight: 600.0f]];
         lblTheme.layer.borderWidth = 0.0f;
         [cell addSubview:lblTheme];
@@ -79,17 +79,35 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row == 0)
+    if(indexPath.section == 0 && indexPath.row == 0)
     {
         [self performSegueWithIdentifier:@"SegueSettingsPassword" sender:tableView];
     }
     
-    if(indexPath.row == 1)
+    if(indexPath.section == 1 && indexPath.row == 0)
     {
         [self performSegueWithIdentifier:@"SegueSettingsTheme" sender:tableView];
     }
 }
 
+-(NSString *)tableView:(UITableView*)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionName;
+    switch (section)
+    {
+        case 0:
+            sectionName = @"User profile";
+            break;
+        case 1:
+            sectionName = @"Preferences";
+            break;
+        default:
+            sectionName = @"";
+            break;
+            
+    }
+    return sectionName;
+}
 
 /*
  // Override to support editing the table view.

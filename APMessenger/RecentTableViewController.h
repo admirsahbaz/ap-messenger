@@ -11,6 +11,6 @@
 @interface RecentTableViewController : UITableViewController
 @property (nonatomic, strong) NSString *reuseIdentifier;
 
-@property (strong, nonatomic) NSMutableDictionary *recents;
+@property (strong, nonatomic) NSMutableArray *recents;
 
 @end

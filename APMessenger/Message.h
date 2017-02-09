@@ -14,7 +14,8 @@
 @property NSString *sender;
 @property NSString *receiver;
 @property NSDate *time;
+@property BOOL *isSender;
 
-- (instancetype)initWithText:(NSString *)text sender:(NSString *)sender receiver:(NSString *)receiver time:(NSDate *)time;
+- (instancetype)initWithText:(NSString *)text sender:(NSString *)sender receiver:(NSString *)receiver time:(NSDate *)time isSender:(BOOL *)isSender;
 
 @end

@@ -14,5 +14,7 @@
 #import "RightChatTableViewCell.h"
 
 @interface ChatViewController : UIViewController <UITextFieldDelegate>
+@property (nonatomic) NSInteger chatId;
+@property (nonatomic, weak) NSString *chatPerson;
 
 @end

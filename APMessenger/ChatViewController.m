@@ -7,26 +7,28 @@
 //
 
 #import "ChatViewController.h"
+#import "RestHelper.h"
 
 @interface ChatViewController ()<UITableViewDataSource, UITableViewDelegate> {
     NSMutableArray *chatArray;
 }
 
-@property (weak, nonatomic) NSString *chatPerson;
+//@property (weak, nonatomic) NSString *chatPerson;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *typedMessageTextField;
 
 @end
 
 @implementation ChatViewController
-
+@synthesize chatId;
+@synthesize chatPerson;
 #pragma mark - View controller lifecycle methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    //NSLog(@"%ld", (long)self.chatId);
     // Read chat person from performed segue
-    self.chatPerson = @"Bill Gates";
+    //self.chatPerson = @"Bill Gates";
     self.navigationItem.title = self.chatPerson;
     [self initializeChatArray];
 
@@ -80,14 +82,43 @@
 }
 
 - (void)initializeChatArray {
+    chatArray = [NSMutableArray new];
+    RestHelper *rest =  [RestHelper SharedInstance];
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInt:[self chatId]], @"ChatId", nil];
     
-    Message *message1 = [[Message alloc] initWithText:@"Hi Bill!" sender:@"test@authoritypartners.com" receiver:@"billgates@authoritypartners.com" time:[NSDate distantPast]];
-    Message *message2 = [[Message alloc] initWithText:@"What's up?!" sender:@"billgates@authoritypartners.com" receiver:@"test@authoritypartners.com" time:[NSDate distantPast]];
-    Message *message3 = [[Message alloc] initWithText:@"Lorem ipsum dolor sit amet, consectetur adipiscing elit" sender:@"test@authoritypartners.com" receiver:@"billgates@authoritypartners.com" time:[NSDate distantPast]];
-    Message *message4 = [[Message alloc] initWithText:@"Lorem ipsum dolor sit amet, consectetur adipiscing elit" sender:@"billgates@authoritypartners.com" receiver:@"test@authoritypartners.com" time:[NSDate distantPast]];
-    Message *message5 = [[Message alloc] initWithText:@"Lorem ipsum dolor sit amet, consectetur adipiscing elit" sender:@"test@authoritypartners.com" receiver:@"billgates@authoritypartners.com" time:[NSDate distantPast]];
-    
-    chatArray = [NSMutableArray arrayWithArray:@[message1, message2, message3, message4, message5]];
+    [rest requestPath:@"/GetMessages" withData:dict andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self completeChatArrayInit:data withError:error];
+        });
+    }];
+    //chatArray = [NSMutableArray arrayWithArray:@[message1, message2, message3, message4, message5]];
+}
+
+- (void)completeChatArrayInit:(NSData*)data withError:(NSError*)error{
+    if(error)
+    {
+        NSLog(@"ERROR: %@", error);
+    }
+    else{
+        NSError *err = nil;
+        if(!data){
+            return;
+        }
+        NSArray *temp = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
+        chatArray =[NSMutableArray arrayWithArray:temp];
+        
+        if (err == nil)
+        {
+            NSLog(@"Success");
+        }
+        else
+        {
+            NSLog(@"Error");
+        }
+        [self.tableView reloadData];
+        //[messageLabel setHidden:NO];
+        //[messageLabel setText:@"Registration Completed"];
+    }
 }
 
 #pragma mark - UITableView DataSource Methods
@@ -98,11 +129,14 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    Message *message = [chatArray objectAtIndex:indexPath.row];
-
-    if([message.sender isEqualToString: @"test@authoritypartners.com"]) {
+    NSDictionary *dict = [chatArray objectAtIndex:indexPath.row];
+    
+    BOOL isSender = [[dict objectForKey:@"isSender"] boolValue];
+    NSString *text = [dict objectForKey:@"text"];
+    
+    if(isSender){//.sender isEqualToString: @"test@authoritypartners.com"]) {
         RightChatTableViewCell *cell = (RightChatTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"RightChatCell"];
-        cell.chatTextLabel.text = message.text;
+        cell.chatTextLabel.text = text;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.bubbleView.layer.cornerRadius = 8;
         cell.bubbleView.layer.masksToBounds = YES;
@@ -110,7 +144,7 @@
         return cell;
     } else {
         LeftChatTableViewCell *cell = (LeftChatTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"LeftChatCell"];
-        cell.chatTextLabel.text = message.text;
+        cell.chatTextLabel.text = text;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.bubbleView.layer.cornerRadius = 8;
         cell.bubbleView.layer.masksToBounds = YES;
@@ -127,8 +161,9 @@
 
 - (IBAction)sendMessage:(id)sender {
     if (![self.typedMessageTextField.text isEqualToString:@""]) {
-        NSDate *now = [NSDate date];
-        Message *newMessage = [[Message alloc] initWithText:self.typedMessageTextField.text sender:@"test@authoritypartners.com" receiver:@"billgates@authoritypartners.com" time:now];
+        //NSDate *now = [NSDate date];
+        //Message *newMessage = [[Message alloc] initWithText:self.typedMessageTextField.text sender:@"test@authoritypartners.com" receiver:@"billgates@authoritypartners.com" time:now isSender:YES];
+        NSDictionary *newMessage = [[NSDictionary alloc] initWithObjectsAndKeys:@"YES", @"isSender", self.typedMessageTextField.text, @"text", nil];
         [chatArray addObject:newMessage];
         self.typedMessageTextField.text = @"";
         [self.tableView reloadData];

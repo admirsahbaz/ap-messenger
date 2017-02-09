@@ -7,6 +7,8 @@
 //
 
 #import "RecentTableViewController.h"
+#import "RestHelper.h"
+#import "ChatViewController.h"
 
 @interface RecentTableViewController ()
 
@@ -31,24 +33,60 @@
     
     [[self tableView] setContentInset:UIEdgeInsetsMake(y, 0, 0, 0)];
     
-    _recents = [[NSMutableDictionary alloc] init];
+    _recents = [[NSMutableArray alloc] init];
     
-    NSString *json = @"[{\"Name\": \"Hampton, Jillian P.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Guthrie, Madison L.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Knight, Hasad K.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Mays, Paul A.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Keller, Naida Y.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Stein, Holmes W.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Herman, Jordan P.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"}]";
+    //[loadingSpinner startAnimating];
+    RestHelper *rest =  [RestHelper SharedInstance];
     
-    NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *err;
+    [rest requestPath:@"/GetRecents" withData:nil andHttpMethod:@"GET" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self fillRecentsTable:data withError:error];
+        });
+    }];
+
     
-    _recents = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&err];
+   //NSString *json = @"[{\"Name\": \"Hampton, Jillian P.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Guthrie, Madison L.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Knight, Hasad K.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Mays, Paul A.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Keller, Naida Y.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Stein, Holmes W.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Herman, Jordan P.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"}]";
     
-    if (err == nil)
+    //NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
+    //NSError *err;
+    
+    //_recents = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&err];
+    
+    //if (err == nil)
+    //{
+     //   NSLog(@"Success");
+    //}
+    //else
+    //{
+    //    NSLog(@"Error");
+    //}
+    
+}
+
+- (void)fillRecentsTable:(NSData*)data withError:(NSError*)error{
+    if(error)
     {
-        NSLog(@"Success");
+        NSLog(@"ERROR: %@", error);
     }
-    else
-    {
-        NSLog(@"Error");
+    else{
+        NSError *err = nil;
+        if(!data){
+            return;
+        }
+        _recents = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
+        
+        if (err == nil)
+        {
+            NSLog(@"Success");
+        }
+        else
+        {
+            NSLog(@"Error");
+        }
+        [self.tableView reloadData];
+        //[messageLabel setHidden:NO];
+        //[messageLabel setText:@"Registration Completed"];
     }
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -85,27 +123,10 @@
     NSString *sName;
     NSString *sLastMessage;
     
-    int i = 0;
+    id row = [_recents objectAtIndex:indexPath.row];
+    sName = [row objectForKey:@"Name"];
+    sLastMessage = [row objectForKey:@"LastMessage"];
     
-    for (id row in _recents){
-        
-        if (i == indexPath.row)
-        {
-            for (id key in row) {
-                if ([key isEqualToString:@"Name"])
-                {
-                    sName = [row objectForKey:key];
-                }
-                if ([key isEqualToString:@"LastMessage"])
-                {
-                    sLastMessage = [row objectForKey:key];
-                }
-                
-            }
-            
-        }
-        i++;
-    }
     
     UILabel *lblName = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 4.0f, 200.0f, 20.0f)];
     
@@ -167,14 +188,23 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"SegueRecentChat"]){
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        
+        ChatViewController *cvc = [segue destinationViewController];
+        id row = [_recents objectAtIndex:indexPath.row];
+        NSString *chatId = [row objectForKey:@"ChatId"];
+        cvc.chatId = [chatId integerValue];
+        cvc.chatPerson = [row objectForKey:@"Name"];
+    }
 }
-*/
+
 
 @end

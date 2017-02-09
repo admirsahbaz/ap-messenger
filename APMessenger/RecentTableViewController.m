@@ -9,6 +9,7 @@
 #import "RecentTableViewController.h"
 #import "RestHelper.h"
 #import "ChatViewController.h"
+#import "ThemeManager.h"
 
 @interface RecentTableViewController ()
 

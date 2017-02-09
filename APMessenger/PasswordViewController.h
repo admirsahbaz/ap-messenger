@@ -10,4 +10,9 @@
 
 @interface PasswordViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *currentPassword;
+@property (weak, nonatomic) IBOutlet UITextField *password;
+@property (weak, nonatomic) IBOutlet UITextField *confirmPassword;
+@property (weak, nonatomic) IBOutlet UIButton *btnChangePassword;
+
 @end

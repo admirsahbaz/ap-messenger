@@ -18,15 +18,27 @@
 
 @synthesize reuseIdentifier = _reuseIdentifier;
 @synthesize recents = _recents;
+ThemeManager *recentThemeManager;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 100;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    recentThemeManager = [ThemeManager SharedInstance];
+
+    CAGradientLayer *backroundGradient = [CAGradientLayer layer];
+    backroundGradient.frame = self.view.bounds;
+    backroundGradient.colors = [NSArray arrayWithObjects:(id)[recentThemeManager.backgroundTopColor CGColor], (id)[recentThemeManager.backgroundBottomColor CGColor], nil];
+    [self.view.layer insertSublayer:backroundGradient atIndex:0];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.tableView.backgroundColor = [UIColor colorWithRed:71.0f/255 green:146.0f/255 blue:162.0f/255 alpha:1];
+    self.tableView.backgroundColor = (id)recentThemeManager.backgroundTopColor;
+    //
     CGRect rect = self.navigationController.navigationBar.frame;
     
     float y = rect.size.height + rect.origin.y;
@@ -116,7 +128,7 @@
     
     if(cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_reuseIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:_reuseIdentifier];
     }
     
     
@@ -128,7 +140,26 @@
     sLastMessage = [row objectForKey:@"LastMessage"];
     
     
-    UILabel *lblName = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 4.0f, 200.0f, 20.0f)];
+    cell.textLabel.text = sName;
+    cell.textLabel.textColor = recentThemeManager.textColor;
+    
+    cell.detailTextLabel.text = sLastMessage;
+    cell.detailTextLabel.textColor = recentThemeManager.textColor;
+    //cell.imageView. = CGSizeMake(60, 70);
+    
+    cell.imageView.image = [RecentTableViewController scale:[UIImage imageNamed:@"contactimg.jpg"] toSize:CGSizeMake(60, 60)];
+    cell.imageView.layer.cornerRadius = 30;
+    cell.imageView.layer.masksToBounds = YES;
+    cell.imageView.layer.borderColor = [recentThemeManager.contactImageBorderColor CGColor];
+    cell.imageView.layer.borderWidth = 4;
+    
+    UIView *bottomLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 70, self.view.bounds.size.width, 1)];
+    bottomLineView.backgroundColor = recentThemeManager.tableViewSeparatorColor;
+    [cell.contentView addSubview:bottomLineView];
+    
+    cell.backgroundColor = [UIColor clearColor];
+    
+    /*UILabel *lblName = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 4.0f, 200.0f, 20.0f)];
     
     [lblName setText:sName];
     [lblName setFont:[UIFont systemFontOfSize: 13.0f weight: 600.0f]];
@@ -143,7 +174,7 @@
     [lblLastMessage setTextColor:[UIColor whiteColor]];
     lblLastMessage.layer.borderWidth = 0.0f;
     [cell addSubview:lblLastMessage];
-    cell.backgroundColor = [UIColor colorWithRed:71.0f/255 green:146.0f/255 blue:162.0f/255 alpha:1];
+    cell.backgroundColor = [UIColor colorWithRed:71.0f/255 green:146.0f/255 blue:162.0f/255 alpha:1];*/
 
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
@@ -161,7 +192,18 @@
     [self performSegueWithIdentifier:@"SegueRecentChat" sender:tableView];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 70;
+}
 
++ (UIImage *)scale:(UIImage *)image toSize:(CGSize)size
+{
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return scaledImage;
+}
 /*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -8,6 +8,7 @@
 
 #import "SettingsViewController.h"
 #import "ThemeManager.h"
+#import "CurrentUser.h"
 
 @interface SettingsViewController ()
 
@@ -28,7 +29,7 @@ ThemeManager *settingsThemeManager;
     backroundGradient.frame = self.view.bounds;
     backroundGradient.colors = [NSArray arrayWithObjects:(id)[settingsThemeManager.backgroundTopColor CGColor], (id)[settingsThemeManager.backgroundBottomColor CGColor], nil];
     [self.view.layer insertSublayer:backroundGradient atIndex:0];
-   
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -71,6 +72,18 @@ ThemeManager *settingsThemeManager;
         lblPassword.textColor = settingsThemeManager.textColor;
         
         [cell addSubview:lblPassword];
+    }
+    
+    if(indexPath.section == 0 && indexPath.row == 1)
+    {
+        UILabel *lblLogout = [[UILabel alloc] initWithFrame:CGRectMake(25.0f, 10.0f, 200.0f, 20.0f)];
+        
+        [lblLogout setText:@"Logout"];
+        [lblLogout setFont:[UIFont systemFontOfSize: 13.0f weight: 600.0f]];
+        lblLogout.layer.borderWidth = 0.0f;
+        lblLogout.textColor = settingsThemeManager.textColor;
+        
+        [cell addSubview:lblLogout];
     }
     
     if(indexPath.section == 1 && indexPath.row == 0)
@@ -119,6 +132,13 @@ ThemeManager *settingsThemeManager;
     if(indexPath.section == 0 && indexPath.row == 0)
     {
         [self performSegueWithIdentifier:@"SegueSettingsPassword" sender:tableView];
+    }
+    
+    if(indexPath.section == 0 && indexPath.row == 1)
+    {
+        CurrentUser *user = [CurrentUser Current];
+        [user LogOutUser];
+        [self performSegueWithIdentifier:@"SegueSettingsLogout" sender:tableView];
     }
     
     if(indexPath.section == 1 && indexPath.row == 0)

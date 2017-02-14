@@ -6,16 +6,16 @@
 //  Copyright © 2016 Authority Partners. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LoginController.h"
 #import "RestHelper.h"
 #import "ThemeManager.h"
 #import "CurrentUser.h"
 
-@interface ViewController ()
+@interface LoginController ()
 
 @end
 
-@implementation ViewController
+@implementation LoginController
 @synthesize userNameTxt;
 @synthesize passwordTxt;
 @synthesize invalidLoginMessage;
@@ -31,6 +31,8 @@ ThemeManager *theme;
     theme = [ThemeManager SharedInstance];
     
     [super viewDidLoad];
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.hidesBackButton = YES;
     [loadingSpinner setHidden:YES];
     self.userNameTxt.placeholder = @"Enter your e-mail";
     self.passwordTxt.placeholder = @"Enter password";

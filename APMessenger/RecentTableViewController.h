@@ -13,4 +13,6 @@
 
 @property (strong, nonatomic) NSMutableArray *recents;
 
++(void)cancelTimer;
+
 @end

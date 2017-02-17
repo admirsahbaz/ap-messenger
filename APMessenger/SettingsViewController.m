@@ -9,6 +9,7 @@
 #import "SettingsViewController.h"
 #import "ThemeManager.h"
 #import "CurrentUser.h"
+#import "RecentTableViewController.h"
 
 @interface SettingsViewController ()
 
@@ -138,6 +139,7 @@ ThemeManager *settingsThemeManager;
     {
         CurrentUser *user = [CurrentUser Current];
         [user LogOutUser];
+        [RecentTableViewController cancelTimer];
         [self performSegueWithIdentifier:@"SegueSettingsLogout" sender:tableView];
     }
     

@@ -19,6 +19,7 @@
 
 @end
 
+dispatch_source_t timerChat;
 @implementation ChatViewController
 @synthesize chatId;
 @synthesize chatPerson;
@@ -67,6 +68,31 @@
     if (chatArray.count > 0) {
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:chatArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
+    timerChat = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
+    dispatch_source_set_timer(timerChat, DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC, 0.5 * NSEC_PER_SEC);
+    dispatch_source_set_event_handler(timerChat, ^{
+        [self refreshMessages];
+    });
+    dispatch_resume(timerChat);
+    //NSTimer *t = [NSTimer scheduledTimerWithTimeInterval:5.0 repeats:YES block:^(NSTimer *t){
+    //    [self timerCalled];
+    //}];
+}
+
+- (void) viewWillDisappear:(BOOL)animated{
+    dispatch_source_cancel(timerChat);
+}
+
+- (void)refreshMessages{
+    NSLog(@"Test");
+    RestHelper *rest =  [RestHelper SharedInstance];
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInt:[self chatId]], @"ChatId", nil];
+    
+    [rest requestPath:@"/GetMessages" withData:dict andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self completeChatArrayInit:data withError:error];
+        });
+    }];
 }
 
 #pragma mark - Helper methods

@@ -15,6 +15,7 @@
 
 @end
 
+dispatch_source_t timerRecents;
 @implementation RecentTableViewController
 
 @synthesize reuseIdentifier = _reuseIdentifier;
@@ -57,23 +58,28 @@ ThemeManager *recentThemeManager;
         });
     }];
 
+    timerRecents = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
+    dispatch_source_set_timer(timerRecents, DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC, 0.5 * NSEC_PER_SEC);
+    dispatch_source_set_event_handler(timerRecents, ^{
+        [self refreshRecents];
+    });
+    dispatch_resume(timerRecents);
     
-   //NSString *json = @"[{\"Name\": \"Hampton, Jillian P.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Guthrie, Madison L.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Knight, Hasad K.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Mays, Paul A.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Keller, Naida Y.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Stein, Holmes W.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"},{\"Name\": \"Herman, Jordan P.\",\"LastMessage\": \"Lorem ipsum dolor sit amet, neque a qui molestiae dapibus nunc augue. Ipsum ut habitant volutpat commodo volutpat nec, sodales id odio, proin sit ut auctor eu vivamus felis, ultrices nunc ac donec.\"}]";
+}
+
+- (void)refreshRecents{
+    NSLog(@"Recents refresh");
+    RestHelper *rest =  [RestHelper SharedInstance];
     
-    //NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
-    //NSError *err;
-    
-    //_recents = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&err];
-    
-    //if (err == nil)
-    //{
-     //   NSLog(@"Success");
-    //}
-    //else
-    //{
-    //    NSLog(@"Error");
-    //}
-    
+    [rest requestPath:@"/GetRecents" withData:nil andHttpMethod:@"GET" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self fillRecentsTable:data withError:error];
+        });
+    }];
+}
+
++(void)cancelTimer{
+    dispatch_source_cancel(timerRecents);
 }
 
 - (void)fillRecentsTable:(NSData*)data withError:(NSError*)error{

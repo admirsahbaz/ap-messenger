@@ -8,6 +8,7 @@
 
 #import "PasswordViewController.h"
 #import "ThemeManager.h"
+#import "RestHelper.h"
 
 @interface PasswordViewController ()
 
@@ -21,6 +22,7 @@ ThemeManager * passwordThemeManager;
 @synthesize password;
 @synthesize confirmPassword;
 @synthesize btnChangePassword;
+@synthesize errorMessage;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -89,5 +91,46 @@ ThemeManager * passwordThemeManager;
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)btnChangePasswordClicked:(id)sender {
+
+        /*NSString *pass = self.password.text;
+        RestHelper *rest =  [RestHelper SharedInstance];
+        NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:pass, @"Password", nil];
+        
+        [rest requestPath:@"UpdatePassword" withData:dict andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self handleMessages:data withError:error];
+            });
+        }];*/
+    //add validation when all fields are empty
+    if(self.currentPassword.text.length == 0) {
+        [self.errorMessage setText:@"Please enter your current password."];
+    }
+    
+    else if(self.password.text.length ==0 ) {
+        [self.errorMessage setText:@"Enter your new password."];
+    }
+    else if(self.confirmPassword.text.length ==0) {
+        [self.errorMessage setText:@"Please confirm your new password."];
+    }
+    else if(self.password.text != self.confirmPassword.text) {
+        [self.errorMessage setText:@"Your passwords were not maching."];
+    } else{
+        [self.errorMessage setText:@""];
+}
+}
+- (void)handleMessages:(NSData*)data withError:(NSError*)error{
+    if(error)
+    {
+        NSLog(@"ERROR: %@", error);
+        self.errorMessage.text = error;
+
+    }
+    else{
+        NSError *err = nil;
+        [self.errorMessage setText:@"Your passwords is changed"];
+    }
+}
 
 @end

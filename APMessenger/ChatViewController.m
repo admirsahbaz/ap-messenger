@@ -190,11 +190,34 @@ dispatch_source_t timerChat;
         //NSDate *now = [NSDate date];
         //Message *newMessage = [[Message alloc] initWithText:self.typedMessageTextField.text sender:@"test@authoritypartners.com" receiver:@"billgates@authoritypartners.com" time:now isSender:YES];
         NSDictionary *newMessage = [[NSDictionary alloc] initWithObjectsAndKeys:@"YES", @"isSender", self.typedMessageTextField.text, @"text", nil];
-        [chatArray addObject:newMessage];
+        
+        RestHelper *rest =  [RestHelper SharedInstance];
+        
+        NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInt:[self chatId]], @"ChatId", self.typedMessageTextField.text, @"Text", nil];
+        
+        [rest requestPath:@"/SendMessage" withData:dict andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self finishedSendingMessage:data withError:error newMessage:newMessage] ;
+            });
+        }];
+        
+    }
+}
+
+- (void)finishedSendingMessage:(NSData*)data withError:(NSError*)error newMessage: (NSDictionary*)message{
+    if(error)
+    {
+        NSLog(@"ERROR: %@", error);
+    }
+    else{
         self.typedMessageTextField.text = @"";
+        
+        [chatArray addObject:message];
         [self.tableView reloadData];
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:chatArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
         [self.tableView reloadData];
+
+        [self refreshMessages];
     }
 }
 

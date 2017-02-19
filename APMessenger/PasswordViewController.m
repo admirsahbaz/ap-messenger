@@ -24,47 +24,32 @@ ThemeManager * passwordThemeManager;
 @synthesize btnChangePassword;
 @synthesize errorMessage;
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     passwordThemeManager = [ThemeManager SharedInstance];
-    
-    self.currentPassword.placeholder = @"Current password";
-    self.password.placeholder = @"Enter new password";
-    self.confirmPassword.placeholder = @"Confirm new password";
-    
     self.currentPassword.borderStyle = UITextBorderStyleNone;
     self.password.borderStyle = UITextBorderStyleNone;
     self.confirmPassword.borderStyle = UITextBorderStyleNone;
 
+    CALayer *borderPassword = [CALayer layer];
+    CGFloat width1 = 2;
+    borderPassword.borderColor = [[UIColor clearColor]CGColor];
+    borderPassword.borderWidth = width1;
+    borderPassword.frame = CGRectMake(0, self.currentPassword.frame.size.height, self.currentPassword.frame.size.width, self.currentPassword.frame.size.height);
+    
+    [self.view.layer addSublayer:borderPassword];
+    
+
+    self.currentPassword.placeholder = @"Current password";
+    self.password.placeholder = @"Enter new password";
+    self.confirmPassword.placeholder = @"Confirm new password";
+    
+    
     self.currentPassword.textColor = passwordThemeManager.textColor;
     self.password.textColor = passwordThemeManager.textColor;
     self.confirmPassword.textColor = passwordThemeManager.textColor;
-    
-    CALayer *borderCurrentPass = [CALayer layer];
-    CGFloat borderWidth = 2;
-    borderCurrentPass.borderColor = [[UIColor lightGrayColor] CGColor];   borderCurrentPass.borderWidth = borderWidth;
-    borderCurrentPass.frame = CGRectMake(0, self.currentPassword.frame.size.height- borderWidth, self.currentPassword.frame.size.width, self.currentPassword.frame.size.height);
-    
-    [self.currentPassword.layer addSublayer:borderCurrentPass];
-    self.currentPassword.layer.masksToBounds = YES;
-    
-    CALayer *borderPass = [CALayer layer];
-    borderPass.borderColor = [[UIColor lightGrayColor] CGColor];
-    borderPass.borderWidth = borderWidth;
-    borderPass.frame = CGRectMake(0, self.password.frame.size.height- borderWidth, self.password.frame.size.width, self.password.frame.size.height);
-    
-    [self.password.layer addSublayer:borderPass];
-    self.password.layer.masksToBounds = YES;
-    
-    
-    CALayer *borderConfirmPass = [CALayer layer];
-    borderConfirmPass.borderColor = [[UIColor lightGrayColor] CGColor];
-    borderConfirmPass.borderWidth = borderWidth;
-    borderConfirmPass.frame = CGRectMake(0, self.confirmPassword.frame.size.height- borderWidth, self.confirmPassword.frame.size.width, self.confirmPassword.frame.size.height);
-    
-    [self.confirmPassword.layer addSublayer:borderConfirmPass];
-    self.confirmPassword.layer.masksToBounds = YES;
     
     CAGradientLayer *backroundGradient = [CAGradientLayer layer];
     backroundGradient.frame = self.view.bounds;
@@ -76,7 +61,14 @@ ThemeManager * passwordThemeManager;
     self.btnChangePassword.tintColor = passwordThemeManager.textColor;
     // Do any additional setup after loading the view.
 }
-
+- (void)viewDidAppear:(BOOL)animated {
+    self.tabBarController.title = @"Change password";
+}
+-(void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.currentPassword resignFirstResponder];
+    [self.password resignFirstResponder];
+    [self.confirmPassword resignFirstResponder];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

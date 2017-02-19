@@ -262,30 +262,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZvY-oE-F5q">
-                                <frame key="frameInset" minX="67" minY="181" width="240" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZvY-oE-F5q">
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vAf-p6-xv4">
-                                <frame key="frameInset" minX="67" minY="255" width="240" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vAf-p6-xv4">
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CDx-dK-Ylq">
-                                <frame key="frameInset" minX="67" minY="318" width="240" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfi-8f-Za5">
-                                <frame key="frameInset" minX="67" minY="386" width="240" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfi-8f-Za5">
                                 <state key="normal" title="CHANGE PASSWORD"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -296,15 +283,39 @@
                                     <action selector="btnChangePasswordClicked:" destination="abx-1T-c1r" eventType="touchUpInside" id="gH4-hd-PjW"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJa-YV-lQZ">
-                                <frame key="frameInset" minX="12" minY="454" width="350" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJa-YV-lQZ">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CDx-dK-Ylq">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vAf-p6-xv4" firstAttribute="leading" secondItem="CDx-dK-Ylq" secondAttribute="leading" id="1I5-bc-4yM"/>
+                            <constraint firstItem="CDx-dK-Ylq" firstAttribute="leading" secondItem="nfi-8f-Za5" secondAttribute="leading" id="5aJ-mN-Tf5"/>
+                            <constraint firstItem="ZvY-oE-F5q" firstAttribute="top" secondItem="IC5-eR-Akq" secondAttribute="bottom" constant="161" id="7cO-r7-931"/>
+                            <constraint firstAttribute="bottom" secondItem="nfi-8f-Za5" secondAttribute="bottom" constant="260" id="7nD-I3-fUW"/>
+                            <constraint firstItem="CDx-dK-Ylq" firstAttribute="width" secondItem="vAf-p6-xv4" secondAttribute="height" multiplier="8:1" id="An0-cg-9GU"/>
+                            <constraint firstItem="PJa-YV-lQZ" firstAttribute="top" secondItem="nfi-8f-Za5" secondAttribute="bottom" constant="64" id="Ctv-hY-kTZ"/>
+                            <constraint firstItem="CDx-dK-Ylq" firstAttribute="top" secondItem="vAf-p6-xv4" secondAttribute="bottom" constant="32" id="Dy2-E3-O6v"/>
+                            <constraint firstItem="ZvY-oE-F5q" firstAttribute="trailing" secondItem="vAf-p6-xv4" secondAttribute="trailing" id="Ime-vR-CGV"/>
+                            <constraint firstItem="vAf-p6-xv4" firstAttribute="width" secondItem="CDx-dK-Ylq" secondAttribute="height" multiplier="8:1" id="JXy-J0-CWT"/>
+                            <constraint firstItem="nfi-8f-Za5" firstAttribute="top" secondItem="CDx-dK-Ylq" secondAttribute="bottom" constant="56" id="Ow1-jX-fE2"/>
+                            <constraint firstItem="nfi-8f-Za5" firstAttribute="leading" secondItem="62X-bv-pSW" secondAttribute="leadingMargin" constant="51" id="TMS-cc-10D"/>
+                            <constraint firstItem="vAf-p6-xv4" firstAttribute="top" secondItem="ZvY-oE-F5q" secondAttribute="bottom" constant="33" id="UEN-fx-kag"/>
+                            <constraint firstItem="nfi-8f-Za5" firstAttribute="leading" secondItem="PJa-YV-lQZ" secondAttribute="leading" constant="51" id="ad1-mh-J3g"/>
+                            <constraint firstItem="vAf-p6-xv4" firstAttribute="trailing" secondItem="CDx-dK-Ylq" secondAttribute="trailing" id="bP2-HN-Xlj"/>
+                            <constraint firstItem="CDx-dK-Ylq" firstAttribute="trailing" secondItem="nfi-8f-Za5" secondAttribute="trailing" id="fzg-jM-z4q"/>
+                            <constraint firstItem="nfi-8f-Za5" firstAttribute="trailing" secondItem="PJa-YV-lQZ" secondAttribute="trailing" constant="-52" id="kRL-za-eTz"/>
+                            <constraint firstItem="ZvY-oE-F5q" firstAttribute="leading" secondItem="vAf-p6-xv4" secondAttribute="leading" id="ksT-g9-rJY"/>
+                            <constraint firstItem="nfi-8f-Za5" firstAttribute="centerX" secondItem="62X-bv-pSW" secondAttribute="centerX" id="nuN-Xy-zDI"/>
+                            <constraint firstItem="ecB-An-9jg" firstAttribute="top" secondItem="PJa-YV-lQZ" secondAttribute="bottom" constant="126" id="qtA-QL-DVl"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="btnChangePassword" destination="nfi-8f-Za5" id="wtm-zG-H7N"/>

@@ -86,15 +86,7 @@ ThemeManager * passwordThemeManager;
 
 - (IBAction)btnChangePasswordClicked:(id)sender {
 
-        /*NSString *pass = self.password.text;
-        RestHelper *rest =  [RestHelper SharedInstance];
-        NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:pass, @"Password", nil];
-        
-        [rest requestPath:@"UpdatePassword" withData:dict andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self handleMessages:data withError:error];
-            });
-        }];*/
+    
     //add validation when all fields are empty
     if(self.currentPassword.text.length == 0) {
         [self.errorMessage setText:@"Please enter your current password."];
@@ -110,6 +102,15 @@ ThemeManager * passwordThemeManager;
         [self.errorMessage setText:@"Your passwords were not maching."];
     } else{
         [self.errorMessage setText:@""];
+        NSString *pass = self.password.text;
+        RestHelper *rest =  [RestHelper SharedInstance];
+        NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:pass, @"Password", nil];
+        
+        [rest requestPath:@"/UpdatePassword" withData:dict andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self handleMessages:data withError:error];
+            });
+        }];
 }
 }
 - (void)handleMessages:(NSData*)data withError:(NSError*)error{
@@ -121,7 +122,7 @@ ThemeManager * passwordThemeManager;
     }
     else{
         NSError *err = nil;
-        [self.errorMessage setText:@"Your passwords is changed"];
+        [self.errorMessage setText:@"Your password has been changed successfully."];
     }
 }
 

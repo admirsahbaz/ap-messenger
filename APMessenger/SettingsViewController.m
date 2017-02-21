@@ -18,6 +18,8 @@
 @implementation SettingsViewController
 
 @synthesize identifier = _identifier;
+@synthesize profileImage;
+@synthesize uploadImageBtn;
 
 ThemeManager *settingsThemeManager;
 
@@ -30,6 +32,13 @@ ThemeManager *settingsThemeManager;
     backroundGradient.frame = self.view.bounds;
     backroundGradient.colors = [NSArray arrayWithObjects:(id)[settingsThemeManager.backgroundTopColor CGColor], (id)[settingsThemeManager.backgroundBottomColor CGColor], nil];
     [self.view.layer insertSublayer:backroundGradient atIndex:0];
+    
+    self.profileImage.layer.cornerRadius = 70;
+    self.profileImage.layer.borderWidth = 2.0;
+    self.profileImage.layer.borderColor = [settingsThemeManager.contactImageBorderColor CGColor];;
+    self.profileImage.layer.masksToBounds = YES;
+    
+    self.uploadImageBtn.tintColor = settingsThemeManager.textColor;
     
 }
 
@@ -186,40 +195,34 @@ ThemeManager *settingsThemeManager;
     return 40.0f;
 }
 
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
+- (IBAction)uploadImageBtn:(id)sender {
+    
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
+    imagePickerController.allowsEditing = YES;
+    imagePickerController.delegate = self;
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+}
 
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary<NSString *,id> *)editingInfo
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    profileImage.image = [self resizeImage:image imageSize:CGSizeMake(150, 150)];
+   
+}
 
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
+-(UIImage *)resizeImage: (UIImage *) image imageSize:(CGSize)size
+{
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0,0,size.width,size.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

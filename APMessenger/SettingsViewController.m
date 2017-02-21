@@ -40,6 +40,8 @@ ThemeManager *settingsThemeManager;
     
     self.uploadImageBtn.tintColor = settingsThemeManager.textColor;
     
+    self.profileImage.image = [self resizeImage:[UIImage imageNamed:@"contactimg.jpg"] imageSize:CGSizeMake(150, 150)];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -112,7 +114,7 @@ ThemeManager *settingsThemeManager;
         
         UILabel *lblSelectedTheme = [[UILabel alloc] initWithFrame:CGRectMake(140.0f, 10.0f, 200.0f, 20.0f)];
         
-        [lblSelectedTheme setText:[selectedTheme uppercaseString]];
+        [lblSelectedTheme setText:selectedTheme];
         [lblSelectedTheme setFont:[UIFont systemFontOfSize: 14.0f weight: normal]];
         lblSelectedTheme.layer.borderWidth = 0.0f;
         lblSelectedTheme.textColor = settingsThemeManager.textColor;

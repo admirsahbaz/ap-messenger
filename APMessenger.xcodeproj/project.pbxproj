@@ -32,8 +32,8 @@
 		A037E4AD1E3EB3050092E1A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A037E4AB1E3EB3050092E1A4 /* Main.storyboard */; };
 		BF02D7D11E25A501003A2066 /* RecentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF02D7D01E25A501003A2066 /* RecentTableViewController.m */; };
 		BF44D9571E26B530004F083A /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44D9561E26B530004F083A /* ContactsViewController.m */; };
+		BF6543AD1E5CB88300144114 /* ThemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6543AC1E5CB88300144114 /* ThemeViewController.m */; };
 		BF6F8AD51E3E65F800782A15 /* PasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6F8AD41E3E65F800782A15 /* PasswordViewController.m */; };
-		BF6F8ADB1E3E6A0B00782A15 /* ThemeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6F8ADA1E3E6A0B00782A15 /* ThemeTableViewController.m */; };
 		BF76C9301E26C0C800D3CC49 /* ContactProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF76C92F1E26C0C800D3CC49 /* ContactProfileViewController.m */; };
 		BF76C9331E26C26400D3CC49 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF76C9321E26C26400D3CC49 /* ChatViewController.m */; };
 		BF800DF51E36C27200438589 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF800DF41E36C27200438589 /* SettingsViewController.m */; };
@@ -105,10 +105,10 @@
 		BF02D7D01E25A501003A2066 /* RecentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentTableViewController.m; sourceTree = "<group>"; };
 		BF44D9551E26B530004F083A /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
 		BF44D9561E26B530004F083A /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		BF6543AB1E5CB88300144114 /* ThemeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeViewController.h; sourceTree = "<group>"; };
+		BF6543AC1E5CB88300144114 /* ThemeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeViewController.m; sourceTree = "<group>"; };
 		BF6F8AD31E3E65F800782A15 /* PasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordViewController.h; sourceTree = "<group>"; };
 		BF6F8AD41E3E65F800782A15 /* PasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordViewController.m; sourceTree = "<group>"; };
-		BF6F8AD91E3E6A0B00782A15 /* ThemeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeTableViewController.h; sourceTree = "<group>"; };
-		BF6F8ADA1E3E6A0B00782A15 /* ThemeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeTableViewController.m; sourceTree = "<group>"; };
 		BF76C92E1E26C0C800D3CC49 /* ContactProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactProfileViewController.h; sourceTree = "<group>"; };
 		BF76C92F1E26C0C800D3CC49 /* ContactProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactProfileViewController.m; sourceTree = "<group>"; };
 		BF76C9311E26C26400D3CC49 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
@@ -237,12 +237,12 @@
 				BF800DF41E36C27200438589 /* SettingsViewController.m */,
 				BF6F8AD31E3E65F800782A15 /* PasswordViewController.h */,
 				BF6F8AD41E3E65F800782A15 /* PasswordViewController.m */,
-				BF6F8AD91E3E6A0B00782A15 /* ThemeTableViewController.h */,
-				BF6F8ADA1E3E6A0B00782A15 /* ThemeTableViewController.m */,
 				0F827D9D1E474F6D00F799A6 /* RegistrationController.h */,
 				0F827D9E1E474F6D00F799A6 /* RegistrationController.m */,
 				548885881E47D1B3006D275A /* ContactTableViewCell.h */,
 				548885891E47D1B3006D275A /* ContactTableViewCell.m */,
+				BF6543AB1E5CB88300144114 /* ThemeViewController.h */,
+				BF6543AC1E5CB88300144114 /* ThemeViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -512,6 +512,7 @@
 				0FF656151E35499C00C5D5D0 /* TabViewController.m in Sources */,
 				A037E4A11E3EAE380092E1A4 /* RightChatTableViewCell.m in Sources */,
 				BF02D7D11E25A501003A2066 /* RecentTableViewController.m in Sources */,
+				BF6543AD1E5CB88300144114 /* ThemeViewController.m in Sources */,
 				546C94E21E107AFD00571006 /* AppDelegate.m in Sources */,
 				0F827DA21E4765F400F799A6 /* CurrentUser.m in Sources */,
 				0FF656141E35499C00C5D5D0 /* RestHelper.m in Sources */,
@@ -526,7 +527,6 @@
 				546C94DF1E107AFD00571006 /* main.m in Sources */,
 				BF6F8AD51E3E65F800782A15 /* PasswordViewController.m in Sources */,
 				0F827D9F1E474F6D00F799A6 /* RegistrationController.m in Sources */,
-				BF6F8ADB1E3E6A0B00782A15 /* ThemeTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -181,33 +181,65 @@
             </objects>
             <point key="canvasLocation" x="1727.2" y="389.95502248875567"/>
         </scene>
-        <!--Theme Table View Controller-->
-        <scene sceneID="L1D-0S-Zw8">
+        <!--Theme View Controller-->
+        <scene sceneID="U7e-rG-isv">
             <objects>
-                <tableViewController id="Fiy-R3-XMA" customClass="ThemeTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0ch-t4-8gH">
+                <viewController id="soT-bo-htf" customClass="ThemeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3jp-g7-Kt6"/>
+                        <viewControllerLayoutGuide type="bottom" id="wOK-cq-eJ6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MyV-Nb-7ZP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h24-nn-7Yt">
+                                <frame key="frameInset" minX="45" minY="141" width="127" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Av-WK-bEQ">
+                                <frame key="frameInset" minX="208" minY="141" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aDN-6D-raA">
+                                <frame key="frameInset" minX="45" minY="299" width="127" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Kg-Mj-Xav">
+                                <frame key="frameInset" minX="208" minY="299" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dw4-CZ-E8L">
+                                <frame key="frameInset" minX="45" minY="457" width="127" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qKT-He-D3o">
+                                <frame key="frameInset" minX="208" minY="457" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose theme:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F26-Lo-Kod">
+                                <frame key="frameInset" minX="45" minY="86" width="132" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ZF2-az-Qd0">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZF2-az-Qd0" id="BYr-C6-yUu">
-                                    <frame key="frameInset" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Fiy-R3-XMA" id="GAu-YV-pkC"/>
-                            <outlet property="delegate" destination="Fiy-R3-XMA" id="BEg-9x-rBe"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KXJ-F3-sn9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    </view>
+                    <connections>
+                        <outlet property="chooseThemeLbl" destination="F26-Lo-Kod" id="hFr-dx-oQQ"/>
+                        <outlet property="theme1Img" destination="h24-nn-7Yt" id="blp-X3-XxV"/>
+                        <outlet property="theme2Img" destination="2Av-WK-bEQ" id="zba-2g-4fT"/>
+                        <outlet property="theme3Img" destination="aDN-6D-raA" id="EFn-nw-Hqf"/>
+                        <outlet property="theme4Img" destination="7Kg-Mj-Xav" id="8PN-gx-Vfy"/>
+                        <outlet property="theme5Img" destination="Dw4-CZ-E8L" id="Cl3-Ow-VAW"/>
+                        <outlet property="theme6Img" destination="qKT-He-D3o" id="fsi-du-lfH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Klg-YJ-Bb6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="825" y="1195"/>
+            <point key="canvasLocation" x="904.79999999999995" y="1556.6716641679161"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Iro-bi-Som">
@@ -251,8 +283,8 @@
                         <outlet property="profileImage" destination="S8q-a4-ypA" id="F0M-fV-GeU"/>
                         <outlet property="uploadImageBtn" destination="gzl-vj-VMk" id="mWn-64-OR6"/>
                         <segue destination="abx-1T-c1r" kind="show" identifier="SegueSettingsPassword" id="Asg-vS-dil"/>
-                        <segue destination="Fiy-R3-XMA" kind="show" identifier="SegueSettingsTheme" id="iXZ-ug-dwk"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="SegueSettingsLogout" id="V2q-yt-zlD"/>
+                        <segue destination="soT-bo-htf" kind="show" identifier="SegueSettingsTheme" id="2dN-UG-ARf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MAs-fm-kVk" userLabel="First Responder" sceneMemberID="firstResponder"/>

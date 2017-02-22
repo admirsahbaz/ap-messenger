@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWTableViewCell.h"
 
-@interface ContactTableViewCell : UITableViewCell
+@interface ContactTableViewCell : SWTableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *ContactImage;
 @property (weak, nonatomic) IBOutlet UILabel *ContactName;
 

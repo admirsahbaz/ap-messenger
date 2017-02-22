@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ContactsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
-@property (strong, nonatomic) NSMutableDictionary *contacts;
+@property (strong, nonatomic) NSMutableArray *contacts;
 @property (strong, nonatomic) NSString *identifier;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

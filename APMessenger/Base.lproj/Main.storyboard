@@ -485,14 +485,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Mdz-mL-oca" secondAttribute="trailing" id="3V8-NF-LrM"/>
-                            <constraint firstItem="Mdz-mL-oca" firstAttribute="top" secondItem="EHd-4f-ACT" secondAttribute="bottom" id="LeE-ns-PcG"/>
-                            <constraint firstItem="Mdz-mL-oca" firstAttribute="leading" secondItem="5HD-qw-e39" secondAttribute="leading" id="T3y-TJ-E5U"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Mdz-mL-oca" secondAttribute="bottom" constant="-64" id="Xsm-T9-u0b"/>
+                            <constraint firstItem="Mdz-mL-oca" firstAttribute="top" secondItem="EHd-4f-ACT" secondAttribute="bottom" id="2FM-43-pfg"/>
+                            <constraint firstAttribute="trailing" secondItem="Mdz-mL-oca" secondAttribute="trailing" id="LF7-7v-Yrv"/>
+                            <constraint firstAttribute="bottom" secondItem="Mdz-mL-oca" secondAttribute="bottom" constant="-64" id="S1C-Yq-9Pi"/>
+                            <constraint firstItem="Mdz-mL-oca" firstAttribute="leading" secondItem="5HD-qw-e39" secondAttribute="leading" id="Xne-HQ-a8z"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Contacts" id="nN7-2S-jRE"/>
                     <connections>
+                        <outlet property="tableView" destination="Mdz-mL-oca" id="25n-L8-zbq"/>
                         <outlet property="view" destination="Mdz-mL-oca" id="VhB-25-9ck"/>
                         <segue destination="jfa-lG-okl" kind="show" identifier="SegueContactsContact" id="Iq9-Fz-YXc"/>
                         <segue destination="SCa-eR-6H0" kind="show" identifier="SegueContactsChat" id="elL-1X-wBB"/>

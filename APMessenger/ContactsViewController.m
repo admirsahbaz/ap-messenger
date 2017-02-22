@@ -10,6 +10,7 @@
 #import "ContactsViewController.h"
 #import "ThemeManager.h"
 #import "RestHelper.h"
+#import "ChatViewController.h"
 #import "ContactTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -142,7 +143,7 @@ ThemeManager *themeManager;
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
     switch (index) {
         case 0:
-            [self performSegueWithIdentifier:@"SegueContactsContact" sender:cell];
+            [self performSegueWithIdentifier:@"SegueContactsContact" sender:self.tableView];
             break;
         case 1:
         {
@@ -163,14 +164,23 @@ ThemeManager *themeManager;
     [self performSegueWithIdentifier:@"SegueContactsChat" sender:tableView];
 }
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+//In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if([[segue identifier] isEqualToString:@"SegueContactsChat"])
+    {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        id _selectedContact = [_contacts objectAtIndex:indexPath.row];
+        ChatViewController *cvc = [segue destinationViewController];
+        cvc.chatId = 3;
+        cvc.chatPerson = [_selectedContact objectForKey:@"Name"];
+    }
 }
-*/
+
 
 @end

@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController: UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
+@property (strong, nonatomic) IBOutlet UIImageView *profileImage;
 @property (strong, nonatomic) NSString *identifier;
+@property (strong, nonatomic) IBOutlet UIButton *uploadImageBtn;
+
+- (IBAction)uploadImageBtn:(id)sender;
+
 
 @end

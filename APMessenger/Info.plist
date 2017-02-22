@@ -4,6 +4,8 @@
 <dict>
 	<key>RestServiceUrl</key>
 	<string>http://app-messenger.azurewebsites.net</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Photo Library Access Warning</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

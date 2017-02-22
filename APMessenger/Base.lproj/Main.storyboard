@@ -479,7 +479,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9PC-5L-Mug" id="MOe-uM-WJd">
-                                            <frame key="frameInset" width="375" height="99"/>
+                                            <frame key="frameInset" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sZe-nF-q0W" userLabel="ContactImage">
@@ -526,10 +526,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Mdz-mL-oca" firstAttribute="top" secondItem="EHd-4f-ACT" secondAttribute="bottom" id="2FM-43-pfg"/>
-                            <constraint firstAttribute="trailing" secondItem="Mdz-mL-oca" secondAttribute="trailing" id="LF7-7v-Yrv"/>
-                            <constraint firstAttribute="bottom" secondItem="Mdz-mL-oca" secondAttribute="bottom" constant="-64" id="S1C-Yq-9Pi"/>
-                            <constraint firstItem="Mdz-mL-oca" firstAttribute="leading" secondItem="5HD-qw-e39" secondAttribute="leading" id="Xne-HQ-a8z"/>
+                            <constraint firstAttribute="trailing" secondItem="Mdz-mL-oca" secondAttribute="trailing" id="OFc-4I-tRR"/>
+                            <constraint firstItem="Mdz-mL-oca" firstAttribute="top" secondItem="EHd-4f-ACT" secondAttribute="bottom" id="YXr-4c-xJI"/>
+                            <constraint firstItem="Mdz-mL-oca" firstAttribute="leading" secondItem="5HD-qw-e39" secondAttribute="leading" id="drr-NF-Phy"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Mdz-mL-oca" secondAttribute="bottom" constant="-64" id="h0q-jQ-AEI"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Contacts" id="nN7-2S-jRE"/>
@@ -557,7 +557,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KNb-z4-epM" id="tkK-2E-x6B">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>

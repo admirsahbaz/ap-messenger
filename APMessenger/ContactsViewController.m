@@ -116,8 +116,8 @@ ThemeManager *themeManager;
     NSString *imgUrl;
     
     id row = [_contacts objectAtIndex:indexPath.row];
-    contactName = [row objectForKey:@"UserContactName"];
-    imgUrl = [row objectForKey:@"UserContactImageUrl"];
+    contactName = [row objectForKey:@"Name"];
+    imgUrl = [row objectForKey:@"ImageUrl"];
     
     cell.ContactName.text = contactName;
     cell.ContactName.textColor = themeManager.textColor;

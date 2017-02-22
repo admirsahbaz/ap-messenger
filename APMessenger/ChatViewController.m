@@ -142,6 +142,7 @@ dispatch_source_t timerChat;
             NSLog(@"Error");
         }
         [self.tableView reloadData];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:chatArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
         //[messageLabel setHidden:NO];
         //[messageLabel setText:@"Registration Completed"];
     }

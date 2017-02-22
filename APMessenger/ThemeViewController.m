@@ -47,7 +47,7 @@ ThemeManager *thThemeManager;
     
     theme1Img.layer.cornerRadius = 65;
     theme1Img.layer.borderWidth = 2.0;
-    theme1Img.layer.borderColor = [thThemeManager.contactImageBorderColor CGColor];;
+    
     theme1Img.layer.masksToBounds = YES;
     
     NSString *path = [[NSBundle mainBundle] pathForResource: @"default" ofType:@"plist"];
@@ -59,7 +59,6 @@ ThemeManager *thThemeManager;
     
     theme2Img.layer.cornerRadius = 65;
     theme2Img.layer.borderWidth = 2.0;
-    theme2Img.layer.borderColor = [thThemeManager.contactImageBorderColor CGColor];;
     theme2Img.layer.masksToBounds = YES;
     
     NSString *path2 = [[NSBundle mainBundle] pathForResource: @"gray" ofType:@"plist"];
@@ -68,40 +67,85 @@ ThemeManager *thThemeManager;
     
     //replace this with image
     theme2Img.layer.backgroundColor = [[UIColor colorwithHexString:backgroundColor2 alpha:1] CGColor];
-    
     theme3Img.layer.cornerRadius = 65;
     theme3Img.layer.borderWidth = 2.0;
-    theme3Img.layer.borderColor = [thThemeManager.contactImageBorderColor CGColor];;
+    
     theme3Img.layer.masksToBounds = YES;
     
     theme4Img.layer.cornerRadius = 65;
     theme4Img.layer.borderWidth = 2.0;
-    theme4Img.layer.borderColor = [thThemeManager.contactImageBorderColor CGColor];;
+    
     theme4Img.layer.masksToBounds = YES;
     
     theme5Img.layer.cornerRadius = 65;
     theme5Img.layer.borderWidth = 2.0;
-    theme5Img.layer.borderColor = [thThemeManager.contactImageBorderColor CGColor];;
+    
     theme5Img.layer.masksToBounds = YES;
     
     theme6Img.layer.cornerRadius = 65;
     theme6Img.layer.borderWidth = 2.0;
-    theme6Img.layer.borderColor = [thThemeManager.contactImageBorderColor CGColor];;
+    
     theme6Img.layer.masksToBounds = YES;
 
     chooseThemeLbl.textColor = thThemeManager.textColor;
+    [self changeBorderColor];
     
+}
+
+-(void)changeBorderColor{
+    theme1Img.layer.borderColor = [thThemeManager.contactImageBorderColor CGColor];
+    theme2Img.layer.borderColor = [thThemeManager.contactImageBorderColor CGColor];
+    theme3Img.layer.borderColor = [thThemeManager.contactImageBorderColor CGColor];
+    theme4Img.layer.borderColor = [thThemeManager.contactImageBorderColor CGColor];
+    theme5Img.layer.borderColor = [thThemeManager.contactImageBorderColor CGColor];
+    theme6Img.layer.borderColor = [thThemeManager.contactImageBorderColor CGColor];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *selectedTheme = [defaults objectForKey:@"theme"];
+    if([selectedTheme isEqualToString:@"default"])
+    {
+        theme1Img.layer.borderColor = [[UIColor darkGrayColor] CGColor];
+    }
+    if([selectedTheme isEqualToString:@"gray"])
+    {
+        theme2Img.layer.borderColor = [[UIColor darkGrayColor] CGColor];
+    }
 }
 
 -(void)tapDetectedImg1{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[@"default" lowercaseString] forKey:@"theme"];
+    [self changeBorderColor];
+    [self openAlert];
 }
 
 -(void)tapDetectedImg2{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[@"gray" lowercaseString] forKey:@"theme"];
+    [self changeBorderColor];
+    [self openAlert];
 }
+
+-(void)openAlert{
+    UIAlertController * alert = [UIAlertController
+                                 alertControllerWithTitle:@"Change theme"
+                                 message:@"In order to apply changes to your theme, you need to restart app"
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    UIAlertAction* okButton = [UIAlertAction
+                                actionWithTitle:@"OK"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {
+                                    //Handle your yes please button action here
+                                }];
+    
+    [alert addAction:okButton];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -1,3 +1,17 @@
-PODFILE CHECKSUM: 14b8049daade47fbf8f608a3fbb55933f8d9594c
+PODS:
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SWTableViewCell (0.3.7)
 
-COCOAPODS: 1.1.1
+DEPENDENCIES:
+  - SDWebImage (~> 3.8)
+  - SWTableViewCell (~> 0.3.7)
+
+SPEC CHECKSUMS:
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
+
+PODFILE CHECKSUM: ce07847659ccd602ca8fa2a5513ea5ad34a15408
+
+COCOAPODS: 1.2.0

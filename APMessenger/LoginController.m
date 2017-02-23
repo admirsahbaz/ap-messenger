@@ -46,16 +46,16 @@ ThemeManager *theme;
     self.lblEmail.textColor = theme.textColor;
     
     CALayer *border = [CALayer layer];
-    CGFloat borderWidth = 1;
-    border.borderColor = [[UIColor lightGrayColor] CGColor];   border.borderWidth = borderWidth;
+    CGFloat borderWidth = 0.3;
+    border.borderColor = [[UIColor whiteColor] CGColor];   border.borderWidth = borderWidth;
     border.frame = CGRectMake(0, self.passwordTxt.frame.size.height- borderWidth, self.passwordTxt.frame.size.width, self.passwordTxt.frame.size.height);
     
     [self.passwordTxt.layer addSublayer:border];
     self.passwordTxt.layer.masksToBounds = YES;
     
     CALayer *borderPass = [CALayer layer];
-    CGFloat width = 1;
-    borderPass.borderColor = [[UIColor lightGrayColor] CGColor];
+    CGFloat width = 0.3;
+    borderPass.borderColor = [[UIColor whiteColor] CGColor];
     borderPass.borderWidth = width;
     borderPass.frame = CGRectMake(0, self.passwordTxt.frame.size.height- width, self.passwordTxt.frame.size.width, self.passwordTxt.frame.size.height);
     

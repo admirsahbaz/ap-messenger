@@ -115,8 +115,34 @@
                                     <segue destination="Uph-WF-eEd" kind="show" id="I2u-Qc-wp7"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xlC-WS-Crb">
+                                <frame key="frameInset" minX="45" minY="462" width="314" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test@authoritypartners.com" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XX9-Bi-BhH">
+                                <frame key="frameInset" minX="45" minY="395" width="314" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                            </textField>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="center" fixedFrame="YES" image="icon-envelope" translatesAutoresizingMaskIntoConstraints="NO" id="JD4-f2-Eph">
+                                <frame key="frameInset" minX="17" minY="398" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="center" fixedFrame="YES" image="icon-lock" translatesAutoresizingMaskIntoConstraints="NO" id="dkf-j8-6I8">
+                                <frame key="frameInset" minX="17" minY="465" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="ap-messenger-logo" translatesAutoresizingMaskIntoConstraints="NO" id="7Ed-Wq-zGn">
+                                <frame key="frameInset" minX="63" minY="111" width="248" height="239"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6H-eE-IjQ">
-                                <frame key="frameInset" minX="61" minY="534" width="314" height="55"/>
+                                <frame key="frameInset" minX="30" minY="534" width="314" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="SIGN IN"/>
@@ -130,32 +156,6 @@
                                     <segue destination="18Z-wv-mhF" kind="show" identifier="LoginSegue" id="feF-tB-8XP"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xlC-WS-Crb">
-                                <frame key="frameInset" minX="61" minY="459" width="314" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test@authoritypartners.com" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XX9-Bi-BhH">
-                                <frame key="frameInset" minX="61" minY="395" width="314" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                            </textField>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="center" fixedFrame="YES" image="icon-envelope" translatesAutoresizingMaskIntoConstraints="NO" id="JD4-f2-Eph">
-                                <frame key="frameInset" minX="32" minY="398" width="25" height="25"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="ap-messenger-logo" translatesAutoresizingMaskIntoConstraints="NO" id="7Ed-Wq-zGn">
-                                <frame key="frameInset" minX="63" minY="111" width="248" height="239"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="center" fixedFrame="YES" image="icon-lock" translatesAutoresizingMaskIntoConstraints="NO" id="dkf-j8-6I8">
-                                <frame key="frameInset" minX="32" minY="462" width="25" height="25"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>

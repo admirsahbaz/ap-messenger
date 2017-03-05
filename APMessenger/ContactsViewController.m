@@ -21,6 +21,8 @@
 
 @synthesize contacts = _contacts;
 @synthesize identifier = _identifier;
+int chatIdTemp;
+
 
 ThemeManager *themeManager;
 
@@ -161,7 +163,19 @@ ThemeManager *themeManager;
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"SegueContactsChat" sender:tableView];
+      id selectedContact = [_contacts objectAtIndex:indexPath.row];
+    NSString *contactId = [selectedContact objectForKey:@"Id"];
+    RestHelper *rest =  [RestHelper SharedInstance];
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:contactId, @"Id", nil];
+    
+    [rest requestPath:@"/GetContactChat" withData:dict andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self openChatWindow:data withError:error];
+        });
+    }];
+
+    
+    //[self performSegueWithIdentifier:@"SegueContactsChat" sender:tableView];
 }
 
 
@@ -177,10 +191,17 @@ ThemeManager *themeManager;
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         id _selectedContact = [_contacts objectAtIndex:indexPath.row];
         ChatViewController *cvc = [segue destinationViewController];
-        cvc.chatId = 3;
+        cvc.chatId = chatIdTemp;
         cvc.chatPerson = [_selectedContact objectForKey:@"Name"];
     }
 }
 
+
+- (void)openChatWindow:(NSData*)data withError:(NSError*)error{
+    NSString *chatIdS = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+    chatIdTemp = [chatIdS intValue];
+    
+    [self performSegueWithIdentifier:@"SegueContactsChat" sender:self];
+}
 
 @end

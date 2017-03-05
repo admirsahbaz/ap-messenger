@@ -18,5 +18,6 @@
 @property (strong, nonatomic) UIColor *contactImageBorderColor;
 @property (strong, nonatomic) UIColor *tableViewSeparatorColor;
 @property (strong, nonatomic) UIColor *navigationBarBackgroundColor;
-
+@property (strong, nonatomic) UIColor *actionButtonLeftColor;
+@property (strong, nonatomic) UIColor *actionButtonRightColor;
 @end

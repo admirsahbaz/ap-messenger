@@ -58,6 +58,14 @@
         // Text Color
         NSString *textColorHexString = [theme objectForKey:@"textColor"];
         self.textColor = [UIColor colorwithHexString:textColorHexString alpha:0.7];
+        
+        // Action Button Left Color
+        NSString *actionButtonLeftColorHexString = [theme objectForKey:@"actionButtonLeftColor"];
+        self.actionButtonLeftColor = [UIColor colorwithHexString:actionButtonLeftColorHexString alpha:1];
+    
+        // Action Button Right Color
+        NSString *actionButtonRightColorHexString = [theme objectForKey:@"actionButtonRightColor"];
+        self.actionButtonRightColor = [UIColor colorwithHexString:actionButtonRightColorHexString alpha:1];
     }
     return self;
 }

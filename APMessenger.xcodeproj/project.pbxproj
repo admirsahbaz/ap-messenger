@@ -12,6 +12,8 @@
 		0F827DA21E4765F400F799A6 /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F827DA11E4765F400F799A6 /* CurrentUser.m */; };
 		0FF656141E35499C00C5D5D0 /* RestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF656111E35499C00C5D5D0 /* RestHelper.m */; };
 		0FF656151E35499C00C5D5D0 /* TabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF656131E35499C00C5D5D0 /* TabViewController.m */; };
+		546576641E60FF1100EE2217 /* SearchPeopleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 546576631E60FF1100EE2217 /* SearchPeopleTableViewController.m */; };
+		546576671E6C637300EE2217 /* SearchPeopleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 546576661E6C637300EE2217 /* SearchPeopleTableViewCell.m */; };
 		546C94DF1E107AFD00571006 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C94DE1E107AFD00571006 /* main.m */; };
 		546C94E21E107AFD00571006 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C94E11E107AFD00571006 /* AppDelegate.m */; };
 		546C94E51E107AFD00571006 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 546C94E41E107AFD00571006 /* LoginController.m */; };
@@ -66,6 +68,10 @@
 		0FF656121E35499C00C5D5D0 /* TabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabViewController.h; sourceTree = "<group>"; };
 		0FF656131E35499C00C5D5D0 /* TabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabViewController.m; sourceTree = "<group>"; };
 		2686E2DBA7AB0D692214CF4F /* libPods-APMessenger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-APMessenger.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		546576621E60FF1100EE2217 /* SearchPeopleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPeopleTableViewController.h; sourceTree = "<group>"; };
+		546576631E60FF1100EE2217 /* SearchPeopleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPeopleTableViewController.m; sourceTree = "<group>"; };
+		546576651E6C637300EE2217 /* SearchPeopleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPeopleTableViewCell.h; sourceTree = "<group>"; };
+		546576661E6C637300EE2217 /* SearchPeopleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPeopleTableViewCell.m; sourceTree = "<group>"; };
 		546C94DA1E107AFD00571006 /* APMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		546C94DE1E107AFD00571006 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		546C94E01E107AFD00571006 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -243,6 +249,10 @@
 				548885891E47D1B3006D275A /* ContactTableViewCell.m */,
 				BF6543AB1E5CB88300144114 /* ThemeViewController.h */,
 				BF6543AC1E5CB88300144114 /* ThemeViewController.m */,
+				546576621E60FF1100EE2217 /* SearchPeopleTableViewController.h */,
+				546576631E60FF1100EE2217 /* SearchPeopleTableViewController.m */,
+				546576651E6C637300EE2217 /* SearchPeopleTableViewCell.h */,
+				546576661E6C637300EE2217 /* SearchPeopleTableViewCell.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -514,8 +524,10 @@
 				BF02D7D11E25A501003A2066 /* RecentTableViewController.m in Sources */,
 				BF6543AD1E5CB88300144114 /* ThemeViewController.m in Sources */,
 				546C94E21E107AFD00571006 /* AppDelegate.m in Sources */,
+				546576671E6C637300EE2217 /* SearchPeopleTableViewCell.m in Sources */,
 				0F827DA21E4765F400F799A6 /* CurrentUser.m in Sources */,
 				0FF656141E35499C00C5D5D0 /* RestHelper.m in Sources */,
+				546576641E60FF1100EE2217 /* SearchPeopleTableViewController.m in Sources */,
 				BF800DF51E36C27200438589 /* SettingsViewController.m in Sources */,
 				548885901E480D0D006D275A /* UIImage+FromColor.m in Sources */,
 				BF76C9331E26C26400D3CC49 /* ChatViewController.m in Sources */,

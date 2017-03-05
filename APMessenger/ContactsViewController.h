@@ -12,5 +12,6 @@
 @property (strong, nonatomic) NSMutableArray *contacts;
 @property (strong, nonatomic) NSString *identifier;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *addContacts;
 
 @end

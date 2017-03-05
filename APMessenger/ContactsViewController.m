@@ -40,15 +40,34 @@ ThemeManager *themeManager;
     return rightUtilityButtons;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];    
+-(void)addContactsAction{
+    [self performSegueWithIdentifier:@"SegueContactsSearchPeople" sender:self.tableView];
+}
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
     themeManager = [ThemeManager SharedInstance];
 
     CAGradientLayer *backroundGradient = [CAGradientLayer layer];
     backroundGradient.frame = self.view.bounds;
     backroundGradient.colors = [NSArray arrayWithObjects:(id)[themeManager.backgroundTopColor CGColor], (id)[themeManager.backgroundBottomColor CGColor], nil];
     [self.view.layer insertSublayer:backroundGradient atIndex:0];
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    CAGradientLayer *btnGradient = [CAGradientLayer layer];
+    btnGradient.frame = self.addContacts.layer.bounds;
+    btnGradient.colors = [NSArray arrayWithObjects:(id)[themeManager.actionButtonLeftColor CGColor], (id)[themeManager.actionButtonRightColor CGColor], nil];
+    btnGradient.startPoint = CGPointMake(0.0, 0.5);
+    btnGradient.endPoint = CGPointMake(1.0, 0.5);
+    btnGradient.cornerRadius = 8;
+    [self.addContacts.layer addSublayer:btnGradient];
+    self.addContacts.layer.cornerRadius = 8;
+    self.addContacts.tintColor = themeManager.textColor;
+    [self.addContacts addTarget:self action:@selector(addContactsAction) forControlEvents:UIControlEventTouchUpInside];
     
     RestHelper *rest =  [RestHelper SharedInstance];
     
@@ -123,14 +142,18 @@ ThemeManager *themeManager;
     cell.ContactName.text = contactName;
     cell.ContactName.textColor = themeManager.textColor;
     
-    [cell.ContactImage sd_setImageWithURL:[NSURL URLWithString:@"http://keenthemes.com/preview/metronic/theme/assets/pages/media/profile/profile_user.jpg"] placeholderImage:[UIImage imageNamed:@"DefaultUserIcon"]];
+    [cell.ContactImage sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"DefaultUserIcon"]];
     
-    cell.ContactImage.layer.cornerRadius = 35;
+    cell.ContactImage.layer.cornerRadius = 30;
     cell.ContactImage.layer.masksToBounds = YES;
     cell.ContactImage.layer.borderColor = [themeManager.contactImageBorderColor CGColor];
-    cell.ContactImage.layer.borderWidth = 4;
+    cell.ContactImage.layer.borderWidth = 3.5;
 
     cell.backgroundColor = [UIColor clearColor];
+    
+    UIView *bottomLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 80, self.view.bounds.size.width, 1)];
+    bottomLineView.backgroundColor = themeManager.tableViewSeparatorColor;
+    [cell.contentView addSubview:bottomLineView];
     
     return cell;
 }
@@ -143,8 +166,10 @@ ThemeManager *themeManager;
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
     switch (index) {
         case 0:
+        {
             [self performSegueWithIdentifier:@"SegueContactsContact" sender:self.tableView];
-            break;
+                break;
+        }
         case 1:
         {
             // Delete button was pressed

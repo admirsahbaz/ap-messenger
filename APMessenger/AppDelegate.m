@@ -27,7 +27,7 @@
     [[UINavigationBar appearance] setBackgroundImage:navigationBarBackgroundImage forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBackgroundImage:navigationBarBackgroundImage forBarMetrics:UIBarMetricsCompact];
     [[UINavigationBar appearance] setBarStyle:UIBarStyleDefault];
-    [[UINavigationBar appearance] setTintColor:themeManager.textColor];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
     return YES;
 }

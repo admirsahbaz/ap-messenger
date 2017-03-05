@@ -40,7 +40,7 @@
     self.searchController.dimsBackgroundDuringPresentation = NO;
     self.searchController.delegate = self;
     self.searchController.searchBar.barTintColor = themeManager.backgroundTopColor;
-    self.searchController.searchBar.tintColor = themeManager.textColor;
+    self.searchController.searchBar.tintColor = [UIColor whiteColor];
     self.searchController.searchBar.delegate = self;
     
     self.tableView.tableHeaderView = self.searchController.searchBar;
@@ -148,14 +148,18 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"SegueSearchPeopleContact" sender:tableView];
+}
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
+
 
 /*
 // Override to support editing the table view.

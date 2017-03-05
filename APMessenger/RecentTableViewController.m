@@ -116,8 +116,57 @@ ThemeManager *recentThemeManager;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 #pragma mark - Table view data source
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    if(editingStyle == UITableViewCellEditingStyleDelete){
+        id row = [_recents objectAtIndex:indexPath.row];
+        NSString *chatId = [row objectForKey:@"ChatId"];
+        RestHelper *rest =  [RestHelper SharedInstance];
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete chat" message:@"Are you sure?" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:chatId, @"ChatId", nil];
+
+            [rest requestPath:@"/DeleteChat" withData:dict andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self handleError:data withError:error];
+                });
+            }];
+          [self refreshRecents];
+        }];
+        
+        UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+           
+        }];
+        [alert addAction:yes];
+        [alert addAction:no];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    }
+ }
+- (void)handleError:(NSData*)data withError:(NSError*)error{
+    if(error)
+    {
+        NSLog(@"ERROR 1: %@", error);
+    }
+    else{
+        NSError *err = nil;
+        if(!data){
+            return;
+        }
+        
+        if (err == nil)
+        {
+            NSLog(@"Success");
+        }
+        else
+        {
+            NSLog(@"Error");
+        }
+    }
+ }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -126,7 +175,6 @@ ThemeManager *recentThemeManager;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _recents.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     

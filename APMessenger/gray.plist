@@ -14,5 +14,9 @@
 	<string>FFFFFF</string>
 	<key>navigationBarBackgroundColor</key>
 	<string>FFFFFF</string>
+	<key>actionButtonLeftColor</key>
+	<string>00C6FF</string>
+	<key>actionButtonRightColor</key>
+	<string>0072FF</string>
 </dict>
 </plist>

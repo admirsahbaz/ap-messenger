@@ -24,6 +24,7 @@
 @synthesize identifier = _identifier;
 
 ThemeManager *themeManager;
+UIStoryboardSegue *segue;
 
 - (NSArray *)rightButtons
 {
@@ -207,47 +208,44 @@ ThemeManager *themeManager;
         cvc.chatPerson = [_selectedContact objectForKey:@"Name"];
     }
     else if ([[segue identifier] isEqualToString:@"SegueContactsContact"]){
-
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         id _selectedContact = [_contacts objectAtIndex:indexPath.row];
         NSString *userId =[_selectedContact objectForKey:@"Id"];
-
-        /*RestHelper *rest =  [RestHelper SharedInstance];
-        NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:userId, @"Id", nil];
-        [rest requestPath:@"/GetUserDetails" withData:dict andHttpMethod:@"GET" onCompletion:^(NSData *data, NSError *error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self handleResponse:data withError:error seque:segue];
-               
-            });
-        }];*/
-    }
-}
-- (void)handleResponse:(NSData*)data withError:(NSError*)error seque: (UIStoryboardSegue *)seque{
-    if(error)
-    {
-        NSLog(@"ERROR : %@", error);
-    }
-    else{
-        NSError *err = nil;
-        if(!data){
-            return;
-        }
+        RestHelper *rest =  [RestHelper SharedInstance];
+        self.segue = segue;
         
-        if (err == nil)
-        {
-            ContactProfileViewController *profilectrl = [seque destinationViewController];
-            NSDictionary *dictResponse = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-            profilectrl.lblUsername.text = [dictResponse objectForKey:@"Name"];
-            profilectrl.lblUserEmail.text= [dictResponse objectForKey:@"Email"];
-            NSLog(@"Success");
-        }
-        else
-        {
-            NSLog(@"Error");
-        }
+        NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:userId, @"Id", nil];
+        [rest requestPath:@"/GetUserDetails" withData:dict andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if(error)
+                {
+                    NSLog(@"ERROR : %@", error);
+                }
+                else{
+                    NSError *err = nil;
+                    if(!data){
+                        return;
+                    }
+                    
+                    if (err == nil)
+                    {
+                        NSDictionary *dictResponse = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+                        ContactProfileViewController *profilectrl = [segue destinationViewController];
+                        [profilectrl.lblUserEmail setText:[dictResponse objectForKey:@"Name"]];
+                        [profilectrl.lblUsername setText:[dictResponse objectForKey:@"Email"]];
+                        
+                        NSLog(@"Success");
+                    }
+                    else
+                    {
+                        NSLog(@"Error");
+                    }
+                }
+                
+            });
+            
+        }];
     }
 }
-
-
 
 @end

@@ -10,6 +10,7 @@
 #import "ThemeManager.h"
 #import "CurrentUser.h"
 #import "RecentTableViewController.h"
+#import <AZSClient/AZSClient.h>
 
 @interface SettingsViewController ()
 

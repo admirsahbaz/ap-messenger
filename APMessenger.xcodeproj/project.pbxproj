@@ -39,6 +39,7 @@
 		BF76C9301E26C0C800D3CC49 /* ContactProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF76C92F1E26C0C800D3CC49 /* ContactProfileViewController.m */; };
 		BF76C9331E26C26400D3CC49 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF76C9321E26C26400D3CC49 /* ChatViewController.m */; };
 		BF800DF51E36C27200438589 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF800DF41E36C27200438589 /* SettingsViewController.m */; };
+		BF85C4A71E6F4AA300E78A95 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BF85C4A61E6F4AA300E78A95 /* libxml2.2.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		BF76C9321E26C26400D3CC49 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		BF800DF31E36C27200438589 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		BF800DF41E36C27200438589 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		BF85C4A61E6F4AA300E78A95 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF85C4A71E6F4AA300E78A95 /* libxml2.2.tbd in Frameworks */,
 				03D2FAD4179D86421F276A7A /* libPods-APMessenger.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +327,7 @@
 		E5E06F15FC07BF451B238615 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF85C4A61E6F4AA300E78A95 /* libxml2.2.tbd */,
 				2686E2DBA7AB0D692214CF4F /* libPods-APMessenger.a */,
 			);
 			name = Frameworks;
@@ -690,6 +694,7 @@
 			baseConfigurationReference = 9DF23F6704F6D34C2CD7271B /* Pods-APMessenger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = APMessenger/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = api.APMessenger;
@@ -702,6 +707,7 @@
 			baseConfigurationReference = BD4809E229DF0814B75AEAF5 /* Pods-APMessenger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = APMessenger/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = api.APMessenger;

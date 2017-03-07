@@ -1,17 +1,20 @@
 PODS:
+  - AZSClient (0.2.2)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
   - SWTableViewCell (0.3.7)
 
 DEPENDENCIES:
+  - AZSClient
   - SDWebImage (~> 3.8)
   - SWTableViewCell (~> 0.3.7)
 
 SPEC CHECKSUMS:
+  AZSClient: 469db5162a0e59cc764715b233794e26ade29736
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
 
-PODFILE CHECKSUM: ce07847659ccd602ca8fa2a5513ea5ad34a15408
+PODFILE CHECKSUM: 63ced39aaf3d943a65d461a5a238c6124c923743
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.1.1

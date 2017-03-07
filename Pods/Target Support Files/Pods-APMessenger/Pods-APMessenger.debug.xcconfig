@@ -1,8 +1,12 @@
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/SDWebImage" "${PODS_ROOT}/Headers/Public/SWTableViewCell"
-LIBRARY_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/SDWebImage" "$PODS_CONFIGURATION_BUILD_DIR/SWTableViewCell"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/SDWebImage" -isystem "${PODS_ROOT}/Headers/Public/SWTableViewCell"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"SDWebImage" -l"SWTableViewCell" -framework "ImageIO"
+HEADER_SEARCH_PATHS = $(SDKROOT)/usr/include/libxml2 $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AZSClient" "${PODS_ROOT}/Headers/Public/SDWebImage" "${PODS_ROOT}/Headers/Public/SWTableViewCell"
+LIBRARY_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/AZSClient" "$PODS_CONFIGURATION_BUILD_DIR/SDWebImage" "$PODS_CONFIGURATION_BUILD_DIR/SWTableViewCell"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AZSClient" -isystem "${PODS_ROOT}/Headers/Public/SDWebImage" -isystem "${PODS_ROOT}/Headers/Public/SWTableViewCell"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"AZSClient" -l"SDWebImage" -l"SWTableViewCell" -l"xml2.2" -framework "ImageIO"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_ROOT = ${SRCROOT}/Pods
+SWIFT_INCLUDE_PATHS[sdk=iphoneos*] = $(SRCROOT)/Pods/AZSClient/asl/iphoneos
+SWIFT_INCLUDE_PATHS[sdk=iphonesimulator*] = $(SRCROOT)/Pods/AZSClient/asl/iphonesimulator
+SWIFT_INCLUDE_PATHS[sdk=macosx*] = $(SRCROOT)/Pods/AZSClient/asl/macosx

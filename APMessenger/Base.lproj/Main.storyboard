@@ -266,7 +266,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="P7q-0k-s2Z">
-                                <frame key="frameInset" minY="264" width="375" height="354"/>
+                                <frame key="frameInset" minY="252" width="375" height="366"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <connections>
@@ -274,17 +274,8 @@
                                     <outlet property="delegate" destination="VOg-aA-jgL" id="hNI-z0-ev3"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzl-vj-VMk">
-                                <frame key="frameInset" minX="109" minY="226" width="157" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Upload profile picture"/>
-                                <connections>
-                                    <action selector="uploadImageBtn:" destination="VOg-aA-jgL" eventType="touchUpInside" id="MuP-Ti-yUd"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S8q-a4-ypA">
-                                <frame key="frameInset" minX="115" minY="74" width="145" height="144"/>
+                                <frame key="frameInset" minX="115" minY="84" width="145" height="144"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -293,7 +284,6 @@
                     <tabBarItem key="tabBarItem" title="Settings" id="6N9-9s-dI1"/>
                     <connections>
                         <outlet property="profileImage" destination="S8q-a4-ypA" id="F0M-fV-GeU"/>
-                        <outlet property="uploadImageBtn" destination="gzl-vj-VMk" id="mWn-64-OR6"/>
                         <segue destination="abx-1T-c1r" kind="show" identifier="SegueSettingsPassword" id="Asg-vS-dil"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="SegueSettingsLogout" id="V2q-yt-zlD"/>
                         <segue destination="soT-bo-htf" kind="show" identifier="SegueSettingsTheme" id="2dN-UG-ARf"/>
@@ -549,7 +539,7 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contactTableViewCell" rowHeight="81" id="9PC-5L-Mug" customClass="ContactTableViewCell">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="81"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9PC-5L-Mug" id="MOe-uM-WJd">
                                             <frame key="frameInset" width="375" height="81"/>
@@ -691,10 +681,10 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeftChatCell" rowHeight="59" id="PfR-2k-jPp" customClass="LeftChatTableViewCell">
-                                        <rect key="frame" x="0.0" y="120" width="1000" height="59"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PfR-2k-jPp" id="WKJ-GW-ZhJ">
-                                            <frame key="frameInset" width="1000" height="59"/>
+                                            <frame key="frameInset" width="375" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="122" translatesAutoresizingMaskIntoConstraints="NO" id="TEX-5O-KYK">
@@ -729,10 +719,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RightChatCell" rowHeight="59" id="J6N-JS-B7E" customClass="RightChatTableViewCell">
-                                        <rect key="frame" x="0.0" y="179" width="1000" height="59"/>
+                                        <rect key="frame" x="0.0" y="115" width="375" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="J6N-JS-B7E" id="Ore-dN-jon">
-                                            <frame key="frameInset" width="1000" height="59"/>
+                                            <frame key="frameInset" width="375" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="122" translatesAutoresizingMaskIntoConstraints="NO" id="HXz-I8-461">
@@ -834,8 +824,8 @@
         <image name="status-online" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AB1-ux-wU9"/>
-        <segue reference="Iq9-Fz-YXc"/>
+        <segue reference="V2q-yt-zlD"/>
         <segue reference="elL-1X-wBB"/>
+        <segue reference="Iq9-Fz-YXc"/>
     </inferredMetricsTieBreakers>
 </document>

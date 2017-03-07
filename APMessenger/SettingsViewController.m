@@ -19,7 +19,7 @@
 
 @synthesize identifier = _identifier;
 @synthesize profileImage;
-@synthesize uploadImageBtn;
+
 
 ThemeManager *settingsThemeManager;
 
@@ -37,12 +37,25 @@ ThemeManager *settingsThemeManager;
     self.profileImage.layer.borderWidth = 2.0;
     self.profileImage.layer.borderColor = [settingsThemeManager.contactImageBorderColor CGColor];;
     self.profileImage.layer.masksToBounds = YES;
-    
-    self.uploadImageBtn.tintColor = settingsThemeManager.textColor;
-    
+        
     self.profileImage.image = [self resizeImage:[UIImage imageNamed:@"contactimg.jpg"] imageSize:CGSizeMake(150, 150)];
     
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImg)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.profileImage setUserInteractionEnabled: YES];
+    [self.profileImage addGestureRecognizer:singleTap];
+    
 }
+
+-(void)tapImg{
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
+    imagePickerController.allowsEditing = YES;
+    imagePickerController.delegate = self;
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+    
+}
+
 
 - (void)viewDidAppear:(BOOL)animated {
     self.tabBarController.title = @"Settings";
@@ -197,14 +210,6 @@ ThemeManager *settingsThemeManager;
     return 40.0f;
 }
 
-- (IBAction)uploadImageBtn:(id)sender {
-    
-    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
-    imagePickerController.allowsEditing = YES;
-    imagePickerController.delegate = self;
-    imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    [self presentViewController:imagePickerController animated:YES completion:nil];
-}
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary<NSString *,id> *)editingInfo
 {

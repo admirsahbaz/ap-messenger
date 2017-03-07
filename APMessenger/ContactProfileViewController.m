@@ -50,10 +50,6 @@ ThemeManager *_themeManager;
     //text color
     lblUsername.textColor = _themeManager.textColor;
     lblUserEmail.textColor = _themeManager.textColor;
-    
-    //mock data
-    [lblUsername setText:@"John Doe"];
-    [lblUserEmail setText:@"testemail@authoritypartners.com"];
        
     NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem: self.btnAddToContacts attribute: NSLayoutAttributeBottom relatedBy: NSLayoutRelationEqual toItem:self.view attribute: NSLayoutAttributeBottom multiplier:2.0f constant: 400.f];
     

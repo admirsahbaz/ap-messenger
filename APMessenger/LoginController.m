@@ -132,6 +132,11 @@ ThemeManager *theme;
             [self authenticate:data withError:error];
         });
     }];
+    
+    [rest requestPath:@"/UpdateLastActivity" withData:nil andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+        });
+    }];
 }
 
 

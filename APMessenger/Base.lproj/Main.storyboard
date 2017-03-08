@@ -385,7 +385,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1R1-88-ndE" id="VD5-FY-nHX">
-                                    <frame key="frameInset" width="375" height="81"/>
+                                    <frame key="frameInset" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8SZ-CS-Nju" userLabel="Image">
@@ -542,7 +542,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9PC-5L-Mug" id="MOe-uM-WJd">
-                                            <frame key="frameInset" width="375" height="81"/>
+                                            <frame key="frameInset" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sZe-nF-q0W" userLabel="ContactImage">
@@ -550,27 +550,23 @@
                                                         <constraint firstAttribute="width" constant="60" id="Qvm-em-FMM"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="status-online" translatesAutoresizingMaskIntoConstraints="NO" id="Ax2-at-bM7" userLabel="StatusIndicator">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="18" id="3S2-Fr-Nqm"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ContactName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpx-Zf-lP8">
                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uci-Eq-Adj">
+                                                    <frame key="frameInset" minX="50" minY="51" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="bpx-Zf-lP8" firstAttribute="leading" secondItem="sZe-nF-q0W" secondAttribute="trailing" constant="10" id="2wJ-k8-VP9"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Ax2-at-bM7" secondAttribute="bottom" constant="3" id="Mz6-cu-4M9"/>
                                                 <constraint firstItem="bpx-Zf-lP8" firstAttribute="top" secondItem="MOe-uM-WJd" secondAttribute="topMargin" constant="20" id="OQV-mG-fOX"/>
                                                 <constraint firstItem="sZe-nF-q0W" firstAttribute="centerY" secondItem="MOe-uM-WJd" secondAttribute="centerY" id="S7e-ca-Jdj"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="bpx-Zf-lP8" secondAttribute="trailing" constant="17" id="TBL-WR-aUo"/>
                                                 <constraint firstItem="sZe-nF-q0W" firstAttribute="top" secondItem="MOe-uM-WJd" secondAttribute="topMargin" constant="2" id="U2E-xx-SdS"/>
                                                 <constraint firstItem="sZe-nF-q0W" firstAttribute="centerY" secondItem="bpx-Zf-lP8" secondAttribute="centerY" id="fdJ-5O-KzY"/>
-                                                <constraint firstItem="Ax2-at-bM7" firstAttribute="leading" secondItem="MOe-uM-WJd" secondAttribute="leadingMargin" constant="43" id="frz-at-uEs"/>
-                                                <constraint firstItem="Ax2-at-bM7" firstAttribute="top" secondItem="MOe-uM-WJd" secondAttribute="topMargin" constant="43" id="oEs-xo-XYa"/>
                                                 <constraint firstItem="sZe-nF-q0W" firstAttribute="leading" secondItem="MOe-uM-WJd" secondAttribute="leadingMargin" constant="2" id="xYG-6G-R5P"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -578,6 +574,7 @@
                                         <connections>
                                             <outlet property="ContactImage" destination="sZe-nF-q0W" id="fjn-hM-IiD"/>
                                             <outlet property="ContactName" destination="bpx-Zf-lP8" id="MUw-c5-7cM"/>
+                                            <outlet property="Status" destination="uci-Eq-Adj" id="evt-EH-W7h"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -624,7 +621,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KNb-z4-epM" id="tkK-2E-x6B">
-                                    <frame key="frameInset" width="375" height="44"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -821,7 +818,6 @@
         <image name="ap-messenger-logo" width="248" height="239"/>
         <image name="icon-envelope" width="25" height="25"/>
         <image name="icon-lock" width="25" height="25"/>
-        <image name="status-online" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="V2q-yt-zlD"/>

@@ -11,6 +11,7 @@
 #import "CurrentUser.h"
 #import "RecentTableViewController.h"
 #import <AZSClient/AZSClient.h>
+#import "RestHelper.h"
 
 @interface SettingsViewController ()
 
@@ -26,7 +27,12 @@ ThemeManager *settingsThemeManager;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    RestHelper *rest =  [RestHelper SharedInstance];
     
+    [rest requestPath:@"/UpdateLastActivity" withData:nil andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+        });
+    }];
     settingsThemeManager = [ThemeManager SharedInstance];
     
     CAGradientLayer *backroundGradient = [CAGradientLayer layer];

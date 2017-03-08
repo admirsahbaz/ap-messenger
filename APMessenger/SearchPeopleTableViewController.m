@@ -24,6 +24,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    RestHelper *rest =  [RestHelper SharedInstance];
+    
+    [rest requestPath:@"/UpdateLastActivity" withData:nil andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+        });
+    }];
     ThemeManager *themeManager = [ThemeManager SharedInstance];
     
     CAGradientLayer *backroundGradient = [CAGradientLayer layer];

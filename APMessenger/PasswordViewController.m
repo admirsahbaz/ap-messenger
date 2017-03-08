@@ -28,6 +28,12 @@ ThemeManager * passwordThemeManager;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    RestHelper *rest =  [RestHelper SharedInstance];
+    
+    [rest requestPath:@"/UpdateLastActivity" withData:nil andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+        });
+    }];
     passwordThemeManager = [ThemeManager SharedInstance];
     self.currentPassword.borderStyle = UITextBorderStyleNone;
     self.password.borderStyle = UITextBorderStyleNone;

@@ -12,5 +12,6 @@
 @interface ContactTableViewCell : SWTableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *ContactImage;
 @property (weak, nonatomic) IBOutlet UILabel *ContactName;
+@property (weak, nonatomic) IBOutlet UIImageView *Status;
 
 @end

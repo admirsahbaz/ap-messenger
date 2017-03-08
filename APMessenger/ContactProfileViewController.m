@@ -8,7 +8,7 @@
 
 #import "ContactProfileViewController.h"
 #import "ThemeManager.h"
-
+#import "RestHelper.h"
 @interface ContactProfileViewController ()
 
 @end
@@ -27,6 +27,12 @@ ThemeManager *_themeManager;
 
     [super viewDidLoad];
     
+    RestHelper *rest =  [RestHelper SharedInstance];
+    
+    [rest requestPath:@"/UpdateLastActivity" withData:nil andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+        });
+    }];
     // Do any additional setup after loading the view.
     _themeManager = [ThemeManager SharedInstance];
     [self.profilePicture setImage:[UIImage imageNamed:@"contactimg.jpg"]];

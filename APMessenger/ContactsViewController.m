@@ -24,7 +24,6 @@
 @synthesize identifier = _identifier;
 int chatIdTemp;
 
-
 ThemeManager *themeManager;
 UIStoryboardSegue *segue;
 
@@ -81,6 +80,10 @@ UIStoryboardSegue *segue;
         });
     }];
     
+    [rest requestPath:@"/UpdateLastActivity" withData:nil andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+        });
+    }];
     // Do any additional setup after loading the view.
 }
 
@@ -138,10 +141,27 @@ UIStoryboardSegue *segue;
     
     NSString *contactName;
     NSString *imgUrl;
+    NSLocale *currentLocale = [NSLocale currentLocale];
+    [[NSDate date ] descriptionWithLocale:currentLocale];
+    NSInteger currentTimeInterval = [[NSDate date] timeIntervalSince1970];
+    NSDate *lastActivity;
     
     id row = [_contacts objectAtIndex:indexPath.row];
     contactName = [row objectForKey:@"Name"];
     imgUrl = [row objectForKey:@"ImageUrl"];
+
+    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+    [ dateFormater setDateFormat:@"YYYY-MM-dd'T'HH:mm:ss.SS"];
+    lastActivity = [dateFormater dateFromString:[row objectForKey:@"LastActivity"]];
+    NSInteger userLastActivity = [ lastActivity timeIntervalSince1970];
+    
+  if((currentTimeInterval - userLastActivity) > 60){
+      [cell.Status setImage:[UIImage imageNamed:@"status-offline"]];
+    }
+   else
+    {
+        [cell.Status setImage:[UIImage imageNamed:@"status-online"]];
+    }
     
     cell.ContactName.text = contactName;
     cell.ContactName.textColor = themeManager.textColor;

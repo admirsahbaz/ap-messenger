@@ -22,10 +22,9 @@
 
 @synthesize contacts = _contacts;
 @synthesize identifier = _identifier;
-int chatIdTemp;
 
 ThemeManager *themeManager;
-UIStoryboardSegue *segue;
+NSInteger *selectedContact;
 
 - (NSArray *)rightButtons
 {
@@ -35,10 +34,10 @@ UIStoryboardSegue *segue;
     
     [rightUtilityButtons sw_addUtilityButtonWithColor:
      themeManager.tableViewSeparatorColor
-                                                icon:[UIImage imageNamed:@"icon-profile"]];
+                                                 icon:[UIImage imageNamed:@"icon-profile"]];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
      themeManager.tableViewSeparatorColor
-                                                icon:[UIImage imageNamed:@"icon-thrash"]];
+                                                 icon:[UIImage imageNamed:@"icon-thrash"]];
     
     return rightUtilityButtons;
 }
@@ -51,7 +50,7 @@ UIStoryboardSegue *segue;
     [super viewDidLoad];
     
     themeManager = [ThemeManager SharedInstance];
-
+    
     CAGradientLayer *backroundGradient = [CAGradientLayer layer];
     backroundGradient.frame = self.view.bounds;
     backroundGradient.colors = [NSArray arrayWithObjects:(id)[themeManager.backgroundTopColor CGColor], (id)[themeManager.backgroundBottomColor CGColor], nil];
@@ -72,19 +71,18 @@ UIStoryboardSegue *segue;
     self.addContacts.tintColor = themeManager.textColor;
     [self.addContacts addTarget:self action:@selector(addContactsAction) forControlEvents:UIControlEventTouchUpInside];
     
+    [self getContacts];
+    // Do any additional setup after loading the view.
+}
+
+- (void) getContacts {
     RestHelper *rest =  [RestHelper SharedInstance];
     
-    [rest requestPath:@"/Contacts/5" withData:nil andHttpMethod:@"GET" onCompletion:^(NSData *data, NSError *error) {
+    [rest requestPath:@"/Contacts" withData:nil andHttpMethod:@"GET" onCompletion:^(NSData *data, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self fillTable:data withError:error];
         });
     }];
-    
-    [rest requestPath:@"/UpdateLastActivity" withData:nil andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-        });
-    }];
-    // Do any additional setup after loading the view.
 }
 
 - (void)fillTable:(NSData*)data withError:(NSError*)error{
@@ -141,27 +139,10 @@ UIStoryboardSegue *segue;
     
     NSString *contactName;
     NSString *imgUrl;
-    NSLocale *currentLocale = [NSLocale currentLocale];
-    [[NSDate date ] descriptionWithLocale:currentLocale];
-    NSInteger currentTimeInterval = [[NSDate date] timeIntervalSince1970];
-    NSDate *lastActivity;
     
     id row = [_contacts objectAtIndex:indexPath.row];
     contactName = [row objectForKey:@"Name"];
     imgUrl = [row objectForKey:@"ImageUrl"];
-
-    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
-    [ dateFormater setDateFormat:@"YYYY-MM-dd'T'HH:mm:ss.SS"];
-    lastActivity = [dateFormater dateFromString:[row objectForKey:@"LastActivity"]];
-    NSInteger userLastActivity = [ lastActivity timeIntervalSince1970];
-    
-  if((currentTimeInterval - userLastActivity) > 60){
-      [cell.Status setImage:[UIImage imageNamed:@"status-offline"]];
-    }
-   else
-    {
-        [cell.Status setImage:[UIImage imageNamed:@"status-online"]];
-    }
     
     cell.ContactName.text = contactName;
     cell.ContactName.textColor = themeManager.textColor;
@@ -172,7 +153,7 @@ UIStoryboardSegue *segue;
     cell.ContactImage.layer.masksToBounds = YES;
     cell.ContactImage.layer.borderColor = [themeManager.contactImageBorderColor CGColor];
     cell.ContactImage.layer.borderWidth = 3.5;
-
+    
     cell.backgroundColor = [UIColor clearColor];
     
     UIView *bottomLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 80, self.view.bounds.size.width, 1)];
@@ -192,12 +173,16 @@ UIStoryboardSegue *segue;
         case 0:
         {
             [self performSegueWithIdentifier:@"SegueContactsContact" sender:self.tableView];
-                break;
+            break;
         }
         case 1:
         {
             // Delete button was pressed
-            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Are you sure?" delegate:nil cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil, nil];
+            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+            id row = [_contacts objectAtIndex:cellIndexPath.row];
+            selectedContact = [[row objectForKey:@"Id"] integerValue];
+            
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Are you sure?" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil, nil];
             
             [actionSheet setActionSheetStyle:UIActionSheetStyleDefault];
             [actionSheet showInView:self.view];
@@ -208,21 +193,31 @@ UIStoryboardSegue *segue;
     }
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-      id selectedContact = [_contacts objectAtIndex:indexPath.row];
-    NSString *contactId = [selectedContact objectForKey:@"Id"];
+- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0:
+            [self deleteContact];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void) deleteContact{
     RestHelper *rest =  [RestHelper SharedInstance];
-    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:contactId, @"Id", nil];
     
-    [rest requestPath:@"/GetContactChat" withData:dict andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+    NSString *requestUrl = @"/Contacts/";
+    
+    [rest requestPath:[NSString stringWithFormat:@"/Contacts/%i", selectedContact] withData:nil andHttpMethod:@"DELETE" onCompletion:^(NSData *data, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self openChatWindow:data withError:error];
+            [self getContacts];
         });
     }];
+}
 
-    
-    //[self performSegueWithIdentifier:@"SegueContactsChat" sender:tableView];
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"SegueContactsChat" sender:tableView];
 }
 
 
@@ -238,57 +233,51 @@ UIStoryboardSegue *segue;
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         id _selectedContact = [_contacts objectAtIndex:indexPath.row];
         ChatViewController *cvc = [segue destinationViewController];
-        cvc.chatId = chatIdTemp;
+        cvc.chatId = 8;
         cvc.chatPerson = [_selectedContact objectForKey:@"Name"];
     }
     else if ([[segue identifier] isEqualToString:@"SegueContactsContact"]){
+        
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         id _selectedContact = [_contacts objectAtIndex:indexPath.row];
         NSString *userId =[_selectedContact objectForKey:@"Id"];
-        RestHelper *rest =  [RestHelper SharedInstance];
-        self.segue = segue;
         
-        NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:userId, @"Id", nil];
-        [rest requestPath:@"/GetUserDetails" withData:dict andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if(error)
-                {
-                    NSLog(@"ERROR : %@", error);
-                }
-                else{
-                    NSError *err = nil;
-                    if(!data){
-                        return;
-                    }
-                    
-                    if (err == nil)
-                    {
-                        NSDictionary *dictResponse = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-                        ContactProfileViewController *profilectrl = [segue destinationViewController];
-                        [profilectrl.lblUserEmail setText:[dictResponse objectForKey:@"Name"]];
-                        [profilectrl.lblUsername setText:[dictResponse objectForKey:@"Email"]];
-                        
-                        NSLog(@"Success");
-                    }
-                    else
-                    {
-                        NSLog(@"Error");
-                    }
-                }
-                
-            });
-            
-        }];
+        /*RestHelper *rest =  [RestHelper SharedInstance];
+         NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:userId, @"Id", nil];
+         [rest requestPath:@"/GetUserDetails" withData:dict andHttpMethod:@"GET" onCompletion:^(NSData *data, NSError *error) {
+         dispatch_async(dispatch_get_main_queue(), ^{
+         [self handleResponse:data withError:error seque:segue];
+         
+         });
+         }];*/
+    }
+}
+- (void)handleResponse:(NSData*)data withError:(NSError*)error seque: (UIStoryboardSegue *)seque{
+    if(error)
+    {
+        NSLog(@"ERROR : %@", error);
+    }
+    else{
+        NSError *err = nil;
+        if(!data){
+            return;
+        }
+        
+        if (err == nil)
+        {
+            ContactProfileViewController *profilectrl = [seque destinationViewController];
+            NSDictionary *dictResponse = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+            profilectrl.lblUsername.text = [dictResponse objectForKey:@"Name"];
+            profilectrl.lblUserEmail.text= [dictResponse objectForKey:@"Email"];
+            NSLog(@"Success");
+        }
+        else
+        {
+            NSLog(@"Error");
+        }
     }
 }
 
 
-
-- (void)openChatWindow:(NSData*)data withError:(NSError*)error{
-    NSString *chatIdS = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    chatIdTemp = [chatIdS intValue];
-    
-    [self performSegueWithIdentifier:@"SegueContactsChat" sender:self];
-}
 
 @end

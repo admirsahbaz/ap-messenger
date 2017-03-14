@@ -25,6 +25,7 @@
 
 ThemeManager *themeManager;
 NSInteger *selectedContact;
+UIStoryboardSegue *segue;
 
 - (NSArray *)rightButtons
 {
@@ -48,6 +49,12 @@ NSInteger *selectedContact;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    RestHelper *rest =  [RestHelper SharedInstance];
+
+    [rest requestPath:@"/UpdateLastActivity" withData:nil andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+        });
+    }];
     
     themeManager = [ThemeManager SharedInstance];
     
@@ -139,11 +146,28 @@ NSInteger *selectedContact;
     
     NSString *contactName;
     NSString *imgUrl;
+    NSLocale *currentLocale = [NSLocale currentLocale];
+    [[NSDate date ] descriptionWithLocale:currentLocale];
+    NSInteger currentTimeInterval = [[NSDate date] timeIntervalSince1970];
+    NSDate *lastActivity;
     
     id row = [_contacts objectAtIndex:indexPath.row];
     contactName = [row objectForKey:@"Name"];
     imgUrl = [row objectForKey:@"ImageUrl"];
     
+       NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+      [dateFormater setDateFormat:@"YYYY-MM-dd'T'HH:mm:ss.SS"];
+    lastActivity = [dateFormater dateFromString:[row objectForKey:@"LastActivity"]];
+    
+    NSInteger userLastActivity = [ lastActivity timeIntervalSince1970];
+   
+      if((currentTimeInterval - userLastActivity) > 60){
+           [cell.Status setImage:[UIImage imageNamed:@"status-offline"]];
+         }
+     else
+          {
+               [cell.Status setImage:[UIImage imageNamed:@"status-online"]];
+          }
     cell.ContactName.text = contactName;
     cell.ContactName.textColor = themeManager.textColor;
     
@@ -237,47 +261,43 @@ NSInteger *selectedContact;
         cvc.chatPerson = [_selectedContact objectForKey:@"Name"];
     }
     else if ([[segue identifier] isEqualToString:@"SegueContactsContact"]){
-        
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         id _selectedContact = [_contacts objectAtIndex:indexPath.row];
         NSString *userId =[_selectedContact objectForKey:@"Id"];
         
-        /*RestHelper *rest =  [RestHelper SharedInstance];
-         NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:userId, @"Id", nil];
-         [rest requestPath:@"/GetUserDetails" withData:dict andHttpMethod:@"GET" onCompletion:^(NSData *data, NSError *error) {
-         dispatch_async(dispatch_get_main_queue(), ^{
-         [self handleResponse:data withError:error seque:segue];
-         
-         });
-         }];*/
-    }
-}
-- (void)handleResponse:(NSData*)data withError:(NSError*)error seque: (UIStoryboardSegue *)seque{
-    if(error)
-    {
-        NSLog(@"ERROR : %@", error);
-    }
-    else{
-        NSError *err = nil;
-        if(!data){
-            return;
-        }
+        RestHelper *rest =  [RestHelper SharedInstance];
+        self.segue = segue;
         
-        if (err == nil)
-        {
-            ContactProfileViewController *profilectrl = [seque destinationViewController];
-            NSDictionary *dictResponse = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-            profilectrl.lblUsername.text = [dictResponse objectForKey:@"Name"];
-            profilectrl.lblUserEmail.text= [dictResponse objectForKey:@"Email"];
-            NSLog(@"Success");
-        }
-        else
-        {
-            NSLog(@"Error");
-        }
+        NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:userId, @"Id", nil];
+        
+        [rest requestPath:@"/GetUserDetails" withData:dict andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if(error)
+                {
+                    NSLog(@"ERROR : %@", error);
+                }
+                else{
+                    NSError *err = nil;
+                    if(!data){
+                        return;
+                    }
+                    if (err == nil)
+                    {
+                        NSDictionary *dictResponse = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+                        ContactProfileViewController *profilectrl = [segue destinationViewController];
+
+                        [profilectrl.lblUserEmail setText:[dictResponse objectForKey:@"Name"]];
+                        [profilectrl.lblUsername setText:[dictResponse objectForKey:@"Email"]];
+                        NSLog(@"Success");
+                    }
+                    else
+                    {
+                        NSLog(@"Error");
+                    }
+                }
+            });
+        }];
     }
 }
-
-
 
 @end

@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *profileImage;
 @property (strong, nonatomic) NSString *identifier;
+@property (strong, nonatomic) NSString *storageConnectionString;
 
 @end

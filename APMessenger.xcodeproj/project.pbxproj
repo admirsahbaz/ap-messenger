@@ -40,6 +40,7 @@
 		BF76C9331E26C26400D3CC49 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF76C9321E26C26400D3CC49 /* ChatViewController.m */; };
 		BF800DF51E36C27200438589 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF800DF41E36C27200438589 /* SettingsViewController.m */; };
 		BF85C4A71E6F4AA300E78A95 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BF85C4A61E6F4AA300E78A95 /* libxml2.2.tbd */; };
+		BF85C4AB1E6F59BD00E78A95 /* AzureStorageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BF85C4AA1E6F59BD00E78A95 /* AzureStorageHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,8 @@
 		BF800DF31E36C27200438589 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		BF800DF41E36C27200438589 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		BF85C4A61E6F4AA300E78A95 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		BF85C4AA1E6F59BD00E78A95 /* AzureStorageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AzureStorageHelper.m; sourceTree = "<group>"; };
+		BFEBE6C81E7A8D14006FB72D /* AzureStorageHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AzureStorageHelper.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +292,8 @@
 				54CAB3D21E3D55C7004C76EA /* ThemeManager.m */,
 				0F827DA01E4765F400F799A6 /* CurrentUser.h */,
 				0F827DA11E4765F400F799A6 /* CurrentUser.m */,
+				BF85C4AA1E6F59BD00E78A95 /* AzureStorageHelper.m */,
+				BFEBE6C81E7A8D14006FB72D /* AzureStorageHelper.h */,
 			);
 			name = "Helper classes";
 			sourceTree = "<group>";
@@ -531,6 +536,7 @@
 				546576671E6C637300EE2217 /* SearchPeopleTableViewCell.m in Sources */,
 				0F827DA21E4765F400F799A6 /* CurrentUser.m in Sources */,
 				0FF656141E35499C00C5D5D0 /* RestHelper.m in Sources */,
+				BF85C4AB1E6F59BD00E78A95 /* AzureStorageHelper.m in Sources */,
 				546576641E60FF1100EE2217 /* SearchPeopleTableViewController.m in Sources */,
 				BF800DF51E36C27200438589 /* SettingsViewController.m in Sources */,
 				548885901E480D0D006D275A /* UIImage+FromColor.m in Sources */,

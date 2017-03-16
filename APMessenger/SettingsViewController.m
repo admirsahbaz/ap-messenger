@@ -11,6 +11,7 @@
 #import "CurrentUser.h"
 #import "RecentTableViewController.h"
 #import <AZSClient/AZSClient.h>
+#import "AzureStorageHelper.h"
 
 @interface SettingsViewController ()
 
@@ -20,12 +21,13 @@
 
 @synthesize identifier = _identifier;
 @synthesize profileImage;
-
+@synthesize storageConnectionString;
 
 ThemeManager *settingsThemeManager;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    storageConnectionString = @"DefaultEndpointsProtocol=https;AccountName=apmessengerstorage;AccountKey=X+8avPUtnkqTEA30UMHMIVR//YiNWFiRbecd2SdZLvktGk4NpxNI2m2Qy0llR57iqW/A1yVZI3CqjZWkmOVuSw==";
     
     settingsThemeManager = [ThemeManager SharedInstance];
     
@@ -38,8 +40,40 @@ ThemeManager *settingsThemeManager;
     self.profileImage.layer.borderWidth = 2.0;
     self.profileImage.layer.borderColor = [settingsThemeManager.contactImageBorderColor CGColor];;
     self.profileImage.layer.masksToBounds = YES;
-        
-    self.profileImage.image = [self resizeImage:[UIImage imageNamed:@"contactimg.jpg"] imageSize:CGSizeMake(150, 150)];
+    
+    NSError *accountCreationError;
+    AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:storageConnectionString error:&accountCreationError];
+    
+    if(accountCreationError){
+        NSLog(@"Error in creating account.");
+    }
+    
+    // Create a blob service client object.
+    AZSCloudBlobClient *blobClient = [account getBlobClient];
+    
+    // Create a local container object.
+    AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"profileimage"];
+    
+    // Create a local blob object
+    AZSCloudBlockBlob *blockBlob = [blobContainer blockBlobReferenceFromName:@"profileimagename.jpeg"];
+    
+    // Download blob
+    [blockBlob downloadToDataWithCompletionHandler:^(NSError *error, NSData *data) {
+        if (error) {
+            NSLog(@"Error in downloading blob");
+        }
+        else{
+            NSLog(@"%@",data);
+  
+            [self.profileImage setImage:(UIImage *)[self resizeImage:[UIImage imageWithData:data] imageSize:CGSizeMake(150, 150)]];
+            
+            [self.profileImage setNeedsDisplay];
+            
+            [self.profileImage reloadInputViews];
+            [self reloadInputViews];
+       }
+    }];
+   
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImg)];
     singleTap.numberOfTapsRequired = 1;
@@ -57,6 +91,43 @@ ThemeManager *settingsThemeManager;
     
 }
 
+- (void)uploadImage:(UIImage *)image name:(NSString *)name {
+    // Get the image data (JPEG)
+    NSData *data = UIImageJPEGRepresentation(image, 1.0f);
+    
+    // Create the blob name (*.jpeg)
+    NSString *blobName = [NSString stringWithFormat:@"profileimage%@.jpeg", name];
+    
+    //delete blob before upload
+    
+    NSError *accountCreationError;
+    AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:storageConnectionString error:&accountCreationError];
+    
+    if(accountCreationError){
+        NSLog(@"Error in creating account.");
+    }
+    
+    // Create a blob service client object.
+    AZSCloudBlobClient *blobClient = [account getBlobClient];
+    
+    // Create a local container object.
+    AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"profileimage"];
+    
+    // Create a local blob object
+    AZSCloudBlockBlob *blockBlob = [blobContainer blockBlobReferenceFromName:blobName];
+    // Delete blob
+    [blockBlob deleteWithCompletionHandler:^(NSError *error) {
+        if (error) {
+            NSLog(@"Error in deleting blob.");
+        }
+        else
+        {
+            //upload blob after deleting old one
+            [AzureStorageHelper uploadBlobToContainerWithName:@"profileimage" data:data blobName:blobName storageConnectionString:storageConnectionString];
+        }
+    }];
+    
+    }
 
 - (void)viewDidAppear:(BOOL)animated {
     self.tabBarController.title = @"Settings";
@@ -216,6 +287,7 @@ ThemeManager *settingsThemeManager;
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
     profileImage.image = [self resizeImage:image imageSize:CGSizeMake(150, 150)];
+    [self uploadImage:image name:@"name"];
    
 }
 

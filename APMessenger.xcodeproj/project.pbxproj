@@ -34,6 +34,7 @@
 		A037E4A41E3EAE750092E1A4 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = A037E4A31E3EAE750092E1A4 /* Message.m */; };
 		A037E4AD1E3EB3050092E1A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A037E4AB1E3EB3050092E1A4 /* Main.storyboard */; };
 		BF02D7D11E25A501003A2066 /* RecentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF02D7D01E25A501003A2066 /* RecentTableViewController.m */; };
+		BF15886D1E7AAF4500A04D81 /* RegisterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BF15886C1E7AAF4500A04D81 /* RegisterClient.m */; };
 		BF44D9571E26B530004F083A /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44D9561E26B530004F083A /* ContactsViewController.m */; };
 		BF6543AD1E5CB88300144114 /* ThemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6543AC1E5CB88300144114 /* ThemeViewController.m */; };
 		BF6F8AD51E3E65F800782A15 /* PasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6F8AD41E3E65F800782A15 /* PasswordViewController.m */; };
@@ -101,7 +102,6 @@
 		54CAB3D41E3D59E9004C76EA /* default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = default.plist; sourceTree = "<group>"; };
 		54CAB3D91E3D63CE004C76EA /* UIColor+FromHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FromHex.h"; sourceTree = "<group>"; };
 		54CAB3DA1E3D63CE004C76EA /* UIColor+FromHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FromHex.m"; sourceTree = "<group>"; };
-		7398D4801E6F572A0042DE20 /* RegisterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterClient.h; sourceTree = "<group>"; };
 		7398D4811E6F572A0042DE20 /* RegisterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterClient.m; sourceTree = "<group>"; };
 		9DF23F6704F6D34C2CD7271B /* Pods-APMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APMessenger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-APMessenger/Pods-APMessenger.debug.xcconfig"; sourceTree = "<group>"; };
 		A037E49C1E3EAE380092E1A4 /* LeftChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftChatTableViewCell.h; sourceTree = "<group>"; };
@@ -114,6 +114,8 @@
 		BD4809E229DF0814B75AEAF5 /* Pods-APMessenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APMessenger.release.xcconfig"; path = "Pods/Target Support Files/Pods-APMessenger/Pods-APMessenger.release.xcconfig"; sourceTree = "<group>"; };
 		BF02D7CF1E25A501003A2066 /* RecentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentTableViewController.h; sourceTree = "<group>"; };
 		BF02D7D01E25A501003A2066 /* RecentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentTableViewController.m; sourceTree = "<group>"; };
+		BF15886B1E7AAF4500A04D81 /* RegisterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterClient.h; sourceTree = "<group>"; };
+		BF15886C1E7AAF4500A04D81 /* RegisterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterClient.m; sourceTree = "<group>"; };
 		BF44D9551E26B530004F083A /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
 		BF44D9561E26B530004F083A /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
 		BF6543AB1E5CB88300144114 /* ThemeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeViewController.h; sourceTree = "<group>"; };
@@ -289,6 +291,8 @@
 		A037E4A81E3EAF190092E1A4 /* Helper classes */ = {
 			isa = PBXGroup;
 			children = (
+				BF15886B1E7AAF4500A04D81 /* RegisterClient.h */,
+				BF15886C1E7AAF4500A04D81 /* RegisterClient.m */,
 				0FF656101E35499C00C5D5D0 /* RestHelper.h */,
 				0FF656111E35499C00C5D5D0 /* RestHelper.m */,
 				54CAB3D11E3D55C7004C76EA /* ThemeManager.h */,
@@ -535,7 +539,8 @@
 				A037E4A11E3EAE380092E1A4 /* RightChatTableViewCell.m in Sources */,
 				BF02D7D11E25A501003A2066 /* RecentTableViewController.m in Sources */,
 				BF6543AD1E5CB88300144114 /* ThemeViewController.m in Sources */,
-				7398D4821E6F572A0042DE20 /* RegisterClient.m in Sources */,
+				BF15886D1E7AAF4500A04D81 /* RegisterClient.m in Sources */,
+
 				546C94E21E107AFD00571006 /* AppDelegate.m in Sources */,
 				546576671E6C637300EE2217 /* SearchPeopleTableViewCell.m in Sources */,
 				0F827DA21E4765F400F799A6 /* CurrentUser.m in Sources */,

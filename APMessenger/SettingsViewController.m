@@ -29,6 +29,10 @@ ThemeManager *settingsThemeManager;
     [super viewDidLoad];
     storageConnectionString = @"DefaultEndpointsProtocol=https;AccountName=apmessengerstorage;AccountKey=X+8avPUtnkqTEA30UMHMIVR//YiNWFiRbecd2SdZLvktGk4NpxNI2m2Qy0llR57iqW/A1yVZI3CqjZWkmOVuSw==";
     
+    [rest requestPath:@"/UpdateLastActivity" withData:nil andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+        });
+    }];
     settingsThemeManager = [ThemeManager SharedInstance];
     
     CAGradientLayer *backroundGradient = [CAGradientLayer layer];

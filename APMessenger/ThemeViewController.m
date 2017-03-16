@@ -9,6 +9,7 @@
 #import "ThemeViewController.h"
 #import "ThemeManager.h"
 #import "UIColor+FromHex.h"
+#import "RestHelper.h"
 
 @interface ThemeViewController ()
 
@@ -28,6 +29,12 @@ ThemeManager *thThemeManager;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    RestHelper *rest =  [RestHelper SharedInstance];
+    
+    [rest requestPath:@"/UpdateLastActivity" withData:nil andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+        });
+    }];
     thThemeManager = [ThemeManager SharedInstance];
     
     CAGradientLayer *backroundGradient = [CAGradientLayer layer];

@@ -27,7 +27,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    RestHelper *rest =  [RestHelper SharedInstance];
     
+    [rest requestPath:@"/UpdateLastActivity" withData:nil andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+        });
+    }];
     [messageLabel setText:@""];
     ThemeManager *themeManager = [[ThemeManager alloc] init];
     

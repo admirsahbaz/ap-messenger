@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ContactsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface ContactsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate>
 @property (strong, nonatomic) NSMutableArray *contacts;
 @property (strong, nonatomic) NSString *identifier;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

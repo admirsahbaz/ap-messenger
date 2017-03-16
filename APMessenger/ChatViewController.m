@@ -27,6 +27,13 @@ dispatch_source_t timerChat;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    RestHelper *rest =  [RestHelper SharedInstance];
+    
+    [rest requestPath:@"/UpdateLastActivity" withData:nil andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+        });
+    }];
     //NSLog(@"%ld", (long)self.chatId);
     // Read chat person from performed segue
     //self.chatPerson = @"Bill Gates";

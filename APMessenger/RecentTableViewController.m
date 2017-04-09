@@ -10,6 +10,7 @@
 #import "RestHelper.h"
 #import "ChatViewController.h"
 #import "ThemeManager.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface RecentTableViewController ()
 
@@ -32,6 +33,10 @@ ThemeManager *recentThemeManager;
     CAGradientLayer *backroundGradient = [CAGradientLayer layer];
     backroundGradient.frame = self.view.bounds;
     backroundGradient.colors = [NSArray arrayWithObjects:(id)[recentThemeManager.backgroundTopColor CGColor], (id)[recentThemeManager.backgroundBottomColor CGColor], nil];
+    SDImageCache * imageCache = [SDImageCache sharedImageCache];
+    [imageCache clearMemory];
+    [imageCache clearDisk];
+
     [self.view.layer insertSublayer:backroundGradient atIndex:0];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -193,10 +198,12 @@ ThemeManager *recentThemeManager;
     
     NSString *sName;
     NSString *sLastMessage;
+    NSString *imgUrl;
     
     id row = [_recents objectAtIndex:indexPath.row];
     sName = [row objectForKey:@"Name"];
     sLastMessage = [row objectForKey:@"LastMessage"];
+    imgUrl = [row objectForKey:@"ImageUrl"];
     
     
     cell.textLabel.text = sName;
@@ -205,8 +212,21 @@ ThemeManager *recentThemeManager;
     cell.detailTextLabel.text = sLastMessage;
     cell.detailTextLabel.textColor = recentThemeManager.textColor;
     //cell.imageView. = CGSizeMake(60, 70);
+  
+    cell.imageView.image = [self resizeImage:[UIImage imageNamed:@"DefaultUserIcon"] imageSize:CGSizeMake(60, 60)];
     
-    cell.imageView.image = [RecentTableViewController scale:[UIImage imageNamed:@"contactimg.jpg"] toSize:CGSizeMake(60, 60)];
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    [manager downloadImageWithURL:[NSURL URLWithString:imgUrl]
+                          options:SDWebImageRefreshCached
+                         progress:nil
+                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                            if(image != nil)
+                            {
+                                cell.imageView.image= [self resizeImage:image imageSize:CGSizeMake(60, 60)];
+                            }
+                        }];
+    
+    
     cell.imageView.layer.cornerRadius = 30;
     cell.imageView.layer.masksToBounds = YES;
     cell.imageView.layer.borderColor = [recentThemeManager.contactImageBorderColor CGColor];
@@ -238,6 +258,15 @@ ThemeManager *recentThemeManager;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
+}
+
+-(UIImage *)resizeImage: (UIImage *) image imageSize:(CGSize)size
+{
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0,0,size.width,size.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 // Override to support conditional editing of the table view.

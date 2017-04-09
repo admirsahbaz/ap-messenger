@@ -11,6 +11,7 @@
 @interface ThemeManager : NSObject
 
 + (ThemeManager *) SharedInstance;
++(void)setSharedInstance:(ThemeManager *)instance;
 
 @property (strong, nonatomic) UIColor *textColor;
 @property (strong, nonatomic) UIColor *backgroundTopColor;

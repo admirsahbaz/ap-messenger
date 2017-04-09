@@ -222,6 +222,8 @@ ThemeManager *settingsThemeManager;
         CurrentUser *user = [CurrentUser Current];
         [user LogOutUser];
         [RecentTableViewController cancelTimer];
+        [ThemeManager setSharedInstance:nil];
+     
         [self performSegueWithIdentifier:@"SegueSettingsLogout" sender:tableView];
     }
     

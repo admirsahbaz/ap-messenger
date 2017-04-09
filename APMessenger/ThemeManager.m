@@ -12,17 +12,20 @@
 
 @implementation ThemeManager
 
-
+static ThemeManager *sharedInstance = nil;
+static dispatch_once_t onceToken = 0;
 
 +(ThemeManager *) SharedInstance{
-    static ThemeManager *sharedInstance = nil;
-    static dispatch_once_t onceToken = 0;
-    
     dispatch_once (&onceToken, ^{
         sharedInstance = [[self alloc] init];
     });
     
     return sharedInstance;
+}
+
++(void)setSharedInstance:(ThemeManager *)instance {
+    onceToken = 0; // resets the once_token so dispatch_once will run again
+    sharedInstance = instance;
 }
 
 - (id)init

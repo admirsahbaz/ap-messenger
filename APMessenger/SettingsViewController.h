@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
-@interface SettingsViewController: UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface SettingsViewController: UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate,SDWebImageManagerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *profileImage;
 @property (strong, nonatomic) NSString *identifier;

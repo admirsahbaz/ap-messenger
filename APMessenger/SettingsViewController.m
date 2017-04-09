@@ -13,6 +13,7 @@
 #import <AZSClient/AZSClient.h>
 #import "AzureStorageHelper.h"
 #import "RestHelper.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface SettingsViewController ()
 
@@ -37,6 +38,10 @@ ThemeManager *settingsThemeManager;
     }];
     settingsThemeManager = [ThemeManager SharedInstance];
     
+    SDImageCache * imageCache = [SDImageCache sharedImageCache];
+    [imageCache clearMemory];
+    [imageCache clearDisk];
+    
     CAGradientLayer *backroundGradient = [CAGradientLayer layer];
     backroundGradient.frame = self.view.bounds;
     backroundGradient.colors = [NSArray arrayWithObjects:(id)[settingsThemeManager.backgroundTopColor CGColor], (id)[settingsThemeManager.backgroundBottomColor CGColor], nil];
@@ -46,40 +51,33 @@ ThemeManager *settingsThemeManager;
     self.profileImage.layer.borderWidth = 2.0;
     self.profileImage.layer.borderColor = [settingsThemeManager.contactImageBorderColor CGColor];;
     self.profileImage.layer.masksToBounds = YES;
+    UIImage*image = [self resizeImage:[ UIImage imageNamed:@"DefaultUserIcon"] imageSize:CGSizeMake(150, 150)];
+    self.profileImage.image = image;
     
-    NSError *accountCreationError;
-    AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:storageConnectionString error:&accountCreationError];
-    
-    if(accountCreationError){
-        NSLog(@"Error in creating account.");
-    }
-    
-    // Create a blob service client object.
-    AZSCloudBlobClient *blobClient = [account getBlobClient];
-    
-    // Create a local container object.
-    AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"profileimage"];
-    
-    // Create a local blob object
-    AZSCloudBlockBlob *blockBlob = [blobContainer blockBlobReferenceFromName:@"profileimagename.jpeg"];
-    
-    // Download blob
-    [blockBlob downloadToDataWithCompletionHandler:^(NSError *error, NSData *data) {
-        if (error) {
-            NSLog(@"Error in downloading blob");
-        }
-        else{
-            NSLog(@"%@",data);
-  
-            [self.profileImage setImage:(UIImage *)[self resizeImage:[UIImage imageWithData:data] imageSize:CGSizeMake(150, 150)]];
+    [rest requestPath:@"/GetProfilePictureUrl" withData:nil andHttpMethod:@"GET" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSError *err = nil;
             
-            [self.profileImage setNeedsDisplay];
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
             
-            [self.profileImage reloadInputViews];
+            NSString *profilePictureUrl = [dict objectForKey:@"profilePictureUrl"];
+            
+            SDWebImageManager *manager = [SDWebImageManager sharedManager];
+            [manager downloadImageWithURL:[NSURL URLWithString:profilePictureUrl]
+                                  options:SDWebImageRefreshCached
+                                 progress:nil
+                                completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                    if(image != nil)
+                                    {
+                                        profileImage.image = [self resizeImage:image imageSize:CGSizeMake(150, 150)];
+                                        
+                                    }
+                                }];
+            
             [self reloadInputViews];
-       }
+        });
     }];
-   
+    
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImg)];
     singleTap.numberOfTapsRequired = 1;
@@ -97,43 +95,25 @@ ThemeManager *settingsThemeManager;
     
 }
 
-- (void)uploadImage:(UIImage *)image name:(NSString *)name {
+- (void)uploadImage:(UIImage *)image {
     // Get the image data (JPEG)
-    NSData *data = UIImageJPEGRepresentation(image, 1.0f);
+    NSData *imageData = UIImageJPEGRepresentation(image, 1.0f);
     
-    // Create the blob name (*.jpeg)
-    NSString *blobName = [NSString stringWithFormat:@"profileimage%@.jpeg", name];
-    
-    //delete blob before upload
-    
-    NSError *accountCreationError;
-    AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:storageConnectionString error:&accountCreationError];
-    
-    if(accountCreationError){
-        NSLog(@"Error in creating account.");
-    }
-    
-    // Create a blob service client object.
-    AZSCloudBlobClient *blobClient = [account getBlobClient];
-    
-    // Create a local container object.
-    AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"profileimage"];
-    
-    // Create a local blob object
-    AZSCloudBlockBlob *blockBlob = [blobContainer blockBlobReferenceFromName:blobName];
-    // Delete blob
-    [blockBlob deleteWithCompletionHandler:^(NSError *error) {
-        if (error) {
-            NSLog(@"Error in deleting blob.");
-        }
-        else
-        {
-            //upload blob after deleting old one
-            [AzureStorageHelper uploadBlobToContainerWithName:@"profileimage" data:data blobName:blobName storageConnectionString:storageConnectionString];
-        }
+    RestHelper *rest = [RestHelper SharedInstance];
+    [rest requestPath:@"/GetProfilePictureId" withData:nil andHttpMethod:@"GET" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSError *err = nil;
+            
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
+            
+            NSString *profilePictureId = [dict objectForKey:@"profilePictureId"];
+            
+            // Create the blob name (*.jpeg)
+            NSString *blobName = [NSString stringWithFormat:@"%@.jpeg", profilePictureId];
+            [AzureStorageHelper uploadBlobToContainerWithName:@"profileimage" data:imageData blobName:blobName storageConnectionString:storageConnectionString];
+        });
     }];
-    
-    }
+}
 
 - (void)viewDidAppear:(BOOL)animated {
     self.tabBarController.title = @"Settings";
@@ -293,7 +273,7 @@ ThemeManager *settingsThemeManager;
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
     profileImage.image = [self resizeImage:image imageSize:CGSizeMake(150, 150)];
-    [self uploadImage:image name:@"name"];
+    [self uploadImage:image];
    
 }
 

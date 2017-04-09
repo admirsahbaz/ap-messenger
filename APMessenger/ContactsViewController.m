@@ -58,6 +58,10 @@ UIStoryboardSegue *segue;
     
     themeManager = [ThemeManager SharedInstance];
     
+    SDImageCache * imageCache = [SDImageCache sharedImageCache];
+    [imageCache clearMemory];
+    [imageCache clearDisk];
+    
     CAGradientLayer *backroundGradient = [CAGradientLayer layer];
     backroundGradient.frame = self.view.bounds;
     backroundGradient.colors = [NSArray arrayWithObjects:(id)[themeManager.backgroundTopColor CGColor], (id)[themeManager.backgroundBottomColor CGColor], nil];
@@ -170,8 +174,18 @@ UIStoryboardSegue *segue;
           }
     cell.ContactName.text = contactName;
     cell.ContactName.textColor = themeManager.textColor;
-    
-    [cell.ContactImage sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"DefaultUserIcon"]];
+    cell.ContactImage.image = [UIImage imageNamed:@"DefaultUserIcon"];    
+   
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    [manager downloadImageWithURL:[NSURL URLWithString:imgUrl]
+                          options:SDWebImageRefreshCached
+                         progress:nil
+                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                            if(image != nil)
+                            {
+                                cell.ContactImage.image= [self resizeImage:image imageSize:CGSizeMake(150, 150)];
+                            }
+                        }];
     
     cell.ContactImage.layer.cornerRadius = 30;
     cell.ContactImage.layer.masksToBounds = YES;
@@ -186,6 +200,16 @@ UIStoryboardSegue *segue;
     
     return cell;
 }
+
+-(UIImage *)resizeImage: (UIImage *) image imageSize:(CGSize)size
+{
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0,0,size.width,size.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.

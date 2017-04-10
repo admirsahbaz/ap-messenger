@@ -60,7 +60,7 @@ ThemeManager *settingsThemeManager;
             
             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
             
-            NSString *profilePictureUrl = [dict objectForKey:@"profilePictureUrl"];
+            NSString *profilePictureUrl = [dict objectForKey:@"ProfilePictureUrl"];
             
             SDWebImageManager *manager = [SDWebImageManager sharedManager];
             [manager downloadImageWithURL:[NSURL URLWithString:profilePictureUrl]

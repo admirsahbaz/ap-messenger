@@ -267,7 +267,8 @@ UIStoryboardSegue *segue;
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"SegueContactsChat" sender:tableView];
+    id row = [_contacts objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"SegueContactsChat" sender:row];
 }
 
 #pragma mark - Navigation
@@ -279,11 +280,29 @@ UIStoryboardSegue *segue;
     
     if([[segue identifier] isEqualToString:@"SegueContactsChat"])
     {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        id _selectedContact = [_contacts objectAtIndex:indexPath.row];
-        ChatViewController *cvc = [segue destinationViewController];
-        cvc.chatId = 8;
-        cvc.chatPerson = [_selectedContact objectForKey:@"Name"];
+        NSString *userId =[sender objectForKey:@"Id"];
+
+        NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:userId, @"Id", nil];
+        
+        RestHelper *rest =  [RestHelper SharedInstance];
+
+        [rest requestPath:@"/GetContactChat" withData:dict andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if(error)
+                {
+                    NSLog(@"ERROR : %@", error);
+                }
+                else{
+                    
+                    ChatViewController *cvc = [segue destinationViewController];
+                    NSDictionary *dictResponse = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+                    NSString * chatId =[dictResponse objectForKey:@"ChatId"];
+                    cvc.chatId = [chatId integerValue];
+                    cvc.chatPerson = [sender objectForKey:@"Name"];
+                }
+            });
+        }];
+
     }
     else if ([[segue identifier] isEqualToString:@"SegueContactsContact"]){
        

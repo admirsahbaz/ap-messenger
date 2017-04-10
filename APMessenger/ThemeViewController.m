@@ -147,7 +147,7 @@ ThemeManager *thThemeManager;
 -(void)openAlert{
     UIAlertController * alert = [UIAlertController
                                  alertControllerWithTitle:@"Change theme"
-                                 message:@"In order to apply changes to your theme, you need to restart app"
+                                 message:@"In order to apply changes to your theme, you need to logout"
                                  preferredStyle:UIAlertControllerStyleAlert];
     
     

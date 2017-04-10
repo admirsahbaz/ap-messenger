@@ -41,6 +41,10 @@
     backroundGradient.colors = [NSArray arrayWithObjects:(id)[themeManager.backgroundTopColor CGColor], (id)[themeManager.backgroundBottomColor CGColor], nil];
     [self.view.layer insertSublayer:backroundGradient atIndex:0];
     
+    self.emailTxt.delegate = self;
+    self.nameTxt.delegate = self;
+    self.password1Txt.delegate = self;
+    self.password2Txt.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -119,6 +123,27 @@
         }];
     }
 
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self animateTextField:textField up:YES];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self animateTextField:textField up:NO];
+}
+
+-(void)animateTextField:(UITextField*)textField up:(BOOL)up {
+    const int movementDistance = -210;
+    const float movementDuration = 0.3f;
+    
+    int movement = (up ? movementDistance : -movementDistance);
+    
+    [UIView beginAnimations: @"animateTextField" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
 }
 
 /*

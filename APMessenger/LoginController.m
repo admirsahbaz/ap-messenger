@@ -44,6 +44,8 @@ ThemeManager *theme;
     self.userNameTxt.textColor = theme.textColor;
     self.lblPassword.textColor = theme.textColor;
     self.lblEmail.textColor = theme.textColor;
+    self.userNameTxt.delegate = self;
+    self.passwordTxt.delegate = self;
     
     CALayer *border = [CALayer layer];
     CGFloat borderWidth = 0.3;
@@ -137,6 +139,27 @@ ThemeManager *theme;
         dispatch_async(dispatch_get_main_queue(), ^{
         });
     }];
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self animateTextField:textField up:YES];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self animateTextField:textField up:NO];
+}
+
+-(void)animateTextField:(UITextField*)textField up:(BOOL)up {
+    const int movementDistance = -210;
+    const float movementDuration = 0.3f;
+    
+    int movement = (up ? movementDistance : -movementDistance);
+    
+    [UIView beginAnimations: @"animateTextField" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
 }
 
 

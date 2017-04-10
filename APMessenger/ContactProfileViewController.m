@@ -9,6 +9,7 @@
 #import "ContactProfileViewController.h"
 #import "ThemeManager.h"
 #import "RestHelper.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 @interface ContactProfileViewController ()
 
 @end
@@ -24,7 +25,7 @@ ThemeManager *_themeManager;
 
 
 - (void)viewDidLoad {
-
+    
     [super viewDidLoad];
     
     RestHelper *rest =  [RestHelper SharedInstance];
@@ -35,14 +36,18 @@ ThemeManager *_themeManager;
     }];
     // Do any additional setup after loading the view.
     _themeManager = [ThemeManager SharedInstance];
-    [self.profilePicture setImage:[UIImage imageNamed:@"contactimg.jpg"]];
+    SDImageCache * imageCache = [SDImageCache sharedImageCache];
+    [imageCache clearMemory];
+    [imageCache clearDisk];
     
-    [self.picture setImage:[UIImage imageNamed:@"contactimg.jpg"]];
-    self.picture.layer.cornerRadius = 50;
+    self.profilePicture.image = [self resizeImage:[ UIImage imageNamed:@"DefaultUserIcon"] imageSize:CGSizeMake(150, 150)];
+    
+    self.picture.image = [self resizeImage:[ UIImage imageNamed:@"DefaultUserIcon"] imageSize:CGSizeMake(300, 300)];
+    
+    self.picture.layer.cornerRadius = 60;
     self.picture.layer.borderWidth = 2.0;
     self.picture.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     self.picture.layer.masksToBounds = YES;
-    
     
     //backgorund color
     CAGradientLayer *backroundGradient = [CAGradientLayer layer];
@@ -50,18 +55,20 @@ ThemeManager *_themeManager;
     backroundGradient.colors = [NSArray arrayWithObjects:(id)[_themeManager.backgroundTopColor CGColor], (id)[_themeManager.backgroundBottomColor CGColor], nil];
     [self.view.layer insertSublayer:backroundGradient atIndex:0];
     
-    //button for adding new contact
-    [self.btnAddToContacts setBackgroundColor:  [UIColor colorWithRed:17.0f/255 green:173.0f/255 blue:210.0f/255 alpha:1]];
     
     //text color
     lblUsername.textColor = _themeManager.textColor;
     lblUserEmail.textColor = _themeManager.textColor;
-       
-    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem: self.btnAddToContacts attribute: NSLayoutAttributeBottom relatedBy: NSLayoutRelationEqual toItem:self.view attribute: NSLayoutAttributeBottom multiplier:2.0f constant: 400.f];
     
-    [self.view addConstraint: bottom];
 }
-
+-(UIImage *)resizeImage: (UIImage *) image imageSize:(CGSize)size
+{
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0,0,size.width,size.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

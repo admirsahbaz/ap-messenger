@@ -222,7 +222,9 @@ UIStoryboardSegue *segue;
     switch (index) {
         case 0:
         {
-            [self performSegueWithIdentifier:@"SegueContactsContact" sender:self.tableView];
+            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+            id row = [_contacts objectAtIndex:cellIndexPath.row];
+            [self performSegueWithIdentifier:@"SegueContactsContact" sender:row];
             break;
         }
         case 1:
@@ -283,7 +285,6 @@ UIStoryboardSegue *segue;
     [self performSegueWithIdentifier:@"SegueContactsChat" sender:tableView];
 }
 
-
 #pragma mark - Navigation
 
 //In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -300,10 +301,9 @@ UIStoryboardSegue *segue;
         cvc.chatPerson = [_selectedContact objectForKey:@"Name"];
     }
     else if ([[segue identifier] isEqualToString:@"SegueContactsContact"]){
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        id _selectedContact = [_contacts objectAtIndex:indexPath.row];
-        NSString *userId =[_selectedContact objectForKey:@"Id"];
-        
+       
+        NSString *userId =[sender objectForKey:@"Id"];
+       
         RestHelper *rest =  [RestHelper SharedInstance];
         self.segue = segue;
         
@@ -327,6 +327,20 @@ UIStoryboardSegue *segue;
 
                         [profilectrl.lblUserEmail setText:[dictResponse objectForKey:@"Name"]];
                         [profilectrl.lblUsername setText:[dictResponse objectForKey:@"Email"]];
+                        NSString * pictureUrl = [dictResponse objectForKey:@"PictureUrl"];
+                        
+                        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+                        [manager downloadImageWithURL:[NSURL URLWithString:pictureUrl]
+                                              options:SDWebImageRefreshCached
+                                             progress:nil
+                                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                                if(image != nil)
+                                                {
+                                                    profilectrl.profilePicture.image = [self resizeImage:image imageSize:CGSizeMake(150, 150)];
+                                                    profilectrl.picture.image = [self resizeImage:image imageSize:CGSizeMake(300, 300)];
+                                                }
+                                            }];
+                        
                         NSLog(@"Success");
                     }
                     else

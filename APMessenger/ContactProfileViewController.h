@@ -18,6 +18,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblUsername;
 @property (weak, nonatomic) IBOutlet UILabel *lblUserEmail;
 
-@property (weak, nonatomic) IBOutlet UIButton *btnAddToContacts;
-
 @end

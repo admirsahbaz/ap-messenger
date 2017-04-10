@@ -21,6 +21,58 @@
 
 @synthesize people = _people;
 
+- (NSArray *)rightButtons
+{
+    ThemeManager *themeManager = [ThemeManager SharedInstance];
+    
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     themeManager.tableViewSeparatorColor
+                                                 icon:[UIImage imageNamed:@"icon-profile"]];
+    
+    return rightUtilityButtons;
+}
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+        {
+            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+            [self addContact:cellIndexPath];
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+- (void) addContact:(NSIndexPath*) cellIndexPath {
+    id row = [_people objectAtIndex:cellIndexPath.row];
+    NSInteger *contactId = [[row objectForKey:@"Id"] integerValue];
+    
+    RestHelper *rest =  [RestHelper SharedInstance];
+    NSString *requestUrl = @"/Contacts/";
+    [rest requestPath:[NSString stringWithFormat:@"/Contacts/%i", contactId] withData:nil andHttpMethod:@"POST" onCompletion:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSError *err = nil;
+            if(data){
+                NSString *str = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+                if (err == nil && [str isEqualToString:@"true"])
+                {
+                    [_people removeObjectAtIndex:cellIndexPath.row];
+                    [self.tableView deleteRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                }
+                else
+                {
+                    NSLog(@"Error");
+                }
+                
+            }
+        });
+    }];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -62,6 +114,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+
 - (void)fillTable:(NSData*)data withError:(NSError*)error{
     if(error)
     {
@@ -73,7 +126,7 @@
             return;
         }
         
-        _people = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
+        _people = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&err];
         
         if (err == nil)
         {
@@ -127,6 +180,9 @@
     
     SearchPeopleTableViewCell *cell = (SearchPeopleTableViewCell *) [tableView dequeueReusableCellWithIdentifier:@"searchPeopleTableViewCell"];
     
+    cell.rightUtilityButtons = [self rightButtons];
+    cell.delegate = self;
+    
     // Configure the cell...
     NSString *contactName;
     NSString *imgUrl;
@@ -156,7 +212,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"SegueSearchPeopleContact" sender:tableView];
+    [self addContact:indexPath];
 }
 
 

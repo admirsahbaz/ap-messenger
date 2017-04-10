@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWTableViewCell.h"
 
-@interface SearchPeopleTableViewCell : UITableViewCell
+@interface SearchPeopleTableViewCell : SWTableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 

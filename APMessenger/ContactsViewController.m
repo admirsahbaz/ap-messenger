@@ -25,6 +25,7 @@
 
 ThemeManager *themeManager;
 NSInteger *selectedContact;
+NSIndexPath *cellIndexPath;
 UIStoryboardSegue *segue;
 
 - (NSArray *)rightButtons
@@ -106,7 +107,7 @@ UIStoryboardSegue *segue;
         if(!data){
             return;
         }
-        _contacts = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
+        _contacts = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&err];
         
         if (err == nil)
         {
@@ -122,6 +123,7 @@ UIStoryboardSegue *segue;
 
 - (void)viewDidAppear:(BOOL)animated {
     self.tabBarController.title = @"Contacts";
+    [self getContacts];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -226,7 +228,7 @@ UIStoryboardSegue *segue;
         case 1:
         {
             // Delete button was pressed
-            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+            cellIndexPath = [self.tableView indexPathForCell:cell];
             id row = [_contacts objectAtIndex:cellIndexPath.row];
             selectedContact = [[row objectForKey:@"Id"] integerValue];
             
@@ -251,14 +253,27 @@ UIStoryboardSegue *segue;
     }
 }
 
-- (void) deleteContact{
+- (void) deleteContact {
     RestHelper *rest =  [RestHelper SharedInstance];
     
     NSString *requestUrl = @"/Contacts/";
     
     [rest requestPath:[NSString stringWithFormat:@"/Contacts/%i", selectedContact] withData:nil andHttpMethod:@"DELETE" onCompletion:^(NSData *data, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self getContacts];
+            NSError *err = nil;
+            if(data){
+                NSString *str = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+                if (err == nil && [str isEqualToString:@"true"])
+                {
+                    [_contacts removeObjectAtIndex:cellIndexPath.row];
+                    [self.tableView deleteRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                }
+                else
+                {
+                    NSLog(@"Error");
+                }
+                
+            }
         });
     }];
 }

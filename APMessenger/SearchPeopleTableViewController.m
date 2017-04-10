@@ -29,7 +29,7 @@
     
     [rightUtilityButtons sw_addUtilityButtonWithColor:
      themeManager.tableViewSeparatorColor
-                                                 icon:[UIImage imageNamed:@"icon-profile"]];
+                                                 icon:[UIImage imageNamed:@"icon-plus"]];
     
     return rightUtilityButtons;
 }

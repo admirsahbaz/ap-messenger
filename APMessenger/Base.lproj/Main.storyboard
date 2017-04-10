@@ -508,6 +508,9 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="81" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mdz-mL-oca">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="508" id="GHX-Mc-KHf"/>
+                                </constraints>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contactTableViewCell" rowHeight="81" id="9PC-5L-Mug" customClass="ContactTableViewCell">
@@ -556,11 +559,10 @@
                                     <outlet property="delegate" destination="G4m-7t-WTA" id="H1g-qH-Aes"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPa-MI-SR1">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPa-MI-SR1">
+                                <frame key="frameInset" minX="17" minY="550" width="340" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.004649406298995018" green="0.90881091356277466" blue="0.99290198087692261" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="UdT-tt-3ch"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Add Contacts"/>
@@ -568,13 +570,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Mdz-mL-oca" firstAttribute="leading" secondItem="5HD-qw-e39" secondAttribute="leading" id="1mU-Cc-OtP"/>
-                            <constraint firstAttribute="trailing" secondItem="Mdz-mL-oca" secondAttribute="trailing" id="Uz3-qw-BBw"/>
-                            <constraint firstItem="UHf-4z-Odg" firstAttribute="top" secondItem="CPa-MI-SR1" secondAttribute="bottom" constant="18" id="fi3-52-x2X"/>
-                            <constraint firstItem="CPa-MI-SR1" firstAttribute="top" secondItem="Mdz-mL-oca" secondAttribute="bottom" constant="22" id="hMV-jC-jRJ"/>
-                            <constraint firstItem="CPa-MI-SR1" firstAttribute="leading" secondItem="5HD-qw-e39" secondAttribute="leadingMargin" constant="1" id="kvc-BQ-lmz"/>
-                            <constraint firstItem="Mdz-mL-oca" firstAttribute="centerX" secondItem="CPa-MI-SR1" secondAttribute="centerX" id="mtF-oi-9rU"/>
-                            <constraint firstItem="Mdz-mL-oca" firstAttribute="top" secondItem="EHd-4f-ACT" secondAttribute="bottom" id="tVB-ks-8rL"/>
+                            <constraint firstAttribute="trailing" secondItem="Mdz-mL-oca" secondAttribute="trailing" id="b49-F7-bbs"/>
+                            <constraint firstItem="Mdz-mL-oca" firstAttribute="leading" secondItem="5HD-qw-e39" secondAttribute="leading" id="hub-Zq-u7G"/>
+                            <constraint firstItem="Mdz-mL-oca" firstAttribute="top" secondItem="EHd-4f-ACT" secondAttribute="bottom" id="pRY-ib-Jyf"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Contacts" image="icon-contacts" selectedImage="icon-contacts" id="nN7-2S-jRE"/>
@@ -808,6 +806,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="V2q-yt-zlD"/>
         <segue reference="Iq9-Fz-YXc"/>
-        <segue reference="EOh-eq-kz2"/>
+        <segue reference="elL-1X-wBB"/>
     </inferredMetricsTieBreakers>
 </document>

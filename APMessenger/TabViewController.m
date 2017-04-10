@@ -7,6 +7,8 @@
 //
 
 #import "TabViewController.h"
+#import "UIImage+FromColor.h"
+#import "ThemeManager.h"
 
 @interface TabViewController ()
 
@@ -16,10 +18,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    ThemeManager *themeManager = [ThemeManager SharedInstance];
+    
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.hidesBackButton = YES;
-}
+    
+    UIImage *navigationBarBackgroundImage = [UIImage imageFromColor:themeManager.navigationBarBackgroundColor];
+    
+    [[UITabBar appearance] setBackgroundImage:navigationBarBackgroundImage];
+    [[UITabBar appearance] setBarStyle:UIBarStyleDefault];
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

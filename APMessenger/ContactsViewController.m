@@ -121,6 +121,10 @@ UIStoryboardSegue *segue;
 
 - (void)viewDidAppear:(BOOL)animated {
     self.tabBarController.title = @"Contacts";
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
     [self getContacts];
 }
 

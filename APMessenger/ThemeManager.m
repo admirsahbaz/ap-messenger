@@ -52,7 +52,7 @@ static dispatch_once_t onceToken = 0;
         
         // TableView Separator Color
         NSString *tableViewSeparatorColorString = [theme objectForKey:@"tableViewSeparatorColor"];
-        self.tableViewSeparatorColor = [UIColor colorwithHexString:tableViewSeparatorColorString alpha:0.1];
+        self.tableViewSeparatorColor = [UIColor colorwithHexString:tableViewSeparatorColorString alpha:0.7];
         
         // Navigation Bar Background Color
         NSString *navigationBarBackgroundColorString = [theme objectForKey:@"navigationBarBackgroundColor"];

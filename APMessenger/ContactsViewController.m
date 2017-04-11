@@ -82,8 +82,6 @@ UIStoryboardSegue *segue;
     self.addContacts.layer.cornerRadius = 8;
     self.addContacts.tintColor = themeManager.textColor;
     [self.addContacts addTarget:self action:@selector(addContactsAction) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self getContacts];
     // Do any additional setup after loading the view.
 }
 
@@ -188,17 +186,6 @@ UIStoryboardSegue *segue;
                                 cell.ContactImage.image= [self resizeImage:image imageSize:CGSizeMake(150, 150)];
                             }
                         }];
-    
-    cell.ContactImage.layer.cornerRadius = 30;
-    cell.ContactImage.layer.masksToBounds = YES;
-    cell.ContactImage.layer.borderColor = [themeManager.contactImageBorderColor CGColor];
-    cell.ContactImage.layer.borderWidth = 3.5;
-    
-    cell.backgroundColor = [UIColor clearColor];
-    
-    UIView *bottomLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 80, self.view.bounds.size.width, 1)];
-    bottomLineView.backgroundColor = themeManager.tableViewSeparatorColor;
-    [cell.contentView addSubview:bottomLineView];
     
     return cell;
 }

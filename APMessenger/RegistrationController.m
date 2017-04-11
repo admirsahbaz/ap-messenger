@@ -40,11 +40,60 @@
     backroundGradient.frame = self.view.bounds;
     backroundGradient.colors = [NSArray arrayWithObjects:(id)[themeManager.backgroundTopColor CGColor], (id)[themeManager.backgroundBottomColor CGColor], nil];
     [self.view.layer insertSublayer:backroundGradient atIndex:0];
+    self.emailTxt.placeholder = @"Enter your e-mail";
+    self.password1Txt.placeholder = @"Enter password";
+    self.nameTxt.placeholder= @"Enter your name";
+    self.password2Txt.placeholder= @"Repeat password";
     
+    self.emailTxt.borderStyle = UITextBorderStyleNone;
+    self.password1Txt.borderStyle = UITextBorderStyleNone;
+    self.password2Txt.borderStyle = UITextBorderStyleNone;
+    self.nameTxt.borderStyle = UITextBorderStyleNone;
     self.emailTxt.delegate = self;
     self.nameTxt.delegate = self;
     self.password1Txt.delegate = self;
     self.password2Txt.delegate = self;
+    
+    CALayer *border = [CALayer layer];
+    CGFloat borderWidth1 = 0.3;
+    border.borderColor = [[UIColor whiteColor] CGColor];
+    border.borderWidth = borderWidth1;
+    border.frame = CGRectMake(0, self.password1Txt.frame.size.height- borderWidth1, self.password1Txt.frame.size.width, self.password1Txt.frame.size.height);
+    
+    [self.password1Txt.layer addSublayer:border];
+    self.password1Txt.layer.masksToBounds = YES;
+    
+    CALayer *borderEmail = [CALayer layer];
+    CGFloat borderWidth2 = 0.3;
+    borderEmail.borderColor = [[UIColor whiteColor] CGColor];   borderEmail.borderWidth = borderWidth2;
+    borderEmail.frame = CGRectMake(0, self.emailTxt.frame.size.height- borderWidth2, self.emailTxt.frame.size.width, self.emailTxt.frame.size.height);
+    
+    [self.emailTxt.layer addSublayer:borderEmail];
+    self.emailTxt.layer.masksToBounds = YES;
+    
+    CALayer *borderName = [CALayer layer];
+    CGFloat borderWidth3 = 0.3;
+    borderName.borderColor = [[UIColor whiteColor] CGColor];   borderName.borderWidth = borderWidth3;
+    borderName.frame = CGRectMake(0, self.nameTxt.frame.size.height- borderWidth3, self.nameTxt.frame.size.width, self.nameTxt.frame.size.height);
+    
+    [self.nameTxt.layer addSublayer:borderName];
+    self.nameTxt.layer.masksToBounds = YES;
+
+    CALayer *borderPass2= [CALayer layer];
+    CGFloat borderWidth4 = 0.3;
+    borderPass2.borderColor = [[UIColor whiteColor] CGColor];   borderPass2.borderWidth = borderWidth4;
+    borderPass2.frame = CGRectMake(0, self.password2Txt.frame.size.height- borderWidth4, self.password2Txt.frame.size.width, self.password2Txt.frame.size.height);
+    
+    [self.password2Txt.layer addSublayer:borderPass2];
+    self.password2Txt.layer.masksToBounds = YES;
+    
+    
+    [self.registerBtn setBackgroundColor:  [UIColor colorWithRed:17.0f/255 green:173.0f/255 blue:210.0f/255 alpha:1]];
+    
+    self.registerBtn.tintColor = themeManager.textColor;
+
+    
+ 
 }
 
 - (void)didReceiveMemoryWarning {
